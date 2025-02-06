@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        eagle: ["Eagle Lake", "cursive"],
+        bruno: ["var(--font-bruno)"],
+        raleway: ["var(--font-raleway)"],
       },
     },
   },

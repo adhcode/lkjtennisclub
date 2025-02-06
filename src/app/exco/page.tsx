@@ -94,6 +94,13 @@ const excoMembers = [
         position: "Patron",
         image: "",
         bio: "Our amazing patron, blessing us with wisdom and grace! ✨",
+    },
+    {
+        name: "Patrick Oche",
+        position: "Head Coach",
+        image: "",
+        bio: "Professional tennis coach with years of experience. Transforming beginners into champions with dedication and expertise! 🎾👨‍🏫",
+        nickname: "Coachee"
     }
 ];
 

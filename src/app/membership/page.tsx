@@ -48,23 +48,19 @@ const membershipPlans = [
 const benefits = [
     {
         title: "Professional Courts",
-        description: "Access to our well-maintained professional-grade tennis courts",
-        icon: "🎾"
+        description: "Access to our well-maintained professional-grade tennis courts"
     },
     {
         title: "Expert Coaching",
-        description: "Learn from experienced coaches with personalized training programs",
-        icon: "👨‍🏫"
+        description: "Learn from experienced coaches with personalized training programs"
     },
     {
         title: "Regular Events",
-        description: "Participate in tournaments, social events, and club activities",
-        icon: "🏆"
+        description: "Participate in tournaments, social events, and club activities"
     },
     {
         title: "Community",
-        description: "Join a vibrant community of tennis enthusiasts and make lasting connections",
-        icon: "🤝"
+        description: "Join a vibrant community of tennis enthusiasts and make lasting connections"
     }
 ];
 
@@ -83,7 +79,7 @@ const faqs = [
     },
     {
         question: "Can I bring guests?",
-        answer: "Yes, members can bring guests for a nominal fee. Premium members get free guest passes monthly."
+        answer: "Yes, you can bring guests. The guest fee is ₦1,000 per hour."
     }
 ];
 
@@ -93,24 +89,25 @@ const MembershipPage = () => {
             <Navbar />
             <main className="bg-[#fcf7dc]">
                 {/* Hero Section */}
-                <section className="relative h-[50vh] min-h-[400px]">
+                <section className="relative h-[70vh] min-h-[500px]">
                     <Image
                         src="/DSC_1873.jpg"
                         alt="Tennis Club Membership"
                         fill
-                        className="object-cover filter brightness-[0.85] contrast-[1.1]"
+                        className="object-cover filter brightness-[0.85]"
+                        priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
-                    <div className="absolute inset-0 flex items-center justify-center px-4">
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
+                    <div className="relative h-full flex flex-col justify-start text-left px-4 pt-40 md:px-16">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-center"
                         >
-                            <h1 className={`text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider`}>
+                            <h1 className="font-bruno text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider">
                                 JOIN OUR CLUB
                             </h1>
-                            <p className={`text-[#fcf7dc]/80 max-w-xl mx-auto`}>
+                            <p className="font-raleway text-[#fcf7dc]/90 text-sm md:text-base font-light tracking-wider max-w-md">
                                 Become a member of our vibrant tennis community at LKJ Gardens Igando.
                                 All new members are required to pay a one-time registration fee of ₦10,000.
                             </p>
@@ -119,9 +116,23 @@ const MembershipPage = () => {
                 </section>
 
                 {/* Membership Plans Section */}
-                <section className="relative py-20 bg-[#911b1e]">
-                    <div className="container mx-auto px-4 md:px-6">
-                        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <section className="py-24 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-20"
+                        >
+                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
+                                Choose Your Plan
+                            </span>
+                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
+                                MEMBERSHIP PLANS
+                            </h2>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-12">
                             {membershipPlans.map((plan, index) => (
                                 <motion.div
                                     key={plan.name}
@@ -129,37 +140,33 @@ const MembershipPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.2 }}
-                                    className="group"
                                 >
-                                    <div className="bg-[#fcf7dc]/10 backdrop-blur-sm rounded-lg p-8 h-full 
-                                                  border border-[#fcf7dc]/20 hover:border-[#fcf7dc]/40 
-                                                  transition-all duration-300">
-                                        <h3 className={`text-[#fcf7dc] text-xl mb-2`}>
+                                    <div className="border-b border-[#911b1e]/20 pb-8">
+                                        <h3 className="font-bruno text-[#911b1e] text-2xl mb-4">
                                             {plan.name}
                                         </h3>
-                                        <div className="flex items-baseline mb-6">
-                                            <span className={`text-[#fcf7dc] text-3xl font-medium`}>
+                                        <div className="flex items-baseline mb-8">
+                                            <span className="font-bruno text-[#911b1e] text-3xl">
                                                 {plan.price}
                                             </span>
-                                            <span className={`text-[#fcf7dc]/60 text-sm ml-2`}>
+                                            <span className="font-raleway text-[#911b1e]/60 text-sm ml-2">
                                                 {plan.period}
                                             </span>
                                         </div>
                                         <ul className="space-y-4 mb-8">
                                             {plan.features.map((feature, i) => (
-                                                <li key={i} className={`text-[#fcf7dc]/80 text-sm flex items-center`}>
-                                                    <svg className="w-4 h-4 mr-3 text-[#fcf7dc]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                                    </svg>
+                                                <li key={i} className="font-raleway text-[#911b1e]/80 text-sm flex items-center">
+                                                    <span className="w-4 h-[1px] bg-[#911b1e]/40 mr-3" />
                                                     {feature}
                                                 </li>
                                             ))}
                                         </ul>
                                         <Link
                                             href="/join"
-                                            className={`block w-full bg-transparent border border-[#fcf7dc] text-[#fcf7dc] 
-                                                      px-6 py-3 text-sm text-center transition-colors duration-300
-                                                      hover:bg-[#fcf7dc] hover:text-[#911b1e]`}
+                                            className="inline-block bg-[#911b1e]/20 text-[#911b1e] px-8 py-4 
+                                                     font-raleway border border-[#911b1e]
+                                                     hover:bg-[#911b1e] hover:text-[#fcf7dc] 
+                                                     transition-all duration-300 tracking-wider"
                                         >
                                             Join Now
                                         </Link>
@@ -168,123 +175,94 @@ const MembershipPage = () => {
                             ))}
                         </div>
 
-                        <div className="text-center mt-16">
-                            <p className={`text-[#fcf7dc]/60 text-sm`}>
-                                Have questions? Contact us at <span className="text-[#fcf7dc]">membership@lkjtennis.com</span>
+                        <div className="text-center mt-20">
+                            <p className="font-raleway text-[#911b1e]/60 text-sm tracking-wider">
+                                Have questions? Contact us at{' '}
+                                <a href="mailto:membership@lkjtennis.com"
+                                    className="text-[#911b1e] hover:text-[#911b1e]/80 
+                                            transition-colors duration-300 border-b 
+                                            border-[#911b1e]/20 hover:border-[#911b1e]">
+                                    membership@lkjtennis.com
+                                </a>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                {/* Benefits Section - Modern Design */}
-                <section className="relative py-20">
-                    <div className="container mx-auto px-4 md:px-6">
-                        <div className="max-w-6xl mx-auto">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="text-center mb-16"
-                            >
-                                <span className={`inline-block px-4 py-1 bg-[#911b1e]/10 text-[#911b1e] 
-                                                rounded-full text-sm mb-4`}>
-                                    Why Join Us
-                                </span>
-                                <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6`}>
-                                    MEMBERSHIP BENEFITS
-                                </h2>
-                            </motion.div>
+                {/* Benefits Section */}
+                <section className="py-24 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-20"
+                        >
+                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
+                                Why Join Us
+                            </span>
+                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
+                                MEMBERSHIP BENEFITS
+                            </h2>
+                        </motion.div>
 
-                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                                {benefits.map((benefit, index) => (
-                                    <motion.div
-                                        key={benefit.title}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="group relative bg-white/50 backdrop-blur-sm rounded-2xl p-8 
-                                                 border border-[#911b1e]/10 hover:border-[#911b1e]/30
-                                                 transition-all duration-300"
-                                    >
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r 
-                                                      from-[#911b1e]/0 via-[#911b1e]/20 to-[#911b1e]/0
-                                                      transform scale-x-0 group-hover:scale-x-100
-                                                      transition-transform duration-500" />
-                                        <div className="mb-6">
-                                            <div className="inline-block p-3 bg-[#911b1e]/10 rounded-xl
-                                                          text-3xl transform group-hover:-rotate-12
-                                                          transition-transform duration-300">
-                                                {benefit.icon}
-                                            </div>
-                                        </div>
-                                        <h3 className={`text-[#911b1e] text-xl mb-3`}>
-                                            {benefit.title}
-                                        </h3>
-                                        <p className={`text-[#911b1e]/70 text-sm leading-relaxed`}>
-                                            {benefit.description}
-                                        </p>
-                                    </motion.div>
-                                ))}
-                            </div>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                            {benefits.map((benefit, index) => (
+                                <motion.div
+                                    key={benefit.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="border-b border-[#911b1e]/20 pb-8"
+                                >
+                                    <h3 className="font-bruno text-[#911b1e] text-xl mb-3">
+                                        {benefit.title}
+                                    </h3>
+                                    <p className="font-raleway text-[#911b1e]/70 text-sm leading-relaxed">
+                                        {benefit.description}
+                                    </p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* FAQs Section - Modern Design */}
-                <section className="relative py-20 bg-[#911b1e]/5">
-                    <div className="container mx-auto px-4 md:px-6">
-                        <div className="max-w-4xl mx-auto">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="text-center mb-16"
-                            >
-                                <span className={`inline-block px-4 py-1 bg-[#911b1e]/10 text-[#911b1e] 
-                                                rounded-full text-sm mb-4`}>
-                                    Got Questions?
-                                </span>
-                                <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6`}>
-                                    FREQUENTLY ASKED QUESTIONS
-                                </h2>
-                            </motion.div>
+                {/* FAQs Section */}
+                <section className="py-24 px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-20"
+                        >
+                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
+                                Got Questions?
+                            </span>
+                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
+                                FREQUENTLY ASKED QUESTIONS
+                            </h2>
+                        </motion.div>
 
-                            <div className="grid gap-6">
-                                {faqs.map((faq, index) => (
-                                    <motion.div
-                                        key={faq.question}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="group bg-white/50 backdrop-blur-sm rounded-2xl p-8
-                                                 border border-[#911b1e]/10 hover:border-[#911b1e]/30
-                                                 transition-all duration-300"
-                                    >
-                                        <div className="flex items-start space-x-4">
-                                            <div className="flex-shrink-0">
-                                                <div className="w-8 h-8 rounded-full bg-[#911b1e]/10 flex items-center 
-                                                              justify-center text-[#911b1e] font-medium">
-                                                    Q
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className={`text-[#911b1e] text-lg mb-3`}>
-                                                    {faq.question}
-                                                </h3>
-                                                <p className={`text-[#911b1e]/70 leading-relaxed`}>
-                                                    {faq.answer}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r 
-                                                      from-[#911b1e]/0 via-[#911b1e]/20 to-[#911b1e]/0
-                                                      transform scale-x-0 group-hover:scale-x-100
-                                                      transition-transform duration-500" />
-                                    </motion.div>
-                                ))}
-                            </div>
+                        <div className="space-y-8">
+                            {faqs.map((faq, index) => (
+                                <motion.div
+                                    key={faq.question}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="border-b border-[#911b1e]/20 pb-8"
+                                >
+                                    <h3 className="font-bruno text-[#911b1e] text-lg mb-3">
+                                        {faq.question}
+                                    </h3>
+                                    <p className="font-raleway text-[#911b1e]/70 leading-relaxed">
+                                        {faq.answer}
+                                    </p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </section>

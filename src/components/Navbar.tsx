@@ -59,14 +59,16 @@ const Navbar = () => {
                         <Link href="/membership" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
                             Membership
                         </Link>
+                        <Link href="/exco" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
+                            Exco
+                        </Link>
+                        <Link href="/book-court" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
+                            Book Court
+                        </Link>
                         <Link href="/events" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
                             Events
                         </Link>
-                        <Link href="/join" className={`bg-[#fcf7dc]/10 backdrop-blur-sm border border-[#fcf7dc] 
-                                               text-[#fcf7dc] px-6 py-2 hover:bg-[#fcf7dc] hover:text-[#911b1e] 
-                                               transition-all duration-300 ${raleway.className}`}>
-                            Join Us
-                        </Link>
+
                         <Link
                             href="/login"
                             className={`inline-flex items-center space-x-2 text-[#fcf7dc] group ${raleway.className}`}
@@ -113,7 +115,7 @@ const Navbar = () => {
                         >
                             <div className="bg-gradient-to-b from-[#911b1e]/95 to-[#911b1e]/90 backdrop-blur-lg">
                                 <div className="px-4 py-6 space-y-4">
-                                    {["About", "Membership", "Events", "Join Us"].map((item) => (
+                                    {["About", "Membership", "Exco", "Book Court", "Events", "Join Us"].map((item) => (
                                         <motion.div
                                             key={item}
                                             initial={{ opacity: 0, x: -20 }}

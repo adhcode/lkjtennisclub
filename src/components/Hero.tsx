@@ -25,10 +25,10 @@ const HeroSection = () => {
 
             {/* Content */}
             <div className="relative z-[2] h-full flex flex-col justify-start text-left px-4 pt-40 md:px-16">
-                <h1 className={`text-[#fcf7dc] text-4xl md:text-6xl mb-3 tracking-wider drop-shadow-sm max-w-[400px]`}>
+                <h1 className={`font-bruno text-[#fcf7dc] text-4xl md:text-6xl mb-3 tracking-wider drop-shadow-sm max-w-[400px]`}>
                     LKJ TENNIS CLUB
                 </h1>
-                <p className={`text-[#fcf7dc]/90 text-sm md:text-base font-extralight tracking-wide italic mb-24 drop-shadow-sm max-w-[220px]`}>
+                <p className={`font-raleway text-[#fcf7dc]/90 text-sm md:text-base font-extralight tracking-wide italic mb-24 drop-shadow-sm max-w-[220px]`}>
                     where tennis brings people together at LKJ Gardens Igando, enriching lives through sport and community.
                 </p>
                 <div className="flex flex-col space-y-2">
