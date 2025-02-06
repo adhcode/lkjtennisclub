@@ -3,19 +3,156 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom utilities */
+.font-light {
+  font-weight: 300;
+}
+
+/* Add these custom utilities after your existing styles */
+
+.bg-radial-gradient {
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 70%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    pointer-events: none;
+}
+
+.filter {
+    -webkit-filter: brightness(0.85) contrast(1.1) saturate(1.05);
+    filter: brightness(0.85) contrast(1.1) saturate(1.05);
+}
+
+/* First, remove the previous select styles and add these new ones */
+
+/* Base select styling */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Style the select dropdown menu */
+select option {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 12px 16px;
+    background-color: #fcf7dc;
+    color: #911b1e;
+    cursor: pointer;
+    border: none;
+}
+
+/* Custom dropdown styling */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(145, 27, 30, 0.2);
+    border-radius: 6px;
+    background-color: rgba(145, 27, 30, 0.05);
+    color: #911b1e;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Style for the dropdown list */
+.custom-select select:focus {
+    border-color: rgba(145, 27, 30, 0.4);
+    box-shadow: 0 0 0 1px rgba(145, 27, 30, 0.1);
+}
+
+/* Style for options */
+.custom-select select option {
+    background-color: #fcf7dc;
+    color: #911b1e;
+    padding: 16px;
+    border-bottom: 1px solid rgba(145, 27, 30, 0.1);
+}
+
+/* Hover state for options */
+.custom-select select option:hover {
+    background-color: rgba(145, 27, 30, 0.1);
+}
+
+/* Selected option */
+.custom-select select option:checked {
+    background-color: rgba(145, 27, 30, 0.15);
+    font-weight: 500;
+}
+
+/* Disabled option */
+.custom-select select option:disabled {
+    color: rgba(145, 27, 30, 0.4);
+    background-color: rgba(145, 27, 30, 0.05);
+    font-style: italic;
+}
+
+/* For Firefox */
+@-moz-document url-prefix() {
+    select {
+        color: #911b1e;
+        background-color: rgba(145, 27, 30, 0.05);
+        padding-right: 2rem;
+    }
+    
+    select option {
+        background-color: #fcf7dc;
+        color: #911b1e;
+    }
+}
+
+/* For Chrome and Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    select {
+        padding-right: 2rem;
+    }
+}
+
+/* Add these styles for the masonry grid */
+.masonry-grid {
+    column-gap: 2rem;
+}
+
+.masonry-grid > div {
+    break-inside: avoid;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .masonry-grid {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1280px) {
+    .masonry-grid {
+        column-count: 4;
+    }
 }
