@@ -61,9 +61,15 @@ const Gallery = () => {
                 <div className="w-12 h-[1px] bg-[#fcf7dc]/40" />
             </div>
             <div className="container mx-auto px-4 md:px-6">
-                <h2 className={`text-[#fcf7dc] text-3xl md:text-4xl mb-16 tracking-wider font-medium ${brunoAce.className}`}>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className={`text-[#fcf7dc] text-3xl md:text-4xl mb-16 tracking-wider font-medium ${brunoAce.className}`}
+                >
                     OUR GALLERY
-                </h2>
+                </motion.h2>
 
                 <div className="columns-2 md:columns-3 lg:columns-4 gap-3 [&>div:not(:first-child)]:mt-3">
                     {images.map((image, index) => (
@@ -87,7 +93,7 @@ const Gallery = () => {
                                     src={image.src}
                                     alt="Tennis Club"
                                     fill
-                                    className="object-cover transition-transform duration-700 
+                                    className="object-cover transition-all duration-700 
                                              group-hover:scale-105 filter 
                                              brightness-[0.85] contrast-[1.1] saturate-[0.95]
                                              group-hover:brightness-[0.9]"
@@ -96,10 +102,45 @@ const Gallery = () => {
                                            (max-width: 1024px) 33vw,
                                            25vw"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t 
-                                              from-black/30 via-transparent to-transparent 
-                                              opacity-0 group-hover:opacity-100 
-                                              transition-opacity duration-500" />
+                                <motion.div
+                                    initial={false}
+                                    whileHover={{ opacity: 1 }}
+                                    className="absolute inset-0 opacity-0 transition-opacity duration-300"
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-t 
+                                                   from-black/50 via-black/20 to-transparent" />
+                                    <div className="absolute bottom-3 left-3 right-3">
+                                        <motion.div
+                                            initial={{ y: 10, opacity: 0 }}
+                                            whileHover={{ y: 0, opacity: 1 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="flex items-center justify-between"
+                                        >
+                                            <span className={`text-[#fcf7dc] text-sm ${raleway.className}`}>
+                                                View
+                                            </span>
+                                            <svg
+                                                className="w-5 h-5 text-[#fcf7dc]"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="1.5"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                                />
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="1.5"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                                />
+                                            </svg>
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}
@@ -126,8 +167,39 @@ const Gallery = () => {
                             src={images[activeImage].src}
                             alt="Tennis Club"
                             fill
-                            className="object-contain filter brightness-[0.85] contrast-[1.1] saturate-[0.95]"
+                            className="object-contain"
+                            priority
                         />
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveImage(null);
+                            }}
+                            className="absolute top-4 right-4 w-10 h-10 bg-white/10 rounded-full 
+                                     flex items-center justify-center hover:bg-white/20 
+                                     transition-colors duration-300"
+                        >
+                            <svg
+                                className="w-6 h-6 text-white"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="1.5"
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        </button>
+                        <div className="absolute bottom-4 left-4 right-4 flex justify-center">
+                            <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                                <span className={`text-[#fcf7dc] text-sm ${raleway.className}`}>
+                                    {activeImage + 1} of {images.length}
+                                </span>
+                            </div>
+                        </div>
                     </motion.div>
                 </motion.div>
             )}

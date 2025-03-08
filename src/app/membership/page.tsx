@@ -11,57 +11,24 @@ const membershipPlans = [
         name: "Female Members",
         price: "₦30,000",
         period: "per year",
-        features: [
-            "Full club access",
-            "Access to all facilities",
-            "Club events participation",
-            "₦10,000 registration fee",
-            "Professional coaching available"
-        ]
     },
     {
         name: "Estate Resident (Male)",
         price: "₦30,000",
         period: "per year",
-        features: [
-            "Full club access",
-            "Access to all facilities",
-            "Club events participation",
-            "₦10,000 registration fee",
-            "Professional coaching available"
-        ]
     },
     {
         name: "Estate Resident (Female)",
         price: "₦20,000",
         period: "per year",
-        features: [
-            "Full club access",
-            "Access to all facilities",
-            "Club events participation",
-            "₦10,000 registration fee",
-            "Professional coaching available"
-        ]
     }
 ];
 
-const benefits = [
-    {
-        title: "Professional Courts",
-        description: "Access to our well-maintained professional-grade tennis courts"
-    },
-    {
-        title: "Expert Coaching",
-        description: "Learn from experienced coaches with personalized training programs"
-    },
-    {
-        title: "Regular Events",
-        description: "Participate in tournaments, social events, and club activities"
-    },
-    {
-        title: "Community",
-        description: "Join a vibrant community of tennis enthusiasts and make lasting connections"
-    }
+const commonBenefits = [
+    "Full access to club facilities",
+    "Participation in club events",
+    "Optional professional coaching",
+    "₦10,000 one-time registration fee"
 ];
 
 const faqs = [
@@ -83,13 +50,18 @@ const faqs = [
     }
 ];
 
+const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+};
+
 const MembershipPage = () => {
     return (
         <>
             <Navbar />
             <main className="bg-[#fcf7dc]">
                 {/* Hero Section */}
-                <section className="relative h-[70vh] min-h-[500px]">
+                <section className="relative h-screen">
                     <Image
                         src="/DSC_1873.jpg"
                         alt="Tennis Club Membership"
@@ -99,74 +71,104 @@ const MembershipPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent" />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
-                    <div className="relative h-full flex flex-col justify-start text-left px-4 pt-40 md:px-16">
+
+                    <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInUp}
+                            transition={{ duration: 0.6 }}
+                            className="max-w-3xl mx-auto"
                         >
-                            <h1 className="font-bruno text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider">
+                            <h1 className="font-bruno text-[#fcf7dc] text-5xl md:text-7xl mb-6 tracking-wider">
                                 JOIN OUR CLUB
                             </h1>
-                            <p className="font-raleway text-[#fcf7dc]/90 text-sm md:text-base font-light tracking-wider max-w-md">
-                                Become a member of our vibrant tennis community at LKJ Gardens Igando.
-                                All new members are required to pay a one-time registration fee of ₦10,000.
+                            <p className="font-raleway text-[#fcf7dc]/90 text-lg md:text-xl font-light tracking-wider max-w-2xl mx-auto">
+                                Become part of our vibrant tennis community at LKJ Gardens Igando
                             </p>
                         </motion.div>
                     </div>
                 </section>
 
                 {/* Membership Plans Section */}
-                <section className="py-24 px-4">
-                    <div className="max-w-6xl mx-auto">
+                <section className="py-32 px-4">
+                    <div className="max-w-7xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial="hidden"
+                            whileInView="visible"
                             viewport={{ once: true }}
-                            className="text-center mb-20"
+                            variants={fadeInUp}
+                            className="text-center mb-24"
                         >
-                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
-                                Choose Your Plan
-                            </span>
-                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
+                            <h2 className="font-bruno text-[#911b1e] text-4xl md:text-5xl tracking-wider">
                                 MEMBERSHIP PLANS
                             </h2>
                         </motion.div>
 
-                        <div className="grid md:grid-cols-3 gap-12">
+                        {/* Common Benefits */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="mb-24 max-w-2xl mx-auto bg-white/20 backdrop-blur-sm p-12 rounded-sm"
+                        >
+                            <h3 className="font-bruno text-[#911b1e] text-2xl mb-8 text-center">
+                                All Plans Include
+                            </h3>
+                            <div className="space-y-6">
+                                {commonBenefits.map((benefit, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="flex items-center space-x-4 group"
+                                    >
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#911b1e]/40 group-hover:bg-[#911b1e] transition-colors" />
+                                        <span className="font-raleway text-[#911b1e]/80 text-lg group-hover:text-[#911b1e] transition-colors">
+                                            {benefit}
+                                        </span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
                             {membershipPlans.map((plan, index) => (
                                 <motion.div
                                     key={plan.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial="hidden"
+                                    whileInView="visible"
                                     viewport={{ once: true }}
+                                    variants={fadeInUp}
                                     transition={{ delay: index * 0.2 }}
+                                    className="group"
                                 >
-                                    <div className="border-b border-[#911b1e]/20 pb-8">
-                                        <h3 className="font-bruno text-[#911b1e] text-2xl mb-4">
+                                    <div className="bg-white/30 backdrop-blur-sm p-12 hover:bg-white/40 
+                                                  transition-all duration-500 ease-out relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-b from-transparent 
+                                                      via-transparent to-white/5 opacity-0 group-hover:opacity-100 
+                                                      transition-opacity duration-500" />
+
+                                        <h3 className="font-bruno text-[#911b1e] text-2xl mb-6 relative">
                                             {plan.name}
                                         </h3>
-                                        <div className="flex items-baseline mb-8">
-                                            <span className="font-bruno text-[#911b1e] text-3xl">
+                                        <div className="flex items-baseline mb-8 relative">
+                                            <span className="font-bruno text-[#911b1e] text-4xl">
                                                 {plan.price}
                                             </span>
                                             <span className="font-raleway text-[#911b1e]/60 text-sm ml-2">
                                                 {plan.period}
                                             </span>
                                         </div>
-                                        <ul className="space-y-4 mb-8">
-                                            {plan.features.map((feature, i) => (
-                                                <li key={i} className="font-raleway text-[#911b1e]/80 text-sm flex items-center">
-                                                    <span className="w-4 h-[1px] bg-[#911b1e]/40 mr-3" />
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
                                         <Link
                                             href="/join"
-                                            className="inline-block bg-[#911b1e]/20 text-[#911b1e] px-8 py-4 
-                                                     font-raleway border border-[#911b1e]
-                                                     hover:bg-[#911b1e] hover:text-[#fcf7dc] 
-                                                     transition-all duration-300 tracking-wider"
+                                            className="inline-block bg-[#911b1e] text-[#fcf7dc] px-8 py-4 
+                                                     font-raleway relative
+                                                     hover:bg-[#911b1e]/90 
+                                                     transition-all duration-300"
                                         >
                                             Join Now
                                         </Link>
@@ -174,96 +176,65 @@ const MembershipPage = () => {
                                 </motion.div>
                             ))}
                         </div>
-
-                        <div className="text-center mt-20">
-                            <p className="font-raleway text-[#911b1e]/60 text-sm tracking-wider">
-                                Have questions? Contact us at{' '}
-                                <a href="mailto:membership@lkjtennis.com"
-                                    className="text-[#911b1e] hover:text-[#911b1e]/80 
-                                            transition-colors duration-300 border-b 
-                                            border-[#911b1e]/20 hover:border-[#911b1e]">
-                                    membership@lkjtennis.com
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Benefits Section */}
-                <section className="py-24 px-4">
-                    <div className="max-w-6xl mx-auto">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-center mb-20"
-                        >
-                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
-                                Why Join Us
-                            </span>
-                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
-                                MEMBERSHIP BENEFITS
-                            </h2>
-                        </motion.div>
-
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-                            {benefits.map((benefit, index) => (
-                                <motion.div
-                                    key={benefit.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="border-b border-[#911b1e]/20 pb-8"
-                                >
-                                    <h3 className="font-bruno text-[#911b1e] text-xl mb-3">
-                                        {benefit.title}
-                                    </h3>
-                                    <p className="font-raleway text-[#911b1e]/70 text-sm leading-relaxed">
-                                        {benefit.description}
-                                    </p>
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
                 </section>
 
                 {/* FAQs Section */}
-                <section className="py-24 px-4">
+                <section className="py-32 px-4 bg-white/30">
                     <div className="max-w-4xl mx-auto">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial="hidden"
+                            whileInView="visible"
                             viewport={{ once: true }}
-                            className="text-center mb-20"
+                            variants={fadeInUp}
+                            className="text-center mb-24"
                         >
-                            <span className="font-raleway text-[#911b1e]/60 text-sm tracking-wider uppercase">
-                                Got Questions?
-                            </span>
-                            <h2 className="font-bruno text-[#911b1e] text-4xl mt-2">
-                                FREQUENTLY ASKED QUESTIONS
+                            <h2 className="font-bruno text-[#911b1e] text-4xl md:text-5xl tracking-wider">
+                                COMMON QUESTIONS
                             </h2>
                         </motion.div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-12">
                             {faqs.map((faq, index) => (
                                 <motion.div
                                     key={faq.question}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
+                                    initial="hidden"
+                                    whileInView="visible"
                                     viewport={{ once: true }}
+                                    variants={fadeInUp}
                                     transition={{ delay: index * 0.1 }}
-                                    className="border-b border-[#911b1e]/20 pb-8"
+                                    className="group"
                                 >
-                                    <h3 className="font-bruno text-[#911b1e] text-lg mb-3">
+                                    <h3 className="font-bruno text-[#911b1e] text-xl mb-3 
+                                                 group-hover:text-[#911b1e]/90 transition-colors">
                                         {faq.question}
                                     </h3>
-                                    <p className="font-raleway text-[#911b1e]/70 leading-relaxed">
+                                    <p className="font-raleway text-[#911b1e]/70 text-lg leading-relaxed 
+                                                pl-6 border-l-2 border-[#911b1e]/20 
+                                                group-hover:border-[#911b1e]/40 transition-colors">
                                         {faq.answer}
                                     </p>
                                 </motion.div>
                             ))}
                         </div>
+
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                            className="text-center mt-24"
+                        >
+                            <p className="font-raleway text-[#911b1e]/60 text-lg">
+                                Have more questions? Email us at{' '}
+                                <a href="mailto:membership@lkjtennis.com"
+                                    className="text-[#911b1e] hover:text-[#911b1e]/80 
+                                             transition-colors border-b border-[#911b1e]/20 
+                                             hover:border-[#911b1e]">
+                                    membership@lkjtennis.com
+                                </a>
+                            </p>
+                        </motion.div>
                     </div>
                 </section>
             </main>

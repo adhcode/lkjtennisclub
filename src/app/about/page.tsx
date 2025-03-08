@@ -1,8 +1,8 @@
 'use client';
 
 import { Bruno_Ace_SC, Raleway } from 'next/font/google';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -16,111 +16,122 @@ const raleway = Raleway({
     weight: ['400'],
 });
 
+const facilities = [
+    {
+        title: "Professional Tennis Courts",
+        description: "Our pride and joy - meticulously maintained courts that have witnessed countless matches, victories, and friendships formed."
+    },
+    {
+        title: "Evening Play Under the Stars",
+        description: "State-of-the-art lighting that turns evening sessions into magical moments, extending the joy of tennis beyond daylight hours."
+    },
+    {
+        title: "Courtside Community Space",
+        description: "Comfortable viewing areas where friends and family gather, cheer, and share in the excitement of every game."
+    },
+    {
+        title: "Practice Paradise",
+        description: "Dedicated practice areas where beginners find their footing and seasoned players perfect their craft."
+    }
+];
+
 const AboutPage = () => {
     return (
         <>
             <Navbar />
             <main className="bg-[#fcf7dc]">
                 {/* Hero Section */}
-                <section className="relative h-[60vh] min-h-[400px]">
-                    <Image
-                        src="/about_us3.jpg"
-                        alt="LKJ Tennis Club"
-                        fill
-                        className="object-cover filter brightness-[0.85] contrast-[1.1]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20" />
-                    <div className="absolute inset-0 flex items-center justify-center px-4">
+                <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0">
+                        <Image
+                            src="/about_us.jpg"
+                            alt="Tennis Club"
+                            fill
+                            className="object-cover filter brightness-[0.85]"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent" />
+                    </div>
+                    <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-center"
+                            className="max-w-4xl mx-auto"
                         >
                             <h1 className={`text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider ${brunoAce.className}`}>
-                                OUR STORY
+                                ABOUT US
                             </h1>
-                            <div className="flex items-center justify-center space-x-4">
-                                <div className="w-12 h-[1px] bg-[#fcf7dc]/40" />
-                                <span className={`text-[#fcf7dc]/60 text-sm ${raleway.className}`}>Est. 2024</span>
-                                <div className="w-12 h-[1px] bg-[#fcf7dc]/40" />
-                            </div>
+                            <p className={`text-[#fcf7dc]/80 text-lg md:text-xl max-w-2xl mx-auto ${raleway.className}`}>
+                                A Club Built on Passion and Community
+                            </p>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* History Section */}
-                <section className="relative py-20">
-                    <div className="container mx-auto px-4 md:px-6">
-                        <div className="max-w-4xl mx-auto">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 mb-12"
-                            >
-                                <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-6 ${brunoAce.className}`}>
-                                    Our Beginning
+                {/* Our Story Section */}
+                <section className="py-24 px-4 md:px-6">
+                    <div className="container mx-auto max-w-4xl">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-16"
+                        >
+                            <div className="space-y-8">
+                                <h2 className={`text-[#911b1e] text-3xl md:text-4xl tracking-wider ${brunoAce.className}`}>
+                                    Our Story
                                 </h2>
-                                <p className={`text-[#911b1e]/80 leading-relaxed mb-6 ${raleway.className}`}>
-                                    LKJ Tennis Club was established in 2024 as a premier tennis community within
-                                    LKJ Gardens, Igando. Founded by a group of passionate tennis enthusiasts,
-                                    the club has quickly become a vibrant hub for tennis lovers and social interaction
-                                    in the heart of Igando.
-                                </p>
-                                <p className={`text-[#911b1e]/80 leading-relaxed ${raleway.className}`}>
-                                    Our club provides a unique blend of competitive tennis and social engagement,
-                                    creating an environment where members can improve their game while building lasting friendships.
-                                </p>
-                            </motion.div>
+                                <h3 className={`text-[#911b1e]/90 text-2xl md:text-3xl ${brunoAce.className}`}>
+                                    How It All Began…
+                                </h3>
+                                <div className={`space-y-6 text-[#911b1e]/70 text-lg leading-relaxed ${raleway.className}`}>
+                                    <p>
+                                        It started with a shared love for tennis and a dream to build a space where everyone—regardless of background, age or skill level—could come together to enjoy the sport. What began as a small group of passionate players has grown into a thriving club that welcomes members from all walks of life.
+                                    </p>
+                                    <p>
+                                        From casual weekend games to structured training sessions, our journey has been one of continuous growth, fueled by the commitment of our members and the love of the game. As we look to the future, our goal remains the same: to build a strong tennis culture, nurture talent, and create a lasting impact in our community.
+                                    </p>
+                                </div>
+                            </div>
 
-                            {/* Mission & Values */}
-                            <div className="grid md:grid-cols-2 gap-8 mb-12">
+                            {/* Image Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="bg-white/50 backdrop-blur-sm rounded-2xl p-8"
+                                    className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg"
                                 >
-                                    <h2 className={`text-[#911b1e] text-2xl mb-6 ${brunoAce.className}`}>
-                                        Our Mission
-                                    </h2>
-                                    <p className={`text-[#911b1e]/80 leading-relaxed ${raleway.className}`}>
-                                        To foster a thriving tennis community that promotes excellence,
-                                        sportsmanship, and social connection through the beautiful game of tennis.
-                                    </p>
+                                    <Image
+                                        src="/about_us2.jpg"
+                                        alt="Tennis Club Facilities"
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </motion.div>
-
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.2 }}
-                                    className="bg-white/50 backdrop-blur-sm rounded-2xl p-8"
+                                    className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg"
                                 >
-                                    <h2 className={`text-[#911b1e] text-2xl mb-6 ${brunoAce.className}`}>
-                                        Our Values
-                                    </h2>
-                                    <ul className={`text-[#911b1e]/80 space-y-3 ${raleway.className}`}>
-                                        <li>• Excellence in tennis and community building</li>
-                                        <li>• Inclusivity and sportsmanship</li>
-                                        <li>• Continuous improvement and development</li>
-                                        <li>• Social engagement and friendship</li>
-                                    </ul>
+                                    <Image
+                                        src="/about_us3.jpg"
+                                        alt="Tennis Club Community"
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </motion.div>
                             </div>
 
-                            {/* Facilities */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12"
-                            >
-                                <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-6 ${brunoAce.className}`}>
+                            {/* Facilities Section */}
+                            <div className="space-y-8">
+                                <h3 className={`text-[#911b1e] text-2xl md:text-3xl tracking-wider ${brunoAce.className}`}>
                                     Our Facilities
-                                </h2>
-                                <div className="grid md:grid-cols-2 gap-8">
-                                    <div className="relative h-64 rounded-xl overflow-hidden">
+                                </h3>
+                                <div className="grid md:grid-cols-2 gap-12">
+                                    <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
                                         <video
                                             autoPlay
                                             loop
@@ -131,28 +142,36 @@ const AboutPage = () => {
                                             <source src="/hero.mp4" type="video/mp4" />
                                             Your browser does not support the video tag.
                                         </video>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                                     </div>
-                                    <div className={`text-[#911b1e]/80 space-y-4 ${raleway.className}`}>
-                                        <p>Our world-class facilities include:</p>
-                                        <ul className="space-y-2">
-                                            <li>• Professional-grade tennis courts</li>
-                                            <li>• Modern lighting for evening play</li>
-                                            <li>• Comfortable viewing areas</li>
-                                            <li>• Well-maintained practice areas</li>
-                                            <li>• Club house with amenities</li>
-                                        </ul>
+                                    <div className={`space-y-8 ${raleway.className}`}>
+                                        <p className="text-[#911b1e]/80 text-lg leading-relaxed">
+                                            As our community grew, so did our vision for creating the perfect tennis environment. Today, our facilities stand as a testament to that dream, offering not just courts, but spaces where tennis becomes a way of life.
+                                        </p>
+                                        <div className="space-y-6">
+                                            {facilities.map((facility, index) => (
+                                                <motion.div
+                                                    key={facility.title}
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    whileInView={{ opacity: 1, x: 0 }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ delay: index * 0.1 }}
+                                                    className="space-y-2"
+                                                >
+                                                    <h4 className="text-[#911b1e] font-medium flex items-center space-x-3">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-[#911b1e]/40" />
+                                                        <span>{facility.title}</span>
+                                                    </h4>
+                                                    <p className="text-[#911b1e]/70 pl-4">
+                                                        {facility.description}
+                                                    </p>
+                                                </motion.div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </motion.div>
-                        </div>
-                    </div>
-
-                    {/* Decorative elements */}
-                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                        <div className="absolute right-0 top-0 w-40 h-40 
-                                      bg-[#911b1e]/5 rounded-full blur-3xl" />
-                        <div className="absolute left-0 bottom-0 w-40 h-40 
-                                      bg-[#911b1e]/5 rounded-full blur-3xl" />
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
             </main>

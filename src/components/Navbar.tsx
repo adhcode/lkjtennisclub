@@ -62,11 +62,14 @@ const Navbar = () => {
                         <Link href="/exco" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
                             Exco
                         </Link>
-                        <Link href="/book-court" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
+                        <Link href="/bookcourt" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
                             Book Court
                         </Link>
                         <Link href="/events" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
                             Events
+                        </Link>
+                        <Link href="/blog" className={`text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}>
+                            Blog
                         </Link>
 
                         <Link
@@ -115,7 +118,7 @@ const Navbar = () => {
                         >
                             <div className="bg-gradient-to-b from-[#911b1e]/95 to-[#911b1e]/90 backdrop-blur-lg">
                                 <div className="px-4 py-6 space-y-4">
-                                    {["About", "Membership", "Exco", "Book Court", "Events", "Join Us"].map((item) => (
+                                    {["About", "Membership", "Exco", "Book Court", "Events", "Blog"].map((item) => (
                                         <motion.div
                                             key={item}
                                             initial={{ opacity: 0, x: -20 }}
