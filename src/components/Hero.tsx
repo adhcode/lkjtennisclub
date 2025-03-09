@@ -44,7 +44,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
                     >
-                        <h1 className="font-bruno text-[#fcf7dc] text-5xl md:text-7xl mb-6 tracking-wider drop-shadow-sm">
+                        <h1 className="font-bruno text-[#fcf7dc] text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 tracking-wider drop-shadow-sm">
                             LKJ TENNIS CLUB
                         </h1>
                     </motion.div>
@@ -54,7 +54,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1 }}
                     >
-                        <p className="font-raleway text-[#fcf7dc]/90 text-lg md:text-xl font-light tracking-wide mb-12 drop-shadow-sm max-w-[400px]">
+                        <p className="font-raleway text-[#fcf7dc]/90 text-base sm:text-lg md:text-xl font-light tracking-wide mb-8 sm:mb-12 drop-shadow-sm max-w-[400px]">
                             Where tennis brings people together, enriching lives through sport and community.
                         </p>
                     </motion.div>
@@ -107,7 +107,7 @@ const HeroSection = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.4 }}
-                    className="absolute bottom-12 left-4 md:left-16"
+                    className="absolute bottom-8 sm:bottom-12 left-4 md:left-16"
                 >
                     <div className="flex items-center space-x-4">
                         <motion.div

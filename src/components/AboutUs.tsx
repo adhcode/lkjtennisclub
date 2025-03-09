@@ -52,27 +52,13 @@ const AboutUs = () => {
     };
 
     return (
-        <section ref={sectionRef} className="relative py-32 bg-[#fcf7dc] overflow-hidden">
-            {/* Animated decorative elements */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 0.05, scale: 1 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="absolute top-0 left-0 w-[800px] h-[800px] bg-[#911b1e] rounded-full -translate-x-1/2 -translate-y-1/2"
-            />
-            <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 0.05, scale: 1 }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-                className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#911b1e] rounded-full translate-x-1/3 translate-y-1/3"
-            />
-
+        <section ref={sectionRef} className="relative py-16 sm:py-24 md:py-32 bg-[#fcf7dc] overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative">
                 <motion.div
                     style={{ y, opacity }}
                     className="max-w-7xl mx-auto"
                 >
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
                         <div className="space-y-12">
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
@@ -91,15 +77,13 @@ const AboutUs = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.2 }}
                                     viewport={{ once: true }}
-                                    className={`text-[#911b1e]/70 text-lg leading-relaxed ${raleway.className}`}
+                                    className={`text-[#911b1e]/70 text-base sm:text-lg leading-relaxed ${raleway.className}`}
                                 >
                                     A Club Built on Passion and Community.
                                     At LKJ Tennis Club, we believe tennis is more than a sport, it&apos;s a lifestyle. Founded with the vision of making the game accessible and enjoyable for everyone, our club brings together people of all skill levels to learn, grow, and compete.
                                 </motion.p>
 
-
-
-                                <div className="grid grid-cols-2 gap-8">
+                                <div className="grid grid-cols-2 gap-4 sm:gap-8">
                                     <motion.div
                                         variants={circleVariants}
                                         initial="hidden"
@@ -107,15 +91,15 @@ const AboutUs = () => {
                                         viewport={{ once: true }}
                                         className="relative group cursor-pointer"
                                     >
-                                        <div className="w-32 h-32 rounded-full border-2 border-[#911b1e]/20 
-                                                      flex flex-col items-center justify-center p-4
+                                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-[#911b1e]/20 
+                                                      flex flex-col items-center justify-center p-3 sm:p-4
                                                       group-hover:border-[#911b1e] transition-all duration-500">
                                             <motion.div
                                                 variants={iconVariants}
-                                                className="w-12 h-12 flex items-center justify-center mb-2"
+                                                className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center mb-1 sm:mb-2"
                                             >
                                                 <svg
-                                                    className="w-8 h-8 text-[#911b1e] group-hover:scale-110 transition-transform duration-500"
+                                                    className="w-6 h-6 sm:w-8 sm:h-8 text-[#911b1e] group-hover:scale-110 transition-transform duration-500"
                                                     fill="none"
                                                     stroke="currentColor"
                                                     viewBox="0 0 24 24"
@@ -128,13 +112,12 @@ const AboutUs = () => {
                                                     />
                                                 </svg>
                                             </motion.div>
-                                            <p className={`text-[#911b1e]/70 text-sm leading-tight text-center 
+                                            <p className={`text-[#911b1e]/70 text-xs sm:text-sm leading-tight text-center 
                                                          group-hover:text-[#911b1e] transition-colors duration-500 ${raleway.className}`}>
                                                 Expert<br />Coaching
                                             </p>
                                         </div>
                                     </motion.div>
-
 
                                     <motion.div
                                         variants={circleVariants}
@@ -144,15 +127,15 @@ const AboutUs = () => {
                                         transition={{ delay: 0.2 }}
                                         className="relative group cursor-pointer"
                                     >
-                                        <div className="w-32 h-32 rounded-full border-2 border-[#911b1e]/20 
-                                                      flex flex-col items-center justify-center p-4
+                                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-2 border-[#911b1e]/20 
+                                                      flex flex-col items-center justify-center p-3 sm:p-4
                                                       group-hover:border-[#911b1e] transition-all duration-500">
                                             <motion.div
                                                 variants={iconVariants}
-                                                className="w-12 h-12 flex items-center justify-center mb-2"
+                                                className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center mb-1 sm:mb-2"
                                             >
                                                 <svg
-                                                    className="w-8 h-8 text-[#911b1e] group-hover:scale-110 transition-transform duration-500"
+                                                    className="w-6 h-6 sm:w-8 sm:h-8 text-[#911b1e] group-hover:scale-110 transition-transform duration-500"
                                                     fill="none"
                                                     stroke="currentColor"
                                                     viewBox="0 0 24 24"
@@ -165,7 +148,7 @@ const AboutUs = () => {
                                                     />
                                                 </svg>
                                             </motion.div>
-                                            <p className={`text-[#911b1e]/70 text-sm leading-tight text-center 
+                                            <p className={`text-[#911b1e]/70 text-xs sm:text-sm leading-tight text-center 
                                                          group-hover:text-[#911b1e] transition-colors duration-500 ${raleway.className}`}>
                                                 Premium<br />Court
                                             </p>
