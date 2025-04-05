@@ -41,7 +41,7 @@ const BlogPage = () => {
                             animate={{ opacity: 1, y: 0 }}
                             className="max-w-4xl mx-auto text-center"
                         >
-                            <h1 className={`text-[#911b1e] text-4xl md:text-6xl mb-6 tracking-wider ${brunoAce.className}`}>
+                            <h1 className={`text-[#911b1e] text-3xl sm:text-5xl md:text-7xl mb-6 tracking-wider ${brunoAce.className}`}>
                                 TENNIS INSIGHTS
                             </h1>
                             <p className={`text-[#911b1e]/70 text-lg md:text-xl ${raleway.className}`}>
@@ -91,7 +91,7 @@ const BlogPage = () => {
                                                         </span>
                                                     </div>
 
-                                                    <h3 className={`text-[#fcf7dc] text-3xl md:text-4xl mb-4 group-hover:text-[#fcf7dc]/90 transition-colors ${brunoAce.className}`}>
+                                                    <h3 className={`text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-4 group-hover:text-[#fcf7dc]/90 transition-colors ${brunoAce.className}`}>
                                                         {post.title}
                                                     </h3>
 

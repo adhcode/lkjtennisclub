@@ -66,7 +66,7 @@ const AboutUs = () => {
                                 transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className={`text-[#911b1e] text-4xl md:text-5xl tracking-wider font-medium ${brunoAce.className}`}>
+                                <h2 className={`text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-medium ${brunoAce.className}`}>
                                     ABOUT US
                                 </h2>
                             </motion.div>
@@ -244,7 +244,7 @@ const AboutUs = () => {
                     transition={{ duration: 0.8 }}
                     className="mb-16"
                 >
-                    <h2 className={`text-[#911b1e] text-4xl md:text-5xl tracking-wider font-medium ${brunoAce.className}`}>
+                    <h2 className={`text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-medium ${brunoAce.className}`}>
                         WHY CHOOSE US?
                     </h2>
                 </motion.div>
@@ -344,7 +344,7 @@ const AboutUs = () => {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                                        className={`text-[#911b1e] text-lg mb-2 ${brunoAce.className}`}
+                                        className={`text-[#911b1e] text-lg sm:text-xl md:text-2xl mb-2 ${brunoAce.className}`}
                                     >
                                         {feature.title}
                                     </motion.h3>

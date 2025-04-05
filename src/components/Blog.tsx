@@ -33,7 +33,7 @@ const Blog = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className={`text-[#911b1e] text-4xl md:text-5xl mb-6 ${brunoAce.className}`}>
+                    <h2 className={`text-[#911b1e] text-2xl sm:text-3xl md:text-4xl mb-6 ${brunoAce.className}`}>
                         TENNIS INSIGHTS
                     </h2>
                     <p className={`text-[#911b1e]/70 text-lg md:text-xl max-w-2xl mx-auto ${raleway.className}`}>
@@ -76,7 +76,7 @@ const Blog = () => {
                                             </span>
                                         </div>
 
-                                        <h3 className={`text-[#fcf7dc] text-3xl md:text-4xl mb-4 group-hover:text-[#fcf7dc]/90 transition-colors ${brunoAce.className}`}>
+                                        <h3 className={`text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-4 group-hover:text-[#fcf7dc]/90 transition-colors ${brunoAce.className}`}>
                                             {blogPost.title}
                                         </h3>
 

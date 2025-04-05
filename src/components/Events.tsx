@@ -142,7 +142,7 @@ const Events = () => {
                                     />
                                 </div>
                                 <div className="p-4 sm:p-6">
-                                    <h3 className={`text-[#911b1e] text-lg sm:text-xl mb-2 ${brunoAce.className}`}>
+                                    <h3 className={`text-[#911b1e] text-lg sm:text-xl md:text-2xl mb-2 ${brunoAce.className}`}>
                                         {event.title}
                                     </h3>
                                     <p className={`text-[#911b1e]/70 text-xs sm:text-sm mb-2 ${raleway.className}`}>
