@@ -18,7 +18,10 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: "LKJ Tennis Club",
-  description: "Join our exclusive tennis community and elevate your game",
+  description: "Tennis, community, and everything in between ",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

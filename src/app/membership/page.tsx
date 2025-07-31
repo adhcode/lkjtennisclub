@@ -301,7 +301,7 @@ const MembershipPage = () => {
                                     <div className="hidden sm:block w-1 h-1 bg-[#911b1e]/40 rounded-full"></div>
                                     <div className="flex items-center gap-2">
                                         <Mail className="w-4 h-4" />
-                                        <span className={`text-sm ${raleway.className}`}>membership@lkjtennis.com</span>
+                                        <span className={`text-sm ${raleway.className}`}>hello@lkjtennis.com</span>
                                     </div>
                                 </div>
                             </div>
