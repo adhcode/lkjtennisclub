@@ -138,10 +138,10 @@ const Footer = () => {
                             <span className="text-red-500 animate-pulse">❤</span>
                             {' '}by{' '}
                             <Link
-                                href="https://adh.com"
+                                href="https://www.instagram.com/uvise.ng/"
                                 className="text-[#fcf7dc]/60 hover:text-[#fcf7dc] transition-colors duration-300"
                             >
-                                adh
+                                uvise
                             </Link>
                         </p>
                     </div>

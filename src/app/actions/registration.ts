@@ -96,31 +96,7 @@ export async function submitRegistration(formData: FormData) {
     }
 }
 
-// Helper function to simulate database save
-async function saveRegistrationToDatabase(data: RegistrationData) {
-    // This would typically connect to your database
-    // For demo purposes, we'll simulate saving to a local file or database
-    
-    const registrationRecord = {
-        id: `reg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        ...data,
-        registrationDate: new Date().toISOString(),
-        status: 'pending',
-        paymentStatus: 'pending',
-        campSession: 'Summer 2025',
-        totalAmount: 25000 // ₦25,000
-    };
-    
-    console.log('Saving registration to database:', registrationRecord);
-    
-    // In a real application, you would save to your database here:
-    /*
-    const db = await connectToDatabase();
-    await db.collection('registrations').insertOne(registrationRecord);
-    */
-    
-    return registrationRecord;
-}
+
 
 // Helper function to send confirmation email
 async function sendConfirmationEmail(data: RegistrationData) {

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Users, Star, Trophy, Heart, Shield } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, Star } from 'lucide-react';
 import RegistrationForm from '@/components/RegistrationForm';
 
 const brunoAce = Bruno_Ace_SC({
@@ -18,28 +18,7 @@ const raleway = Raleway({
     weight: ['400'],
 });
 
-const features = [
-    {
-        icon: Trophy,
-        title: "Tennis Clinic & Tournament",
-        description: "Professional tennis coaching and competitive tournament experience"
-    },
-    {
-        icon: Shield,
-        title: "Self Defense Training",
-        description: "2 hours daily for 3 days - learn essential self-defense skills"
-    },
-    {
-        icon: Users,
-        title: "Basketball & Badminton",
-        description: "One day each of basketball and badminton activities"
-    },
-    {
-        icon: Heart,
-        title: "Age-Appropriate Groups",
-        description: "Carefully organized activities for ages 4-17 years"
-    }
-];
+
 
 const SummerCampRegistration = () => {
     return (

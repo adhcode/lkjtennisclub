@@ -25,31 +25,7 @@ const AboutUs = () => {
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
     const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-    const circleVariants = {
-        hidden: { scale: 0.8, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10
-            }
-        }
-    };
 
-    const iconVariants = {
-        hidden: { scale: 0, rotate: -180 },
-        visible: {
-            scale: 1,
-            rotate: 0,
-            transition: {
-                type: "spring",
-                stiffness: 200,
-                damping: 20
-            }
-        }
-    };
 
     return (
         <section ref={sectionRef} className="relative py-16 sm:py-24 md:py-32 bg-[#fcf7dc] overflow-hidden">

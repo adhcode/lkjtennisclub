@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Users, ArrowLeft, Heart, Trophy, Star } from 'lucide-react';
+import { ArrowLeft, Heart, Trophy, Star } from 'lucide-react';
 
 const brunoAce = Bruno_Ace_SC({
     weight: '400',
@@ -32,7 +32,7 @@ const ProfTayoInauguralLecture = () => {
                         className="object-cover filter brightness-[0.8] contrast-[1.1]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
-                    
+
                     <div className="relative container mx-auto px-4 md:px-6 py-20">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -48,28 +48,25 @@ const ProfTayoInauguralLecture = () => {
                             >
                                 Celebrating Excellence
                             </motion.span>
-                            
+
                             <h1 className={`text-[#fcf7dc] text-3xl md:text-5xl mb-6 leading-tight ${brunoAce.className}`}>
                                 CELEBRATING PROF. TAYO AJAYI'S 109TH INAUGURAL LECTURE
                             </h1>
-                            
+
                             <p className={`text-[#fcf7dc]/90 text-lg mb-8 max-w-3xl mx-auto ${raleway.className}`}>
-                                We proudly celebrated our esteemed club member, Professor Tayo Julius Ajayi, 
-                                as he delivered his inaugural lecture at Lagos State University. 
+                                We proudly celebrated our esteemed club member, Professor Tayo Julius Ajayi,
+                                as he delivered his inaugural lecture at Lagos State University.
                                 A moment of academic excellence and club pride.
                             </p>
-                            
+
                             <div className="flex flex-wrap justify-center gap-6 text-[#fcf7dc]/80">
                                 <div className="flex items-center gap-2">
-                                    <Calendar className="w-5 h-5" />
                                     <span className={raleway.className}>Tuesday, July 29, 2025</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock className="w-5 h-5" />
                                     <span className={raleway.className}>2:00 PM</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <MapPin className="w-5 h-5" />
                                     <span className={raleway.className}>LASU, Ojo Campus</span>
                                 </div>
                             </div>
@@ -110,18 +107,18 @@ const ProfTayoInauguralLecture = () => {
                                         A PROUD MOMENT FOR LKJ TENNIS CLUB
                                     </h2>
                                 </div>
-                                
+
                                 <div className={`text-[#911b1e]/80 space-y-4 ${raleway.className}`}>
                                     <p>
-                                    On Tuesday, July 29th, 2025, the LKJ Tennis Club proudly celebrated one of our esteemed members, Professor Tayo Julius Ajayi, as he delivered the 109th Inaugural Lecture at Lagos State University.
+                                        On Tuesday, July 29th, 2025, the LKJ Tennis Club proudly celebrated one of our esteemed members, Professor Tayo Julius Ajayi, as he delivered the 109th Inaugural Lecture at Lagos State University.
                                     </p>
-                                    
+
                                     <p>
-                                    His lecture, titled “Interlinguistic Interactions and Resultant Phenomena: Agglutinative and Inflectional Languages,” was presented at the renowned Buba Marwa Auditorium, LASU Main Campus, and chaired by the Vice-Chancellor, Professor Ibiyemi Ibilola Olatunji-Bello.
+                                        His lecture, titled “Interlinguistic Interactions and Resultant Phenomena: Agglutinative and Inflectional Languages,” was presented at the renowned Buba Marwa Auditorium, LASU Main Campus, and chaired by the Vice-Chancellor, Professor Ibiyemi Ibilola Olatunji-Bello.
                                     </p>
-                                    
+
                                     <p>
-                                    Professor Ajayi’s accomplishment reflects the depth of intellect and excellence we are proud to see within our community. His academic contributions inspire us all, and we are honoured to celebrate this remarkable milestone with him.
+                                        Professor Ajayi’s accomplishment reflects the depth of intellect and excellence we are proud to see within our community. His academic contributions inspire us all, and we are honoured to celebrate this remarkable milestone with him.
                                     </p>
                                 </div>
                             </motion.div>
@@ -139,7 +136,7 @@ const ProfTayoInauguralLecture = () => {
                                         LECTURE DETAILS
                                     </h3>
                                 </div>
-                                
+
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-4">
                                         <div>
@@ -150,7 +147,7 @@ const ProfTayoInauguralLecture = () => {
                                                 Professor Tayo Julius Ajayi
                                             </p>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
                                                 Lecture Number
@@ -159,7 +156,7 @@ const ProfTayoInauguralLecture = () => {
                                                 109th Inaugural Lecture
                                             </p>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
                                                 Venue
@@ -170,7 +167,7 @@ const ProfTayoInauguralLecture = () => {
                                             </p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="space-y-4">
                                         <div>
                                             <h4 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
@@ -181,7 +178,7 @@ const ProfTayoInauguralLecture = () => {
                                                 2:00 PM
                                             </p>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
                                                 Chairperson
@@ -191,13 +188,13 @@ const ProfTayoInauguralLecture = () => {
                                                 <span className="text-sm">Vice-Chancellor, Lagos State University</span>
                                             </p>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
                                                 Lecture Title
                                             </h4>
                                             <p className={`text-[#911b1e]/80 italic ${raleway.className}`}>
-                                                "Interlinguistic Interactions and Resultant Phenomena: 
+                                                "Interlinguistic Interactions and Resultant Phenomena:
                                                 Agglutinative and Inflectional Languages"
                                             </p>
                                         </div>
@@ -218,7 +215,7 @@ const ProfTayoInauguralLecture = () => {
                                         CELEBRATION MOMENTS
                                     </h3>
                                 </div>
-                                
+
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="relative h-64 rounded-xl overflow-hidden">
                                         <Image
@@ -237,7 +234,7 @@ const ProfTayoInauguralLecture = () => {
                                         />
                                     </div>
                                 </div>
-                                
+
                                 <p className={`text-[#911b1e]/70 text-center mt-6 ${raleway.className}`}>
                                     The LKJ Tennis Club family proudly supporting our distinguished member
                                 </p>

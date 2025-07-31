@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Heart, Users, Calendar, UserCheck, MapPin, Phone, Mail, Clock, CheckCircle } from 'lucide-react';
+import { Heart, Users, Calendar, UserCheck, MapPin, Phone, Mail } from 'lucide-react';
 
 const brunoAce = Bruno_Ace_SC({
     weight: '400',

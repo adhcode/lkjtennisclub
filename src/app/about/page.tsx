@@ -18,8 +18,8 @@ const raleway = Raleway({
 
 const facilities = [
     {
-        title: "Professional Tennis Courts",
-        description: "Our pride and joy - meticulously maintained courts that have witnessed countless matches, victories, and friendships formed."
+        title: "Professional Tennis Court",
+        description: "Our pride and joy - meticulously maintained court that have witnessed countless matches, victories, and friendships formed."
     },
     {
         title: "Evening Play Under the Stars",
@@ -128,7 +128,7 @@ const AboutPage = () => {
                             {/* Facilities Section */}
                             <div className="space-y-8">
                                 <h3 className={`text-[#911b1e] text-2xl md:text-3xl tracking-wider ${brunoAce.className}`}>
-                                    Our Facilities
+                                    Our Court
                                 </h3>
                                 <div className="grid md:grid-cols-2 gap-12">
                                     <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg">
@@ -146,7 +146,7 @@ const AboutPage = () => {
                                     </div>
                                     <div className={`space-y-8 ${raleway.className}`}>
                                         <p className="text-[#911b1e]/80 text-lg leading-relaxed">
-                                            As our community grew, so did our vision for creating the perfect tennis environment. Today, our facilities stand as a testament to that dream, offering not just courts, but spaces where tennis becomes a way of life.
+                                            As our community grew, so did our vision for creating the perfect tennis environment. Today, our facilities stand as a testament to that dream, offering not just court, but spaces where tennis becomes a way of life.
                                         </p>
                                         <div className="space-y-6">
                                             {facilities.map((facility, index) => (

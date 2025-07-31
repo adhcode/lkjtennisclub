@@ -1,17 +1,12 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { User, Phone, Users, AlertCircle, Plus, Minus, Loader2 } from 'lucide-react';
 import { submitRegistration } from '@/app/actions/registration';
 import CustomSelect from './CustomSelect';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
 
 const raleway = Raleway({
     subsets: ['latin'],
@@ -71,7 +66,7 @@ const RegistrationForm = () => {
         }]
     });
 
-    const [fieldErrors, setFieldErrors] = useState<any>({});
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
     // Options for select fields
     const ageOptions = Array.from({ length: 14 }, (_, i) => ({
@@ -100,7 +95,7 @@ const RegistrationForm = () => {
 
         // Clear field error when user starts typing
         if (fieldErrors[name]) {
-            setFieldErrors((prev: any) => ({
+            setFieldErrors((prev: Record<string, string>) => ({
                 ...prev,
                 [name]: ''
             }));
@@ -118,7 +113,7 @@ const RegistrationForm = () => {
         // Clear field error
         const errorKey = `children.${childIndex}.${field}`;
         if (fieldErrors[errorKey]) {
-            setFieldErrors((prev: any) => ({
+            setFieldErrors((prev: Record<string, string>) => ({
                 ...prev,
                 [errorKey]: ''
             }));
@@ -149,7 +144,7 @@ const RegistrationForm = () => {
     };
 
     const validateForm = (): boolean => {
-        const errors: any = {};
+        const errors: Record<string, string> = {};
 
         // Parent validation
         if (!formData.parentName.trim()) {
