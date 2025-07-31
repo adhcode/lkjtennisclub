@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Users, X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import { Calendar, Clock, MapPin, Users, X, ChevronLeft, ChevronRight, Camera, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
 const brunoAce = Bruno_Ace_SC({
@@ -18,17 +18,42 @@ const raleway = Raleway({
     weight: ['400'],
 });
 
-const upcomingEvent = {
-    title: "LKJ Tennis Club vs OTA Tennis Club",
-    type: "Friendly Competition",
-    date: "Saturday",
-    time: "8:00 AM",
-    location: "LKJ Gardens Tennis Court, Igando",
-    description: "Join us for an exciting friendly competition between LKJ Tennis Club and OTA Tennis Club. Come support our players and enjoy a day of great tennis!",
-    image: "/hero2.jpg"
-};
+const upcomingEvents = [
+    {
+        title: "Alimosho Summer Tennis Clinic & Tournament",
+        type: "Summer Program",
+        date: "August 4-23, 2025",
+        time: "9:00 AM Daily",
+        location: "LKJ Gardens Tennis Court, Igando",
+        description: "Join our comprehensive 2-week summer program featuring tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Professional coaching and exciting competitions await!",
+        image: "/summerprogram.jpg",
+        registrationLink: "/events/summer-camp-registration",
+        price: "Contact for pricing",
+        ageRange: "Ages 4-17"
+    },
+    {
+        title: "LKJ Tennis Club vs OTA Tennis Club",
+        type: "Friendly Competition",
+        date: "Saturday",
+        time: "8:00 AM",
+        location: "LKJ Gardens Tennis Court, Igando",
+        description: "Join us for an exciting friendly competition between LKJ Tennis Club and OTA Tennis Club. Come support our players and enjoy a day of great tennis!",
+        image: "/hero2.jpg"
+    }
+];
 
 const pastEvents = [
+    {
+        title: "Celebrating Prof. Tayo Ajayi's 109th Inaugural Lecture",
+        date: "July 2025",
+        description: "We proudly celebrated our esteemed club member, Professor Tayo Julius Ajayi, as he delivered his inaugural lecture on 'Interlinguistic Interactions and Resultant Phenomena' at Lagos State University. The LKJ Tennis Club family was there to support and honor this remarkable achievement.",
+        image: "/proftayo.JPG",
+        highlight: "Proud moment for our club member and academic excellence",
+        gallery: [
+            "/proftayo.JPG",
+            "/proftayo2.JPG"
+        ]
+    },
     {
         title: "Professional Tennis Workshop",
         date: "March 2024",
@@ -112,46 +137,109 @@ const EventsPage = () => {
         <>
             <Navbar />
             <main className="bg-[#fcf7dc]">
-                {/* Upcoming Event Hero Section */}
-                <section className="relative min-h-[70vh]">
-                    <Image
-                        src={upcomingEvent.image}
-                        alt="Upcoming Event"
-                        fill
-                        className="object-cover filter brightness-[0.7] contrast-[1.1]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
-                    <div className="relative container mx-auto px-4 md:px-6 py-20">
+                {/* Upcoming Events Section */}
+                <section className="py-20">
+                    <div className="container mx-auto px-4 md:px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="max-w-4xl mx-auto text-center"
+                            className="text-center mb-16"
                         >
-                            <span className={`inline-block px-4 py-1 bg-[#fcf7dc] text-[#911b1e] 
-                                           rounded-full text-sm mb-6 ${raleway.className}`}>
-                                Upcoming Event
+                            <span className={`inline-block px-4 py-1 bg-[#911b1e]/10 text-[#911b1e] 
+                                           rounded-full text-sm mb-4 ${raleway.className}`}>
+                                Upcoming Events
                             </span>
-                            <h1 className={`text-[#fcf7dc] text-4xl md:text-6xl mb-6 ${brunoAce.className}`}>
-                                {upcomingEvent.title}
+                            <h1 className={`text-[#911b1e] text-4xl md:text-6xl mb-6 ${brunoAce.className}`}>
+                                JOIN OUR EVENTS
                             </h1>
-                            <p className={`text-[#fcf7dc]/90 text-lg mb-8 ${raleway.className}`}>
-                                {upcomingEvent.description}
+                            <p className={`text-[#911b1e]/70 text-lg max-w-2xl mx-auto ${raleway.className}`}>
+                                Don't miss out on our exciting upcoming events. From competitions to camps, 
+                                there's something for every tennis enthusiast.
                             </p>
-                            <div className="flex flex-wrap justify-center gap-6 text-[#fcf7dc]/80">
-                                <div className="flex items-center gap-2">
-                                    <Calendar className="w-5 h-5" />
-                                    <span className={raleway.className}>{upcomingEvent.date}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <Clock className="w-5 h-5" />
-                                    <span className={raleway.className}>{upcomingEvent.time}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="w-5 h-5" />
-                                    <span className={raleway.className}>{upcomingEvent.location}</span>
-                                </div>
-                            </div>
                         </motion.div>
+
+                        <div className="max-w-6xl mx-auto grid gap-8">
+                            {upcomingEvents.map((event, index) => (
+                                <motion.div
+                                    key={event.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.2 }}
+                                    className="group relative bg-white/70 backdrop-blur-sm rounded-2xl overflow-hidden
+                                             border border-[#911b1e]/10 hover:border-[#911b1e]/30
+                                             transition-all duration-300 hover:shadow-xl"
+                                >
+                                    <div className="grid md:grid-cols-2 gap-0">
+                                        <div className="relative h-64 md:h-80">
+                                            <Image
+                                                src={event.image}
+                                                alt={event.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                                            <div className="absolute top-4 left-4">
+                                                <span className={`px-3 py-1 bg-[#fcf7dc] text-[#911b1e] 
+                                                               rounded-full text-sm font-medium ${raleway.className}`}>
+                                                    {event.type}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="p-8 flex flex-col justify-center">
+                                            <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-4 ${brunoAce.className}`}>
+                                                {event.title}
+                                            </h2>
+                                            <p className={`text-[#911b1e]/70 mb-6 ${raleway.className}`}>
+                                                {event.description}
+                                            </p>
+                                            
+                                            <div className="space-y-3 mb-6">
+                                                <div className="flex items-center gap-3 text-[#911b1e]/80">
+                                                    <Calendar className="w-5 h-5" />
+                                                    <span className={raleway.className}>{event.date}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3 text-[#911b1e]/80">
+                                                    <Clock className="w-5 h-5" />
+                                                    <span className={raleway.className}>{event.time}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3 text-[#911b1e]/80">
+                                                    <MapPin className="w-5 h-5" />
+                                                    <span className={raleway.className}>{event.location}</span>
+                                                </div>
+                                                {event.ageRange && (
+                                                    <div className="flex items-center gap-3 text-[#911b1e]/80">
+                                                        <Users className="w-5 h-5" />
+                                                        <span className={raleway.className}>{event.ageRange}</span>
+                                                    </div>
+                                                )}
+                                                {event.price && (
+                                                    <div className="flex items-center gap-3 text-[#911b1e]/80">
+                                                        <span className="w-5 h-5 text-lg">₦</span>
+                                                        <span className={raleway.className}>{event.price}</span>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {event.registrationLink && (
+                                                <motion.a
+                                                    href={event.registrationLink}
+                                                    whileHover={{ scale: 1.02 }}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    className={`inline-flex items-center gap-2 bg-[#911b1e] text-[#fcf7dc] 
+                                                              px-6 py-3 rounded-lg font-medium
+                                                              hover:bg-[#911b1e]/90 transition-colors duration-300
+                                                              w-fit ${raleway.className}`}
+                                                >
+                                                    Register Now
+                                                    <ArrowRight className="w-4 h-4" />
+                                                </motion.a>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </section>
 
@@ -181,9 +269,14 @@ const EventsPage = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.2 }}
-                                    className="group relative bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-8
+                                    className={`group relative bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 mb-8
                                              border border-[#911b1e]/10 hover:border-[#911b1e]/30
-                                             transition-all duration-300"
+                                             transition-all duration-300 ${event.title.includes("Prof. Tayo") ? "cursor-pointer" : ""}`}
+                                    onClick={() => {
+                                        if (event.title.includes("Prof. Tayo")) {
+                                            window.location.href = "/events/prof-tayo-inaugural-lecture";
+                                        }
+                                    }}
                                 >
                                     <div className="grid md:grid-cols-2 gap-8">
                                         <div className="relative h-64 rounded-xl overflow-hidden">
@@ -193,6 +286,13 @@ const EventsPage = () => {
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                                             />
+                                            {event.title.includes("Prof. Tayo") && (
+                                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                    <span className="text-white text-sm bg-black/50 px-3 py-1 rounded-full">
+                                                        View Details
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="flex flex-col justify-center">
                                             <span className={`text-[#911b1e]/60 text-sm mb-2 ${raleway.className}`}>

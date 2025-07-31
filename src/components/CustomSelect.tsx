@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Check } from 'lucide-react';
 import { Raleway } from 'next/font/google';
 
 const raleway = Raleway({
@@ -18,20 +19,15 @@ interface CustomSelectProps {
     options: Option[];
     value: string;
     onChange: (value: string) => void;
-    placeholder?: string;
+    placeholder: string;
     name: string;
     required?: boolean;
+    error?: boolean;
 }
 
-const CustomSelect = ({ options, value, onChange, placeholder, name, required }: CustomSelectProps) => {
+const CustomSelect = ({ options, value, onChange, placeholder, name, required, error }: CustomSelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedLabel, setSelectedLabel] = useState('');
     const selectRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const option = options.find(opt => opt.value === value);
-        setSelectedLabel(option ? option.label : placeholder || '');
-    }, [value, options, placeholder]);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -44,79 +40,74 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, required }:
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const selectedOption = options.find(option => option.value === value);
+
     return (
         <div ref={selectRef} className="relative">
-            <div
+            <motion.div
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-full px-4 py-3 bg-[#911b1e]/5 border border-[#911b1e]/20 
-                           text-[#911b1e] rounded-md cursor-pointer
-                           flex items-center justify-between
-                           ${raleway.className}`}
+                className={`w-full px-4 py-3 border ${error ? 'border-red-500' : 'border-[#911b1e]/20'} rounded-lg 
+                          focus:border-[#911b1e] transition-colors cursor-pointer
+                          bg-white/50 backdrop-blur-sm hover:bg-white/70
+                          flex items-center justify-between ${raleway.className}`}
             >
-                <span className={value ? '' : 'text-[#911b1e]/50'}>
-                    {selectedLabel}
+                <span className={selectedOption ? 'text-[#911b1e]' : 'text-[#911b1e]/50'}>
+                    {selectedOption ? selectedOption.label : placeholder}
                 </span>
-                <svg
-                    className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
                 >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                    />
-                </svg>
-            </div>
+                    <ChevronDown className="w-5 h-5 text-[#911b1e]/60" />
+                </motion.div>
+            </motion.div>
 
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute z-50 w-full mt-1 bg-[#fcf7dc] border border-[#911b1e]/20 
-                                 rounded-md shadow-lg overflow-hidden"
+                        className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-md 
+                                 border border-[#911b1e]/20 rounded-lg shadow-xl z-50 max-h-60 overflow-y-auto"
                     >
-                        {options.map((option) => (
-                            <div
+                        {options.map((option, index) => (
+                            <motion.div
                                 key={option.value}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.05 }}
                                 onClick={() => {
                                     onChange(option.value);
                                     setIsOpen(false);
                                 }}
-                                className={`px-4 py-3 cursor-pointer transition-colors
-                                          hover:bg-[#911b1e]/10 
-                                          ${option.value === value ? 'bg-[#911b1e]/5' : ''}
+                                className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between
+                                          hover:bg-[#911b1e]/10 ${value === option.value ? 'bg-[#911b1e]/5' : ''}
                                           ${raleway.className}`}
                             >
-                                {option.label}
-                            </div>
+                                <span className={`${value === option.value ? 'text-[#911b1e] font-medium' : 'text-[#911b1e]/80'}`}>
+                                    {option.label}
+                                </span>
+                                {value === option.value && (
+                                    <Check className="w-4 h-4 text-[#911b1e]" />
+                                )}
+                            </motion.div>
                         ))}
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Hidden select for form submission */}
-            <select
+            {/* Hidden input for form submission */}
+            <input
+                type="hidden"
                 name={name}
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
                 required={required}
-                className="sr-only"
-            >
-                <option value="">{placeholder}</option>
-                {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
+            />
         </div>
     );
 };
 
-export default CustomSelect; 
+export default CustomSelect;

@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
+import UpcomingEventBanner from '@/components/UpcomingEventBanner';
 import AboutUs from '@/components/AboutUs';
 import Gallery from '@/components/Gallery';
 import Events from '@/components/Events';
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
+      <UpcomingEventBanner />
       <Hero />
       <AboutUs />
       <Gallery />

@@ -17,11 +17,29 @@ const raleway = Raleway({
 
 const events = [
     {
+        title: "Alimosho Summer Tennis Clinic & Tournament",
+        date: "August 4-23, 2025",
+        description: "Join our comprehensive 2-week summer program featuring tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Daily sessions at 9AM for ages 4-17 years.",
+        image: "/summerprogram.jpg",
+        status: "upcoming",
+        link: "/events/summer-camp-registration",
+        featured: true
+    },
+    {
+        title: "Celebrating Prof. Tayo Ajayi's Inaugural Lecture",
+        date: "July 29, 2025",
+        description: "We proudly celebrated our esteemed club member, Professor Tayo Julius Ajayi, as he delivered his 109th inaugural lecture at Lagos State University. A proud moment for the LKJ Tennis Club family.",
+        image: "/proftayo.JPG",
+        status: "upcoming",
+        link: "/events/prof-tayo-inaugural-lecture",
+        featured: true
+    },
+    {
         title: "LKJ Tennis Club vs OTA Tennis Club",
         date: "Saturday, 8th January 2025",
         description: "Join us for an exciting friendly competition between LKJ Tennis Club and OTA Tennis Club. Come support our players and enjoy a day of great tennis!",
         image: "/hero2.jpg",
-        status: "upcoming"
+        status: "past"
     },
     {
         title: "Professional Tennis Workshop",
@@ -78,13 +96,14 @@ const Events = () => {
                 </motion.div>
 
                 <div className="relative max-w-6xl mx-auto">
-                    {/* Featured Upcoming Event */}
-                    {events.filter(event => event.status === 'upcoming').map((event) => (
+                    {/* Featured Events */}
+                    {events.filter(event => event.status === 'upcoming' && event.featured).map((event, index) => (
                         <motion.div
                             key={event.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
+                            transition={{ delay: index * 0.2 }}
                             className="mb-8 sm:mb-16 group"
                         >
                             <div className="grid md:grid-cols-2 gap-4 sm:gap-8 items-center bg-[#911b1e] rounded-lg overflow-hidden
@@ -101,7 +120,7 @@ const Events = () => {
                                 <div className="p-4 sm:p-6 md:p-8">
                                     <span className={`inline-block px-3 py-1 bg-[#fcf7dc] text-[#911b1e] 
                                                     rounded-full text-xs mb-3 ${raleway.className}`}>
-                                        Featured Event
+                                        {event.title.includes("Prof. Tayo") ? "Club Pride" : "Featured Event"}
                                     </span>
                                     <h3 className={`text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3 ${brunoAce.className}`}>
                                         {event.title}
@@ -112,19 +131,30 @@ const Events = () => {
                                     <p className={`text-[#fcf7dc]/90 text-sm sm:text-base mb-6 sm:mb-8 ${raleway.className}`}>
                                         {event.description}
                                     </p>
-                                    <button className={`bg-[#fcf7dc] text-[#911b1e] px-4 sm:px-6 py-2 sm:py-3 
+                                    {event.link ? (
+                                        <Link
+                                            href={event.link}
+                                            className={`inline-block bg-[#fcf7dc] text-[#911b1e] px-4 sm:px-6 py-2 sm:py-3 
                                                       text-sm sm:text-base transition-all duration-300 
-                                                      hover:bg-[#fcf7dc]/90 ${raleway.className}`}>
-                                        Learn More
-                                    </button>
+                                                      hover:bg-[#fcf7dc]/90 ${raleway.className}`}
+                                        >
+                                            {event.title.includes("Prof. Tayo") ? "View Details" : "Register Now"}
+                                        </Link>
+                                    ) : (
+                                        <button className={`bg-[#fcf7dc] text-[#911b1e] px-4 sm:px-6 py-2 sm:py-3 
+                                                          text-sm sm:text-base transition-all duration-300 
+                                                          hover:bg-[#fcf7dc]/90 ${raleway.className}`}>
+                                            Learn More
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
                     ))}
 
-                    {/* Past Events Grid */}
+                    {/* Other Events Grid */}
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                        {events.filter(event => event.status === 'past').map((event, index) => (
+                        {events.filter(event => event.status === 'past' || (event.status === 'upcoming' && !event.featured)).map((event, index) => (
                             <motion.div
                                 key={event.title}
                                 initial={{ opacity: 0, y: 20 }}

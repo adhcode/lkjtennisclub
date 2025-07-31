@@ -14,6 +14,8 @@ const raleway = Raleway({
   variable: '--font-raleway',
 });
 
+
+
 export const metadata: Metadata = {
   title: "LKJ Tennis Club",
   description: "Join our exclusive tennis community and elevate your game",

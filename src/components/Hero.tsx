@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
     return (
-        <div className="relative h-screen w-full overflow-hidden">
+        <div className="relative h-screen w-full overflow-hidden pt-16">
             {/* Base image with parallax effect */}
             <motion.div
                 initial={{ scale: 1.2 }}
