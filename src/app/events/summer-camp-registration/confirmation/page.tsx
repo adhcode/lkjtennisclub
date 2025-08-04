@@ -126,7 +126,7 @@ const RegistrationConfirmation = () => {
                                                 Camp Begins!
                                             </h3>
                                             <p className={`text-[#911b1e]/70 text-sm ${raleway.className}`}>
-                                                Your child's tennis adventure starts on August 15th, 2025.
+                                                Your child's tennis adventure starts on August 4th, 2025.
                                             </p>
                                         </div>
                                     </div>
@@ -148,7 +148,7 @@ const RegistrationConfirmation = () => {
                                     <div className="flex items-center gap-3">
                                         <Calendar className="w-5 h-5 text-[#911b1e]" />
                                         <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                            August 15-30, 2025
+                                            August 4-23, 2025
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-3">
@@ -160,15 +160,10 @@ const RegistrationConfirmation = () => {
                                     <div className="flex items-center gap-3">
                                         <MapPin className="w-5 h-5 text-[#911b1e]" />
                                         <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                            LKJ Gardens Tennis Court
+                                            LKJ Tennis Club
                                         </span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <span className="w-5 h-5 text-[#911b1e] text-lg">₦</span>
-                                        <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                            ₦25,000 per child
-                                        </span>
-                                    </div>
+                                   
                                 </div>
                             </motion.div>
 
