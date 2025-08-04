@@ -76,7 +76,7 @@ const JoinUs = () => {
                     >
                         MEMBERSHIP AT LKJ TENNIS CLUB
                     </motion.h2>
-                    
+
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ const JoinUs = () => {
                     >
                         Where Good People Gather
                     </motion.p>
-                    
+
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -95,19 +95,19 @@ const JoinUs = () => {
                         className={`text-[#fcf7dc]/80 text-base leading-relaxed space-y-4 ${raleway.className}`}
                     >
                         <p>
-                            There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets, 
+                            There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets,
                             the quiet nods of recognition. It's not just about tennis — it's about the people you meet along the way.
                         </p>
-                        
+
                         <p>
-                            LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community 
-                            is earned through presence, that excellence takes time, and that the best kind of competition 
+                            LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community
+                            is earned through presence, that excellence takes time, and that the best kind of competition
                             is the one that brings people closer.
                         </p>
-                        
+
                         <p>
-                            We welcome members who are not just looking for a place to play, but a place to belong — 
-                            people who show up with intention, who care about the atmosphere they help create, 
+                            We welcome members who are not just looking for a place to play, but a place to belong —
+                            people who show up with intention, who care about the atmosphere they help create,
                             and who believe that how we spend our leisure says something about who we are.
                         </p>
                     </motion.div>
@@ -201,7 +201,7 @@ const JoinUs = () => {
                                     <Heart className="w-4 h-4" />
                                 </Link>
                             </motion.div>
-                            
+
                             <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
