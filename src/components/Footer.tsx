@@ -88,7 +88,7 @@ const Footer = () => {
                         <ul className={`space-y-4 text-sm text-[#fcf7dc]/70 ${raleway.className}`}>
                             <li>LKJ Gardens, Igando</li>
                             <li>Lagos, Nigeria</li>
-                            <li>hello@lkjtennis.com</li>
+                            <li>hello@lkjtennisclub.com</li>
                             <li>+234 8061230727</li>
                         </ul>
                     </div>

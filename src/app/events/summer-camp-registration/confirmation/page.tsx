@@ -89,37 +89,13 @@ const RegistrationConfirmation = () => {
                                         </div>
                                     </div>
 
+                                    
+
+                                    
+
                                     <div className="flex gap-4">
                                         <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                             <span className={`text-[#911b1e] text-sm font-bold ${raleway.className}`}>2</span>
-                                        </div>
-                                        <div>
-                                            <h3 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
-                                                Payment Instructions
-                                            </h3>
-                                            <p className={`text-[#911b1e]/70 text-sm ${raleway.className}`}>
-                                                We'll send payment details and instructions to secure your child's spot.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-4">
-                                        <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                            <span className={`text-[#911b1e] text-sm font-bold ${raleway.className}`}>3</span>
-                                        </div>
-                                        <div>
-                                            <h3 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>
-                                                Pre-Camp Information
-                                            </h3>
-                                            <p className={`text-[#911b1e]/70 text-sm ${raleway.className}`}>
-                                                A week before camp, you'll receive a detailed information packet.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-4">
-                                        <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                            <span className={`text-[#911b1e] text-sm font-bold ${raleway.className}`}>4</span>
                                         </div>
                                         <div>
                                             <h3 className={`text-[#911b1e] font-semibold mb-2 ${raleway.className}`}>

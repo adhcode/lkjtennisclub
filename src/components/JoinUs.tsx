@@ -84,7 +84,6 @@ const JoinUs = () => {
                         transition={{ delay: 0.3 }}
                         className={`text-[#fcf7dc]/90 text-xl mb-8 italic ${raleway.className}`}
                     >
-                        Where Good People Gather
                     </motion.p>
 
                     <motion.div
@@ -94,21 +93,13 @@ const JoinUs = () => {
                         transition={{ delay: 0.4 }}
                         className={`text-[#fcf7dc]/80 text-base leading-relaxed space-y-4 ${raleway.className}`}
                     >
-                        <p>
-                            There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets,
-                            the quiet nods of recognition. It's not just about tennis — it's about the people you meet along the way.
-                        </p>
+                       
 
                         <p>
-                            LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community
-                            is earned through presence, that excellence takes time, and that the best kind of competition
-                            is the one that brings people closer.
-                        </p>
-
-                        <p>
-                            We welcome members who are not just looking for a place to play, but a place to belong —
-                            people who show up with intention, who care about the atmosphere they help create,
-                            and who believe that how we spend our leisure says something about who we are.
+                        We’re more than just a club, and we welcome people who see that too.
+People who value connection, show up with purpose,
+and understand that great communities don’t just happen 
+they’re made by the people who care enough to contribute.
                         </p>
                     </motion.div>
                 </motion.div>
@@ -181,8 +172,7 @@ const JoinUs = () => {
                             viewport={{ once: true }}
                             className={`text-[#fcf7dc]/80 text-lg mb-8 leading-relaxed ${raleway.className}`}
                         >
-                            Membership is selective, not exclusive.
-                            We welcome those who resonate with who we are thoughtful individuals looking for more than just a place to play.
+                           
                         </motion.p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -231,7 +221,7 @@ const JoinUs = () => {
                             <div className="hidden sm:block w-1 h-1 bg-[#fcf7dc]/40 rounded-full"></div>
                             <div className="flex items-center gap-2">
                                 <Mail className="w-4 h-4" />
-                                <span className={`text-sm ${raleway.className}`}>membership@lkjtennis.com</span>
+                                <span className={`text-sm ${raleway.className}`}>hello@lkjtennisclub.com</span>
                             </div>
                         </div>
                     </div>

@@ -116,7 +116,7 @@ const MembershipPage = () => {
                             >
                                 MEMBERSHIP AT LKJ
                             </motion.h1>
-                            
+
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -125,14 +125,14 @@ const MembershipPage = () => {
                             >
                                 Where Good People Gather
                             </motion.p>
-                            
+
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
                                 className={`text-[#fcf7dc]/80 text-lg max-w-3xl mx-auto leading-relaxed ${raleway.className}`}
                             >
-                                There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets, 
+                                There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets,
                                 the quiet nods of recognition. It's not just about tennis — it's about the people you meet along the way.
                             </motion.p>
                         </motion.div>
@@ -152,8 +152,8 @@ const MembershipPage = () => {
                                 WHAT WE BELIEVE
                             </h2>
                             <p className={`text-[#911b1e]/70 text-lg max-w-3xl mx-auto leading-relaxed ${raleway.className}`}>
-                                LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community 
-                                is earned through presence, that excellence takes time, and that the best kind of competition 
+                                LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community
+                                is earned through presence, that excellence takes time, and that the best kind of competition
                                 is the one that brings people closer.
                             </p>
                         </motion.div>
@@ -209,7 +209,7 @@ const MembershipPage = () => {
                                 THE JOURNEY TO MEMBERSHIP
                             </h2>
                             <p className={`text-[#911b1e]/70 text-lg max-w-2xl mx-auto leading-relaxed ${raleway.className}`}>
-                                Joining LKJ is a personal step. There's no rush, no pressure — only an open door 
+                                Joining LKJ is a personal step. There's no rush, no pressure — only an open door
                                 and a warm welcome to those who align with the spirit we hold dear.
                             </p>
                         </motion.div>
@@ -256,9 +256,9 @@ const MembershipPage = () => {
                                 <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-6 ${brunoAce.className}`}>
                                     READY TO BEGIN YOUR JOURNEY?
                                 </h2>
-                                
+
                                 <p className={`text-[#911b1e]/80 text-lg mb-8 leading-relaxed ${raleway.className}`}>
-                                    We invite you to visit us, experience our community firsthand, and see if LKJ feels like home to you. 
+                                    We invite you to visit us, experience our community firsthand, and see if LKJ feels like home to you.
                                     Every great membership story begins with a simple conversation.
                                 </p>
 
@@ -274,7 +274,7 @@ const MembershipPage = () => {
                                         Schedule a Visit
                                         <Heart className="w-4 h-4" />
                                     </motion.button>
-                                    
+
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
@@ -301,7 +301,7 @@ const MembershipPage = () => {
                                     <div className="hidden sm:block w-1 h-1 bg-[#911b1e]/40 rounded-full"></div>
                                     <div className="flex items-center gap-2">
                                         <Mail className="w-4 h-4" />
-                                        <span className={`text-sm ${raleway.className}`}>hello@lkjtennis.com</span>
+                                        <span className={`text-sm ${raleway.className}`}>hello@lkjtennisclub.com</span>
                                     </div>
                                 </div>
                             </div>
