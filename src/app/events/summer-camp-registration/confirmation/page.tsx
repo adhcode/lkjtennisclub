@@ -182,13 +182,13 @@ const RegistrationConfirmation = () => {
                                     <div className="flex items-center gap-3">
                                         <Phone className="w-5 h-5 text-[#911b1e]" />
                                         <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                            +234 xxx xxx xxxx
+                                        +234 8065 638 497
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <Mail className="w-5 h-5 text-[#911b1e]" />
                                         <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                            info@lkjtennisclub.com
+                                            hello@lkjtennisclub.com
                                         </span>
                                     </div>
                                 </div>
