@@ -44,3 +44,42 @@ model Registration {
   
   @@map("registrations")
 }
+
+model Member {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Personal Information
+  firstName       String
+  lastName        String
+  email           String   @unique
+  phone           String
+  dateOfBirth     DateTime?
+  gender          String?
+  
+  // Membership Information
+  membershipId    String   @unique // This will be encoded in QR code
+  membershipType  String   @default("regular") // regular, premium, student, family
+  membershipStatus String  @default("active") // active, inactive, suspended
+  joinDate        DateTime @default(now())
+  expiryDate      DateTime?
+  
+  // Tennis Information
+  skillLevel      String?  // beginner, intermediate, advanced, professional
+  playingHand     String?  // right, left, both
+  
+  // Contact Information
+  address         String?
+  emergencyContact String?
+  emergencyPhone  String?
+  
+  // Profile
+  bio             String?
+  profileImage    String?
+  
+  // QR Code
+  qrCodeUrl       String?  // URL to generated QR code image
+  
+  @@map("members")
+}

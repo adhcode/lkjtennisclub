@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Raleway } from 'next/font/google';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User } from 'lucide-react';
 
 const raleway = Raleway({
     subsets: ['latin'],
@@ -72,21 +71,9 @@ const Navbar = () => {
                             Blog
                         </Link>
 
-                        <Link
-                            href="/login"
-                            className={`inline-flex items-center space-x-2 text-[#fcf7dc] group ${raleway.className}`}
-                        >
-                            <span className="relative">
-                                <User className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
-                                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#fcf7dc] 
-                                               transition-all duration-300 group-hover:w-full" />
-                            </span>
-                            <span className="relative">
-                                Member Login
-                                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#fcf7dc] 
-                                               transition-all duration-300 group-hover:w-full" />
-                            </span>
-                        </Link>
+
+
+
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -125,14 +112,7 @@ const Navbar = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.1 }}
                                         >
-                                            <Link
-                                                href={`/${item.toLowerCase().replace(' ', '')}`}
-                                                className={`block text-[#fcf7dc] py-3 px-4 hover:bg-[#fcf7dc]/10 
-                                                          rounded-lg transition-all duration-300 ${raleway.className}`}
-                                                onClick={() => setIsOpen(false)}
-                                            >
-                                                {item}
-                                            </Link>
+
                                         </motion.div>
                                     ))}
                                     <motion.div
@@ -140,16 +120,7 @@ const Navbar = () => {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.2 }}
                                     >
-                                        <Link
-                                            href="/login"
-                                            className={`flex items-center space-x-3 text-[#fcf7dc] py-3 px-4 
-                                                      hover:bg-[#fcf7dc]/10 rounded-lg 
-                                                      transition-all duration-300 ${raleway.className}`}
-                                            onClick={() => setIsOpen(false)}
-                                        >
-                                            <User className="w-4 h-4" />
-                                            <span>Member Login</span>
-                                        </Link>
+
                                     </motion.div>
                                 </div>
                             </div>
