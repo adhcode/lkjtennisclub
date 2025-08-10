@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { generateMemberQRCode } from '@/lib/qrcode'
+import { headers } from 'next/headers'
 
 export async function POST() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const hdrs = await headers()
+    const host = hdrs.get('x-forwarded-host') || hdrs.get('host')
+    const proto = hdrs.get('x-forwarded-proto') || 'http'
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || (host ? `${proto}://${host}` : 'http://localhost:3000')
     
     // Sample members data
     const sampleMembers = [

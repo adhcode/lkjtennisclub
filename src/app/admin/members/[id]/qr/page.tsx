@@ -6,6 +6,7 @@ import { ArrowLeft, Download, Eye, QrCode, ExternalLink } from 'lucide-react'
 import QRCodeDisplay from '@/components/QRCodeDisplay'
 import CopyButton from '@/components/CopyButton'
 import { encodeMemberIdForUrl, formatMemberIdForDisplay } from '@/lib/memberUtils'
+import { headers } from 'next/headers'
 
 interface QRCodePageProps {
   params: Promise<{ id: string }>
@@ -24,7 +25,10 @@ export default async function MemberQRCode(props: QRCodePageProps) {
   }
 
   // Generate fresh QR code
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+  const hdrs = await headers()
+  const host = hdrs.get('x-forwarded-host') || hdrs.get('host')
+  const proto = hdrs.get('x-forwarded-proto') || 'http'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || (host ? `${proto}://${host}` : 'http://localhost:3000')
   const qrCodeDataUrl = await generateMemberQRCode(member.membershipId, baseUrl)
   const encodedId = encodeMemberIdForUrl(member.membershipId)
   const profileUrl = `${baseUrl}/member/${encodedId}`
