@@ -2,6 +2,7 @@ import { notFound, redirect } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { generateMemberQRCode } from '@/lib/qrcode'
 import MemberForm from '@/components/MemberForm'
+import type { Prisma } from '@prisma/client'
 
 interface EditMemberProps {
   params: Promise<{ id: string }>
@@ -15,18 +16,20 @@ function updateMember(memberId: string) {
     const lastName = formData.get('lastName') as string
     const membershipType = formData.get('membershipType') as string
     const expiryDate = formData.get('expiryDate') as string
+    const joinedYearRaw = formData.get('joinedYear') as string
     const profileImage = formData.get('profileImage') as string
 
     try {
       const member = await prisma.member.update({
         where: { id: memberId },
-        data: {
+        data: ({
           firstName,
           lastName,
           membershipType,
           expiryDate: expiryDate ? new Date(expiryDate) : null,
+          joinedYear: joinedYearRaw ? parseInt(joinedYearRaw, 10) : null,
           profileImage: profileImage || null,
-        }
+        } as Prisma.MemberUncheckedUpdateInput)
       })
 
       if (!member.qrCodeUrl) {

@@ -64,6 +64,7 @@ model Member {
   membershipStatus String  @default("active") // active, inactive, suspended
   joinDate        DateTime @default(now())
   expiryDate      DateTime?
+  joinedYear      Int?
   
   // Tennis Information
   skillLevel      String?  // beginner, intermediate, advanced, professional

@@ -35,6 +35,10 @@ export default async function MemberProfile(props: MemberProfileProps) {
   const clubAddress = process.env.NEXT_PUBLIC_CLUB_ADDRESS || 'LKJ Tennis Club, LKJ Garden, Igando Lagos'
   const clubWebsite = process.env.NEXT_PUBLIC_CLUB_WEBSITE || baseUrl
 
+  type MemberWithJoinedYear = typeof member & { joinedYear?: number | null }
+  const memberWithYear = member as MemberWithJoinedYear
+  const displayJoinedYear = memberWithYear.joinedYear ?? new Date(member.joinDate).getFullYear()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fcf7dc] via-[#fcf7dc]/90 to-[#fcf7dc]/80">
       {/* Hero Section with Club Branding */}
@@ -90,7 +94,7 @@ export default async function MemberProfile(props: MemberProfileProps) {
               <div className="text-left sm:text-right">
                 <p className="font-raleway text-[#911b1e]/60 text-sm mb-1">Member ID</p>
                 <div className="bg-white px-4 py-2 rounded-lg border border-[#911b1e]/20 shadow-sm">
-                  <p className="font-mono font-bold text-[#911b1e] text-lg md:text-xl">
+                  <p className="font-raleway font-bold text-[#911b1e] text-lg md:text-xl">
                     {formatMemberIdForDisplay(member.membershipId)}
                   </p>
                 </div>
@@ -151,7 +155,7 @@ export default async function MemberProfile(props: MemberProfileProps) {
                           <div>
                             <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Joined</p>
                             <p className="text-[#911b1e] font-raleway font-medium">
-                              {new Date(member.joinDate).getFullYear()}
+                              {displayJoinedYear}
                             </p>
                           </div>
                         </div>

@@ -3,6 +3,7 @@ import { prisma } from '@/lib/db'
 import { generateMemberQRCode } from '@/lib/qrcode'
 import MemberForm from '@/components/MemberForm'
 import { headers } from 'next/headers'
+import type { Prisma } from '@prisma/client'
 
 async function createMember(formData: FormData) {
   'use server'
@@ -11,6 +12,7 @@ async function createMember(formData: FormData) {
   const lastName = formData.get('lastName') as string
   const membershipType = formData.get('membershipType') as string
   const expiryDate = formData.get('expiryDate') as string
+  const joinedYearRaw = formData.get('joinedYear') as string
   const customMembershipId = formData.get('membershipId') as string
   const profileImage = formData.get('profileImage') as string
 
@@ -47,8 +49,9 @@ async function createMember(formData: FormData) {
         membershipId,
         membershipType,
         expiryDate: expiryDate ? new Date(expiryDate) : null,
+        joinedYear: joinedYearRaw ? parseInt(joinedYearRaw, 10) : null,
         profileImage: profileImage || null,
-      }
+      } as Prisma.MemberUncheckedCreateInput
     })
 
     // Generate QR code

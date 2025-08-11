@@ -5,10 +5,11 @@ import { ArrowLeft, Save, User, Users } from 'lucide-react'
 import Link from 'next/link'
 import ImageUpload from './ImageUpload'
 import type { Member } from '@prisma/client'
+type MemberWithJoinedYear = Member & { joinedYear?: number | null }
 
 interface MemberFormProps {
   action: (formData: FormData) => Promise<void>
-  member?: Member
+  member?: MemberWithJoinedYear
   isEdit?: boolean
 }
 
@@ -129,6 +130,21 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                       Leave blank to auto-generate a unique ID, or enter a custom ID. It will be formatted as LTC-YY-XXX-XX.
                     </p>
                   )}
+                </div>
+                <div>
+                  <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
+                    Year Joined (optional)
+                  </label>
+                  <select
+                    name="joinedYear"
+                    defaultValue={member?.joinedYear != null ? String(member.joinedYear) : ''}
+                    className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
+                  >
+                    <option value="">Select Year</option>
+                    {Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - i).map(y => (
+                      <option key={y} value={y}>{y}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
