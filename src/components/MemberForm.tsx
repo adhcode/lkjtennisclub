@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowLeft, Save, User, Users, Trophy, Phone } from 'lucide-react'
+import { ArrowLeft, Save, User, Users } from 'lucide-react'
 import Link from 'next/link'
 import ImageUpload from './ImageUpload'
 import type { Member } from '@prisma/client'
@@ -19,7 +19,6 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
   const handleSubmit = async (formData: FormData) => {
     setIsSubmitting(true)
     try {
-      // Add profile image to form data
       if (profileImage) {
         formData.append('profileImage', profileImage)
       }
@@ -122,106 +121,20 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                     name="membershipId"
                     defaultValue={member?.membershipId || ''}
                     readOnly={isEdit}
-                    className={`w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors ${isEdit ? 'cursor-not-allowed opacity-60' : ''
-                      }`}
-                    placeholder={isEdit ? 'Member ID cannot be changed' : 'Enter custom ID or leave blank for auto-generation (e.g., 23/004/RE)'}
+                    className={`w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors ${isEdit ? 'cursor-not-allowed opacity-60' : ''}`}
+                    placeholder={isEdit ? 'Member ID cannot be changed' : 'Enter custom ID or leave blank for auto-generation (e.g., LTC-YY-XXX-XX)'}
                   />
                   {!isEdit && (
                     <p className="text-[#911b1e]/50 text-xs font-raleway mt-1">
-                      Leave blank to auto-generate a unique ID, or enter a custom ID (e.g., 23/004/RE). Will be formatted as LTC-XX-XXX-XX
+                      Leave blank to auto-generate a unique ID, or enter a custom ID. It will be formatted as LTC-YY-XXX-XX.
                     </p>
                   )}
-                </div>
-
-                <div>
-                  <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    defaultValue={member?.email || ''}
-                    required
-                    className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway"
-                    placeholder="member@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    defaultValue={member?.phone || ''}
-                    required
-                    className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway"
-                    placeholder="+234-xxx-xxx-xxxx"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                      Date of Birth
-                    </label>
-                    <input
-                      type="date"
-                      name="dateOfBirth"
-                      defaultValue={member?.dateOfBirth ? new Date(member.dateOfBirth).toISOString().split('T')[0] : ''}
-                      className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                      Gender
-                    </label>
-                    <select
-                      name="gender"
-                      defaultValue={member?.gender || ''}
-                      className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
-                    >
-                      <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                    Address
-                  </label>
-                  <textarea
-                    name="address"
-                    defaultValue={member?.address || ''}
-                    rows={3}
-                    className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway resize-none"
-                    placeholder="Enter full address..."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                    Bio
-                  </label>
-                  <textarea
-                    name="bio"
-                    defaultValue={member?.bio || ''}
-                    rows={3}
-                    placeholder="Brief description about the member..."
-                    className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway resize-none"
-                  />
                 </div>
               </div>
             </div>
 
-            {/* Membership & Tennis Information */}
+            {/* Membership Information */}
             <div className="space-y-8">
-              {/* Membership Info */}
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-6">
                   <div className="flex items-center space-x-3">
@@ -248,6 +161,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                         <option value="student">Student Membership</option>
                         <option value="family">Family Membership</option>
                         <option value="corporate">Corporate Membership</option>
+                        <option value="premium">Premium Membership</option>
                       </select>
                     </div>
 
@@ -262,95 +176,6 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                         className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
                       />
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tennis Information */}
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="bg-gradient-to-r from-green-600 to-green-500 px-8 py-6">
-                  <div className="flex items-center space-x-3">
-                    <Trophy className="w-6 h-6 text-white" />
-                    <h2 className="font-bruno text-white text-2xl tracking-wide">
-                      Tennis Information
-                    </h2>
-                  </div>
-                </div>
-
-                <div className="p-8 space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                        Tennis Skill Level
-                      </label>
-                      <select
-                        name="skillLevel"
-                        defaultValue={member?.skillLevel || ''}
-                        className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
-                      >
-                        <option value="">Select Skill Level</option>
-                        <option value="beginner">Beginner Player</option>
-                        <option value="intermediate">Intermediate Player</option>
-                        <option value="advanced">Advanced Player</option>
-                        <option value="professional">Professional Player</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                        Dominant Playing Hand
-                      </label>
-                      <select
-                        name="playingHand"
-                        defaultValue={member?.playingHand || ''}
-                        className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway transition-colors"
-                      >
-                        <option value="">Select Playing Hand</option>
-                        <option value="right">Right-Handed</option>
-                        <option value="left">Left-Handed</option>
-                        <option value="both">Ambidextrous</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Emergency Contact */}
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                <div className="bg-gradient-to-r from-orange-600 to-orange-500 px-8 py-6">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-6 h-6 text-white" />
-                    <h2 className="font-bruno text-white text-2xl tracking-wide">
-                      Emergency Contact
-                    </h2>
-                  </div>
-                </div>
-
-                <div className="p-8 space-y-6">
-                  <div>
-                    <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                      Emergency Contact Name
-                    </label>
-                    <input
-                      type="text"
-                      name="emergencyContact"
-                      defaultValue={member?.emergencyContact || ''}
-                      className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway"
-                      placeholder="Emergency contact full name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[#911b1e]/60 text-sm font-raleway font-medium mb-2">
-                      Emergency Contact Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="emergencyPhone"
-                      defaultValue={member?.emergencyPhone || ''}
-                      className="w-full px-4 py-3 bg-[#fcf7dc]/30 border border-[#911b1e]/20 rounded-lg focus:ring-2 focus:ring-[#911b1e]/20 focus:border-[#911b1e]/40 text-[#911b1e] font-raleway"
-                      placeholder="+234-xxx-xxx-xxxx"
-                    />
                   </div>
                 </div>
               </div>
@@ -371,8 +196,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                   <li>• Fields marked with * are required</li>
                   <li>• {isEdit ? 'Member ID cannot be changed after creation' : 'Enter a custom Member ID or leave blank for auto-generation'}</li>
                   <li>• QR code will be created automatically for member verification</li>
-                  <li>• Emergency contact information is recommended for safety</li>
-                  <li>• All member information can be updated later except the Member ID</li>
+                  <li>• Public profile shows only non-sensitive information for verification</li>
                 </ul>
               </div>
             </div>

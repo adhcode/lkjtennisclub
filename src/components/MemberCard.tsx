@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { User, Mail, Phone, Calendar, Eye, Edit, QrCode, Shield, Clock } from 'lucide-react'
+import { User, Calendar, Eye, Edit, QrCode, Shield, Clock } from 'lucide-react'
 import { encodeMemberIdForUrl, formatMemberIdForDisplay } from '@/lib/memberUtils'
 
 interface Member {
   id: string
   firstName: string
   lastName: string
-  email: string
-  phone: string
+  email: string | null
+  phone: string | null
   membershipId: string
   membershipType: string
   membershipStatus: string
@@ -25,7 +25,7 @@ interface MemberCardProps {
 export default function MemberCard({ member }: MemberCardProps) {
   const isActive = member.membershipStatus === 'active'
   const isExpired = member.expiryDate && new Date(member.expiryDate) < new Date()
-  
+
   const getStatusConfig = () => {
     if (isActive && !isExpired) {
       return {
@@ -105,16 +105,8 @@ export default function MemberCard({ member }: MemberCardProps) {
           </div>
         </div>
 
-        {/* Contact Info */}
+        {/* Meta Info */}
         <div className="space-y-3 mb-6">
-          <div className="flex items-center space-x-3 p-3 bg-[#fcf7dc]/30 rounded-lg">
-            <Mail className="w-4 h-4 text-[#911b1e]/60 flex-shrink-0" />
-            <span className="text-[#911b1e]/80 font-raleway text-sm truncate">{member.email}</span>
-          </div>
-          <div className="flex items-center space-x-3 p-3 bg-[#fcf7dc]/30 rounded-lg">
-            <Phone className="w-4 h-4 text-[#911b1e]/60 flex-shrink-0" />
-            <span className="text-[#911b1e]/80 font-raleway text-sm">{member.phone}</span>
-          </div>
           <div className="flex items-center space-x-3 p-3 bg-[#fcf7dc]/30 rounded-lg">
             <Calendar className="w-4 h-4 text-[#911b1e]/60 flex-shrink-0" />
             <span className="text-[#911b1e]/80 font-raleway text-sm">
@@ -129,15 +121,13 @@ export default function MemberCard({ member }: MemberCardProps) {
 
         {/* Expiry Date if exists */}
         {member.expiryDate && (
-          <div className={`p-3 rounded-lg mb-6 ${
-            isExpired ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'
-          }`}>
+          <div className={`p-3 rounded-lg mb-6 ${isExpired ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'
+            }`}>
             <p className="text-xs font-raleway font-medium mb-1 text-gray-600">
               Membership {isExpired ? 'Expired' : 'Expires'}
             </p>
-            <p className={`font-raleway text-sm font-semibold ${
-              isExpired ? 'text-red-700' : 'text-blue-700'
-            }`}>
+            <p className={`font-raleway text-sm font-semibold ${isExpired ? 'text-red-700' : 'text-blue-700'
+              }`}>
               {new Date(member.expiryDate).toLocaleDateString('en-US', {
                 month: 'long',
                 day: 'numeric',
@@ -156,7 +146,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             <Eye className="w-4 h-4" />
             <span className="hidden sm:inline">View</span>
           </Link>
-          
+
           <Link
             href={`/admin/members/${member.id}/edit`}
             className="bg-blue-50 text-blue-700 border border-blue-200 px-4 py-3 rounded-lg text-sm font-raleway font-medium hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center space-x-2"
@@ -164,7 +154,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             <Edit className="w-4 h-4" />
             <span className="hidden sm:inline">Edit</span>
           </Link>
-          
+
           <Link
             href={`/admin/members/${member.id}/qr`}
             className="bg-purple-50 text-purple-700 border border-purple-200 px-4 py-3 rounded-lg text-sm font-raleway font-medium hover:bg-purple-600 hover:text-white transition-colors flex items-center justify-center"

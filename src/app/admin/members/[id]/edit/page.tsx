@@ -13,17 +13,7 @@ function updateMember(memberId: string) {
 
     const firstName = formData.get('firstName') as string
     const lastName = formData.get('lastName') as string
-    const email = formData.get('email') as string
-    const phone = formData.get('phone') as string
-    const dateOfBirth = formData.get('dateOfBirth') as string
-    const gender = formData.get('gender') as string
     const membershipType = formData.get('membershipType') as string
-    const skillLevel = formData.get('skillLevel') as string
-    const playingHand = formData.get('playingHand') as string
-    const address = formData.get('address') as string
-    const emergencyContact = formData.get('emergencyContact') as string
-    const emergencyPhone = formData.get('emergencyPhone') as string
-    const bio = formData.get('bio') as string
     const expiryDate = formData.get('expiryDate') as string
     const profileImage = formData.get('profileImage') as string
 
@@ -33,17 +23,7 @@ function updateMember(memberId: string) {
         data: {
           firstName,
           lastName,
-          email,
-          phone,
-          dateOfBirth: dateOfBirth ? new Date(dateOfBirth) : null,
-          gender: gender || null,
           membershipType,
-          skillLevel: skillLevel || null,
-          playingHand: playingHand || null,
-          address: address || null,
-          emergencyContact: emergencyContact || null,
-          emergencyPhone: emergencyPhone || null,
-          bio: bio || null,
           expiryDate: expiryDate ? new Date(expiryDate) : null,
           profileImage: profileImage || null,
         }

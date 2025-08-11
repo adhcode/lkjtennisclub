@@ -53,8 +53,8 @@ model Member {
   // Personal Information
   firstName       String
   lastName        String
-  email           String   @unique
-  phone           String
+  email           String?  @unique
+  phone           String?
   dateOfBirth     DateTime?
   gender          String?
   
