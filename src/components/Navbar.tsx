@@ -105,23 +105,29 @@ const Navbar = () => {
                         >
                             <div className="bg-gradient-to-b from-[#911b1e]/95 to-[#911b1e]/90 backdrop-blur-lg">
                                 <div className="px-4 py-6 space-y-4">
-                                    {["About", "Membership", "Exco", "Book Court", "Events", "Blog"].map((item) => (
+                                    {[
+                                        { label: 'About', href: '/about' },
+                                        { label: 'Membership', href: '/membership' },
+                                        { label: 'Exco', href: '/exco' },
+                                        { label: 'Book Court', href: '/bookcourt' },
+                                        { label: 'Events', href: '/events' },
+                                        { label: 'Blog', href: '/blog' },
+                                    ].map((link, idx) => (
                                         <motion.div
-                                            key={item}
+                                            key={link.href}
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: 0.1 }}
+                                            transition={{ delay: 0.05 * idx }}
                                         >
-
+                                            <Link
+                                                href={link.href}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`block py-3 text-[#fcf7dc] hover:text-white transition-colors ${raleway.className}`}
+                                            >
+                                                {link.label}
+                                            </Link>
                                         </motion.div>
                                     ))}
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.2 }}
-                                    >
-
-                                    </motion.div>
                                 </div>
                             </div>
                         </motion.div>
