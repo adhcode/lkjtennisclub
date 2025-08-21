@@ -37,7 +37,7 @@ const AboutUs = () => {
                                 transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className="text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-medium font-agrandir">
+                                <h2 className="text-[#911b1e] text-3xl sm:text-3xl md:text-4xl tracking-wider font-medium font-agrandir">
                                     ABOUT US
                                 </h2>
                             </motion.div>
