@@ -1,16 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
+import { Raleway } from 'next/font/google';
 
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const socialLinks = [
@@ -51,7 +46,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Brand Section */}
                     <div className="space-y-6">
-                        <h3 className={`text-2xl tracking-wider ${brunoAce.className}`}>
+                        <h3 className="text-2xl tracking-wider font-agrandir">
                             LKJ TENNIS
                         </h3>
                         <p className={`text-sm text-[#fcf7dc]/70 max-w-xs ${raleway.className}`}>
@@ -73,7 +68,7 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className={`text-lg mb-6 ${brunoAce.className}`}>Quick Links</h4>
+                        <h4 className="text-lg mb-6 font-agrandir">Quick Links</h4>
                         <ul className={`space-y-4 text-sm text-[#fcf7dc]/70 ${raleway.className}`}>
                             <li><Link href="#" className="hover:text-[#fcf7dc]">About Us</Link></li>
                             <li><Link href="#" className="hover:text-[#fcf7dc]">Membership</Link></li>
@@ -84,7 +79,7 @@ const Footer = () => {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className={`text-lg mb-6 ${brunoAce.className}`}>Contact</h4>
+                        <h4 className="text-lg mb-6 font-agrandir">Contact</h4>
                         <ul className={`space-y-4 text-sm text-[#fcf7dc]/70 ${raleway.className}`}>
                             <li>LKJ Gardens, Igando</li>
                             <li>Lagos, Nigeria</li>
@@ -95,7 +90,7 @@ const Footer = () => {
 
                     {/* Opening Hours */}
                     <div>
-                        <h4 className={`text-lg mb-6 ${brunoAce.className}`}>Opening Hours</h4>
+                        <h4 className="text-lg mb-6 font-agrandir">Opening Hours</h4>
                         <ul className={`space-y-4 text-sm text-[#fcf7dc]/70 ${raleway.className}`}>
                             <li>Monday - Friday</li>
                             <li>6:00 AM - 9:00 PM</li>
@@ -106,7 +101,7 @@ const Footer = () => {
 
                     {/* Location */}
                     <div className="space-y-2">
-                        <h3 className={`text-[#fcf7dc] text-lg mb-4 ${brunoAce.className}`}>Location</h3>
+                        <h3 className="text-[#fcf7dc] text-lg mb-4 font-agrandir">Location</h3>
                         <p className={`text-[#fcf7dc]/70 ${raleway.className}`}>
                             LKJ Tennis Club
                             <br />

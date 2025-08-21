@@ -1,6 +1,6 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,14 +8,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ArrowLeft, Heart, Trophy, Star } from 'lucide-react';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const ProfTayoInauguralLecture = () => {
@@ -49,7 +44,7 @@ const ProfTayoInauguralLecture = () => {
                                 Celebrating Excellence
                             </motion.span>
 
-                            <h1 className={`text-[#fcf7dc] text-3xl md:text-5xl mb-6 leading-tight ${brunoAce.className}`}>
+                            <h1 className="text-[#fcf7dc] text-3xl md:text-5xl mb-6 leading-tight font-agrandir">
                                 CELEBRATING PROF. TAYO AJAYI'S 109TH INAUGURAL LECTURE
                             </h1>
 
@@ -103,7 +98,7 @@ const ProfTayoInauguralLecture = () => {
                             >
                                 <div className="flex items-center gap-3 mb-6">
                                     <Heart className="w-6 h-6 text-[#911b1e]" />
-                                    <h2 className={`text-[#911b1e] text-2xl ${brunoAce.className}`}>
+                                    <h2 className="text-[#911b1e] text-2xl font-agrandir">
                                         A PROUD MOMENT FOR LKJ TENNIS CLUB
                                     </h2>
                                 </div>
@@ -132,7 +127,7 @@ const ProfTayoInauguralLecture = () => {
                             >
                                 <div className="flex items-center gap-3 mb-6">
                                     <Trophy className="w-6 h-6 text-[#911b1e]" />
-                                    <h3 className={`text-[#911b1e] text-xl ${brunoAce.className}`}>
+                                    <h3 className="text-[#911b1e] text-xl font-agrandir">
                                         LECTURE DETAILS
                                     </h3>
                                 </div>
@@ -211,7 +206,7 @@ const ProfTayoInauguralLecture = () => {
                             >
                                 <div className="flex items-center gap-3 mb-6">
                                     <Star className="w-6 h-6 text-[#911b1e]" />
-                                    <h3 className={`text-[#911b1e] text-xl ${brunoAce.className}`}>
+                                    <h3 className="text-[#911b1e] text-xl font-agrandir">
                                         CELEBRATION MOMENTS
                                     </h3>
                                 </div>

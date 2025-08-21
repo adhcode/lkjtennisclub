@@ -1,19 +1,14 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Heart, Users, Calendar, UserCheck, MapPin, Phone, Mail } from 'lucide-react';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['300', '400', '500'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const clubFeatures = [
@@ -72,7 +67,7 @@ const JoinUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className={`text-[#fcf7dc] text-4xl md:text-5xl mb-4 tracking-wider ${brunoAce.className}`}
+                        className="text-[#fcf7dc] text-4xl md:text-5xl mb-4 tracking-wider font-agrandir"
                     >
                         MEMBERSHIP AT LKJ TENNIS CLUB
                     </motion.h2>
@@ -93,13 +88,13 @@ const JoinUs = () => {
                         transition={{ delay: 0.4 }}
                         className={`text-[#fcf7dc]/80 text-base leading-relaxed space-y-4 ${raleway.className}`}
                     >
-                       
+
 
                         <p>
-                        We’re more than just a club, and we welcome people who see that too.
-People who value connection, show up with purpose,
-and understand that great communities don’t just happen 
-they’re made by the people who care enough to contribute.
+                            We’re more than just a club, and we welcome people who see that too.
+                            People who value connection, show up with purpose,
+                            and understand that great communities don’t just happen
+                            they’re made by the people who care enough to contribute.
                         </p>
                     </motion.div>
                 </motion.div>
@@ -115,7 +110,7 @@ they’re made by the people who care enough to contribute.
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className={`text-[#fcf7dc] text-2xl md:text-3xl mb-12 text-center ${brunoAce.className}`}
+                        className="text-[#fcf7dc] text-2xl md:text-3xl mb-12 text-center font-agrandir"
                     >
                         HERE'S WHAT YOU'LL FIND
                     </motion.h3>
@@ -143,7 +138,7 @@ they’re made by the people who care enough to contribute.
                                             <feature.icon className="w-6 h-6 text-[#fcf7dc]" />
                                         </motion.div>
                                         <div>
-                                            <h4 className={`text-[#fcf7dc] text-lg mb-3 ${brunoAce.className}`}>
+                                            <h4 className="text-[#fcf7dc] text-lg mb-3 font-agrandir">
                                                 {feature.title}
                                             </h4>
                                             <p className={`text-[#fcf7dc]/70 leading-relaxed ${raleway.className}`}>
@@ -172,7 +167,7 @@ they’re made by the people who care enough to contribute.
                             viewport={{ once: true }}
                             className={`text-[#fcf7dc]/80 text-lg mb-8 leading-relaxed ${raleway.className}`}
                         >
-                           
+
                         </motion.p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">

@@ -1,17 +1,17 @@
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import Image from 'next/image'
-import { Calendar, User, Shield, Clock, Mail, MapPin, ExternalLink } from 'lucide-react'
-import { headers } from 'next/headers'
+import { Calendar, Mail, Phone, MapPin, Trophy, User, Shield, Clock } from 'lucide-react'
 import { decodeMemberIdFromUrl, formatMemberIdForDisplay } from '@/lib/memberUtils'
-import Link from 'next/link'
 
 interface MemberProfileProps {
-  params: Promise<{ id: string }>
+  params: Promise<{
+    id: string
+  }>
 }
 
-export default async function MemberProfile(props: MemberProfileProps) {
-  const { id } = await props.params
+export default async function MemberProfile({ params }: MemberProfileProps) {
+  const { id } = await params
   const decodedId = decodeMemberIdFromUrl(id)
 
   const member = await prisma.member.findUnique({
@@ -26,18 +26,6 @@ export default async function MemberProfile(props: MemberProfileProps) {
 
   const isActive = member.membershipStatus === 'active'
   const isExpired = member.expiryDate && new Date(member.expiryDate) < new Date()
-  const hdrs = await headers()
-  const host = hdrs.get('x-forwarded-host') || hdrs.get('host')
-  const proto = hdrs.get('x-forwarded-proto') || 'http'
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || (host ? `${proto}://${host}` : 'http://localhost:3000')
-
-  const clubEmail = process.env.NEXT_PUBLIC_CLUB_EMAIL || 'hello@lkjtennisclub.com'
-  const clubAddress = process.env.NEXT_PUBLIC_CLUB_ADDRESS || 'LKJ Tennis Club, LKJ Garden, Igando Lagos'
-  const clubWebsite = process.env.NEXT_PUBLIC_CLUB_WEBSITE || baseUrl
-
-  type MemberWithJoinedYear = typeof member & { joinedYear?: number | null }
-  const memberWithYear = member as MemberWithJoinedYear
-  const displayJoinedYear = memberWithYear.joinedYear ?? new Date(member.joinDate).getFullYear()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#fcf7dc] via-[#fcf7dc]/90 to-[#fcf7dc]/80">
@@ -71,7 +59,15 @@ export default async function MemberProfile(props: MemberProfileProps) {
           {/* Elegant Status Header */}
           <div className="bg-gradient-to-r from-[#fcf7dc] to-[#fcf7dc]/80 px-8 py-6 border-b-2 border-[#911b1e]/10">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex items-center">
+              <div className="flex items-center space-x-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${isActive && !isExpired
+                  ? 'bg-[#911b1e]/10 text-[#911b1e]'
+                  : isExpired
+                    ? 'bg-red-100 text-red-600'
+                    : 'bg-gray-100 text-gray-600'
+                  }`}>
+                  <Shield className="w-6 h-6" />
+                </div>
                 <div>
                   <h3 className="font-bruno text-[#911b1e] text-xl md:text-2xl tracking-wide">
                     {isActive && !isExpired
@@ -94,7 +90,7 @@ export default async function MemberProfile(props: MemberProfileProps) {
               <div className="text-left sm:text-right">
                 <p className="font-raleway text-[#911b1e]/60 text-sm mb-1">Member ID</p>
                 <div className="bg-white px-4 py-2 rounded-lg border border-[#911b1e]/20 shadow-sm">
-                  <p className="font-raleway font-bold text-[#911b1e] text-lg md:text-xl">
+                  <p className="font-mono font-bold text-[#911b1e] text-lg md:text-xl">
                     {formatMemberIdForDisplay(member.membershipId)}
                   </p>
                 </div>
@@ -128,23 +124,77 @@ export default async function MemberProfile(props: MemberProfileProps) {
                   <div className="inline-flex items-center bg-gradient-to-r from-[#911b1e] to-[#911b1e]/90 px-6 py-2 rounded-full mb-6 shadow-lg">
                     <div className="w-2 h-2 bg-[#fcf7dc] rounded-full mr-3"></div>
                     <p className="text-[#fcf7dc] font-raleway font-medium capitalize text-sm">
-                      Member
+                      {member.membershipType} Member
                     </p>
                   </div>
+
+                  {member.bio && (
+                    <div className="bg-gradient-to-br from-[#fcf7dc]/30 to-[#fcf7dc]/50 p-5 rounded-xl border border-[#911b1e]/10 shadow-sm">
+                      <p className="text-[#911b1e]/80 font-raleway text-sm leading-relaxed">
+                        {member.bio}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Details Section */}
               <div className="lg:col-span-2">
                 <div className="grid md:grid-cols-2 gap-8">
-                  {/* About Member - minimal */}
+                  {/* Contact Information */}
                   <div className="space-y-6">
                     <div className="flex items-center space-x-3 mb-6">
                       <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center">
-                        <User className="w-4 h-4 text-[#911b1e]" />
+                        <Mail className="w-4 h-4 text-[#911b1e]" />
                       </div>
                       <h3 className="font-bruno text-[#911b1e] text-lg tracking-wide">
-                        Member Information
+                        Contact Information
+                      </h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="group hover:bg-[#fcf7dc]/20 transition-colors duration-200 p-4 rounded-xl border border-[#911b1e]/10">
+                        <div className="flex items-center space-x-3">
+                          <Mail className="w-4 h-4 text-[#911b1e]/60" />
+                          <div>
+                            <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Email</p>
+                            <p className="text-[#911b1e] font-raleway font-medium">{member.email}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="group hover:bg-[#fcf7dc]/20 transition-colors duration-200 p-4 rounded-xl border border-[#911b1e]/10">
+                        <div className="flex items-center space-x-3">
+                          <Phone className="w-4 h-4 text-[#911b1e]/60" />
+                          <div>
+                            <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Phone</p>
+                            <p className="text-[#911b1e] font-raleway font-medium">{member.phone}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {member.address && (
+                        <div className="group hover:bg-[#fcf7dc]/20 transition-colors duration-200 p-4 rounded-xl border border-[#911b1e]/10">
+                          <div className="flex items-start space-x-3">
+                            <MapPin className="w-4 h-4 text-[#911b1e]/60 mt-1" />
+                            <div>
+                              <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Address</p>
+                              <p className="text-[#911b1e] font-raleway font-medium">{member.address}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Membership Information */}
+                  <div className="space-y-6">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center">
+                        <Shield className="w-4 h-4 text-[#911b1e]" />
+                      </div>
+                      <h3 className="font-bruno text-[#911b1e] text-lg tracking-wide">
+                        Membership Details
                       </h3>
                     </div>
 
@@ -155,19 +205,16 @@ export default async function MemberProfile(props: MemberProfileProps) {
                           <div>
                             <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Joined</p>
                             <p className="text-[#911b1e] font-raleway font-medium">
-                              {displayJoinedYear}
+                              {new Date(member.joinDate).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })}
                             </p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Membership Information */}
-                  <div className="space-y-6">
-
-
-                    <div className="space-y-4">
                       {member.expiryDate && (
                         <div className="group hover:bg-[#fcf7dc]/20 transition-colors duration-200 p-4 rounded-xl border border-[#911b1e]/10">
                           <div className="flex items-center space-x-3">
@@ -188,56 +235,43 @@ export default async function MemberProfile(props: MemberProfileProps) {
                           </div>
                         </div>
                       )}
+
+                      {member.skillLevel && (
+                        <div className="group hover:bg-[#fcf7dc]/20 transition-colors duration-200 p-4 rounded-xl border border-[#911b1e]/10">
+                          <div className="flex items-center space-x-3">
+                            <Trophy className="w-4 h-4 text-[#911b1e]/60" />
+                            <div>
+                              <p className="text-[#911b1e]/50 text-xs font-raleway uppercase tracking-wide">Skill Level</p>
+                              <p className="text-[#911b1e] font-raleway font-medium capitalize">
+                                {member.skillLevel}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                {/* Share Verification Profile */}
-
-
-                {/* About This Membership */}
-                <div className="mt-6 p-6 bg-white rounded-xl border border-[#911b1e]/10 shadow-sm">
-                  <h4 className="font-bruno text-[#911b1e] text-lg tracking-wide mb-2">About This Membership</h4>
-                  <p className="text-[#911b1e]/80 font-raleway text-sm leading-relaxed">
-                    This profile confirms that the holder is an active member of LKJ Tennis Club with full access to club facilities and events.
-                  </p>
-                </div>
-
-                {/* Club Contact */}
-                <div className="mt-8 p-6 bg-white rounded-xl border border-[#911b1e]/10 shadow-sm">
-                  <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center">
-                      <User className="w-4 h-4 text-[#911b1e]" />
+                {/* Emergency Contact */}
+                {member.emergencyContact && (
+                  <div className="mt-8 p-6 bg-gradient-to-br from-[#fcf7dc]/30 to-[#fcf7dc]/50 rounded-xl border border-[#911b1e]/10 shadow-sm">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <Phone className="w-4 h-4 text-orange-600" />
+                      </div>
+                      <h4 className="font-bruno text-[#911b1e] text-lg tracking-wide">
+                        Emergency Contact
+                      </h4>
                     </div>
-                    <h4 className="font-bruno text-[#911b1e] text-lg tracking-wide">
-                      Contact LKJ Tennis Club
-                    </h4>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <MapPin className="w-4 h-4 text-[#911b1e]/60" />
-                      <p className="text-[#911b1e] font-raleway text-sm">{clubAddress}</p>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Mail className="w-4 h-4 text-[#911b1e]/60" />
-                      <p className="text-[#911b1e] font-raleway text-sm">{clubEmail}</p>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <ExternalLink className="w-4 h-4 text-[#911b1e]/60" />
-                      <a href={clubWebsite} target="_blank" rel="noopener noreferrer" className="text-[#911b1e] font-raleway text-sm underline">
-                        Visit Club Website
-                      </a>
+                    <div className="space-y-2 ml-11">
+                      <p className="text-[#911b1e] font-raleway font-medium">{member.emergencyContact}</p>
+                      {member.emergencyPhone && (
+                        <p className="text-[#911b1e]/70 font-raleway text-sm">{member.emergencyPhone}</p>
+                      )}
                     </div>
                   </div>
-                </div>
-
-                {/* Privacy Notice */}
-                <div className="mt-6 p-6 bg-gradient-to-br from-[#fcf7dc]/40 to-[#fcf7dc]/60 rounded-xl border border-[#911b1e]/10 shadow-sm">
-                  <h4 className="font-bruno text-[#911b1e] text-lg tracking-wide mb-2">Privacy Notice</h4>
-                  <p className="text-[#911b1e]/80 font-raleway text-sm leading-relaxed">
-                    This page shows only non-sensitive information for membership verification purposes.
-                  </p>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -258,15 +292,6 @@ export default async function MemberProfile(props: MemberProfileProps) {
                 month: 'long',
                 day: 'numeric'
               })}
-            </p>
-          </div>
-          <div className="mt-6">
-            <p className="text-sm text-[#911b1e]/50">
-              made with{' '}
-              <span className="text-red-500 animate-pulse">❤</span>{' '}by{' '}
-              <Link href="https://www.instagram.com/uvise.ng/" className="text-[#911b1e]/70 hover:text-[#911b1e] transition-colors duration-300">
-                uvise
-              </Link>
             </p>
           </div>
         </div>

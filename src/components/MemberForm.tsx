@@ -48,7 +48,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
               <User className="w-8 h-8 text-[#fcf7dc]" />
             </div>
             <div>
-              <h1 className="font-bruno text-[#fcf7dc] text-3xl md:text-4xl tracking-wide">
+              <h1 className="font-agrandir text-[#fcf7dc] text-3xl md:text-4xl tracking-wide">
                 {isEdit ? 'EDIT MEMBER' : 'ADD NEW MEMBER'}
               </h1>
               <p className="font-raleway text-[#fcf7dc]/80 text-base md:text-lg mt-1">
@@ -67,7 +67,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
               <div className="bg-gradient-to-r from-[#911b1e] to-[#911b1e]/90 px-8 py-6">
                 <div className="flex items-center space-x-3">
                   <User className="w-6 h-6 text-[#fcf7dc]" />
-                  <h2 className="font-bruno text-[#fcf7dc] text-2xl tracking-wide">
+                  <h2 className="font-agrandir text-[#fcf7dc] text-2xl tracking-wide">
                     Personal Information
                   </h2>
                 </div>
@@ -155,7 +155,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                 <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-6">
                   <div className="flex items-center space-x-3">
                     <Users className="w-6 h-6 text-white" />
-                    <h2 className="font-bruno text-white text-2xl tracking-wide">
+                    <h2 className="font-agrandir text-white text-2xl tracking-wide">
                       Membership Information
                     </h2>
                   </div>
@@ -205,7 +205,7 @@ export default function MemberForm({ action, member, isEdit = false }: MemberFor
                 <span className="text-white text-xs font-bold">i</span>
               </div>
               <div>
-                <h3 className="font-bruno text-[#911b1e] text-lg tracking-wide mb-2">
+                <h3 className="font-agrandir text-[#911b1e] text-lg tracking-wide mb-2">
                   Important Information
                 </h3>
                 <ul className="text-[#911b1e]/70 font-raleway text-sm space-y-1">

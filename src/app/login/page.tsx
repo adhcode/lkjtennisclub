@@ -1,6 +1,6 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -9,14 +9,9 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import Link from 'next/link';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const LoginPage = () => {
@@ -67,7 +62,7 @@ const LoginPage = () => {
                                     height={80}
                                     className="mx-auto mb-6"
                                 />
-                                <h1 className={`text-[#fcf7dc] text-2xl mb-2 ${brunoAce.className}`}>
+                                <h1 className="text-[#fcf7dc] text-2xl mb-2 font-agrandir">
                                     Member Login
                                 </h1>
                                 <p className={`text-[#fcf7dc]/60 text-sm ${raleway.className}`}>

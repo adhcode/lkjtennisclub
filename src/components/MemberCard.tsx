@@ -88,7 +88,7 @@ export default function MemberCard({ member }: MemberCardProps) {
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="font-bruno text-[#911b1e] text-xl tracking-wide truncate">
+            <h3 className="font-agrandir text-[#911b1e] text-xl tracking-wide truncate">
               {member.firstName} {member.lastName}
             </h3>
             <div className="flex items-center space-x-2 mt-1">

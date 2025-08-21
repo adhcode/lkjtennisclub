@@ -28,7 +28,7 @@ export default function QRCodeDisplay({ qrCodeDataUrl, memberName, membershipId 
                 className="h-10 w-auto"
               />
             </div>
-            <h3 className="font-bruno text-[#911b1e] text-lg tracking-wide">
+            <h3 className="font-agrandir text-[#911b1e] text-lg tracking-wide">
               LKJ TENNIS CLUB
             </h3>
             <p className="font-raleway text-[#911b1e]/60 text-sm">
@@ -49,10 +49,10 @@ export default function QRCodeDisplay({ qrCodeDataUrl, memberName, membershipId 
               onLoad={() => setImageLoaded(true)}
             />
           </div>
-          
+
           {/* Member Info */}
           <div className="pt-6 border-t border-[#911b1e]/20">
-            <h4 className="font-bruno text-[#911b1e] text-xl mb-2 tracking-wide">
+            <h4 className="font-agrandir text-[#911b1e] text-xl mb-2 tracking-wide">
               {memberName}
             </h4>
             <p className="text-[#911b1e]/70 font-mono text-sm font-medium mb-2">
@@ -63,14 +63,14 @@ export default function QRCodeDisplay({ qrCodeDataUrl, memberName, membershipId 
             </p>
           </div>
         </div>
-        
+
         {/* Decorative corners with club colors */}
         <div className="absolute -top-3 -left-3 w-6 h-6 border-l-4 border-t-4 border-[#911b1e] rounded-tl-lg"></div>
         <div className="absolute -top-3 -right-3 w-6 h-6 border-r-4 border-t-4 border-[#911b1e] rounded-tr-lg"></div>
         <div className="absolute -bottom-3 -left-3 w-6 h-6 border-l-4 border-b-4 border-[#911b1e] rounded-bl-lg"></div>
         <div className="absolute -bottom-3 -right-3 w-6 h-6 border-r-4 border-b-4 border-[#911b1e] rounded-br-lg"></div>
       </div>
-      
+
       <div className="mt-8 p-4 bg-[#fcf7dc]/50 rounded-lg border border-[#911b1e]/10">
         <p className="text-[#911b1e]/80 font-raleway text-sm">
           This QR code is ready for printing on ID cards

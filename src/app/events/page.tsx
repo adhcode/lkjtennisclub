@@ -1,24 +1,33 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Users, X, ChevronLeft, ChevronRight, Camera, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, ArrowRight, Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
 
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const upcomingEvents = [
+    {
+        title: "DS Energy Tennis Tournament",
+        type: "Tournament",
+        date: "September 6-20, 2025",
+        time: "Weekends Only",
+        location: "LKJ Tennis Club",
+        description: "Join us for the prestigious DS Energy Tennis Tournament! This exciting 3-weekend event kicks off September 6th with the grand finale on September 20th. Three categories available: Men (16 spots), Women (2 spots), and Kids (6 spots). Limited registration - secure your spot now!",
+        image: "/DSC_1852.jpg",
+        registrationLink: "/events/ds-energy-tournament",
+        price: "Free Registration",
+        ageRange: "All Ages",
+        spotlight: true,
+        sponsor: "DS Energy"
+    },
     {
         title: "Alimosho Summer Tennis Clinic & Tournament",
         type: "Summer Program",
@@ -149,11 +158,11 @@ const EventsPage = () => {
                                            rounded-full text-sm mb-4 ${raleway.className}`}>
                                 Upcoming Events
                             </span>
-                            <h1 className={`text-[#911b1e] text-4xl md:text-6xl mb-6 ${brunoAce.className}`}>
+                            <h1 className="text-[#911b1e] text-4xl md:text-6xl mb-6 font-agrandir">
                                 JOIN OUR EVENTS
                             </h1>
                             <p className={`text-[#911b1e]/70 text-lg max-w-2xl mx-auto ${raleway.className}`}>
-                                Don't miss out on our exciting upcoming events. From competitions to camps, 
+                                Don't miss out on our exciting upcoming events. From competitions to camps,
                                 there's something for every tennis enthusiast.
                             </p>
                         </motion.div>
@@ -185,15 +194,15 @@ const EventsPage = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="p-8 flex flex-col justify-center">
-                                            <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-4 ${brunoAce.className}`}>
+                                            <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-4 font-agrandir`}>
                                                 {event.title}
                                             </h2>
                                             <p className={`text-[#911b1e]/70 mb-6 ${raleway.className}`}>
                                                 {event.description}
                                             </p>
-                                            
+
                                             <div className="space-y-3 mb-6">
                                                 <div className="flex items-center gap-3 text-[#911b1e]/80">
                                                     <Calendar className="w-5 h-5" />
@@ -256,7 +265,7 @@ const EventsPage = () => {
                                            rounded-full text-sm mb-4 ${raleway.className}`}>
                                 Past Events
                             </span>
-                            <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6 ${brunoAce.className}`}>
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-6 font-agrandir">
                                 EVENT HIGHLIGHTS
                             </h2>
                         </motion.div>
@@ -298,7 +307,7 @@ const EventsPage = () => {
                                             <span className={`text-[#911b1e]/60 text-sm mb-2 ${raleway.className}`}>
                                                 {event.date}
                                             </span>
-                                            <h3 className={`text-[#911b1e] text-2xl mb-4 ${brunoAce.className}`}>
+                                            <h3 className={`text-[#911b1e] text-2xl mb-4 font-agrandir`}>
                                                 {event.title}
                                             </h3>
                                             <p className={`text-[#911b1e]/70 mb-4 ${raleway.className}`}>

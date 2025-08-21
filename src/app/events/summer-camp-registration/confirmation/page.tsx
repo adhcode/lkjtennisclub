@@ -1,20 +1,15 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { CheckCircle, Calendar, Clock, MapPin, Phone, Mail } from 'lucide-react';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const RegistrationConfirmation = () => {
@@ -48,7 +43,7 @@ const RegistrationConfirmation = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className={`text-[#911b1e] text-4xl md:text-5xl mb-6 ${brunoAce.className}`}
+                                className="text-[#911b1e] text-4xl md:text-5xl mb-6 font-agrandir"
                             >
                                 REGISTRATION SUCCESSFUL!
                             </motion.h1>
@@ -59,7 +54,7 @@ const RegistrationConfirmation = () => {
                                 transition={{ delay: 0.4 }}
                                 className={`text-[#911b1e]/80 text-lg mb-8 ${raleway.className}`}
                             >
-                                Thank you for registering {childrenCount > 1 ? `${childrenCount} children` : 'your child'} for our Summer Tennis Camp! 
+                                Thank you for registering {childrenCount > 1 ? `${childrenCount} children` : 'your child'} for our Summer Tennis Camp!
                                 We're excited to have {childrenCount > 1 ? 'them' : 'them'} join us for an amazing tennis experience.
                             </motion.p>
 
@@ -70,7 +65,7 @@ const RegistrationConfirmation = () => {
                                 transition={{ delay: 0.5 }}
                                 className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-[#911b1e]/10 mb-8"
                             >
-                                <h2 className={`text-[#911b1e] text-2xl mb-6 ${brunoAce.className}`}>
+                                <h2 className="text-[#911b1e] text-2xl mb-6 font-agrandir">
                                     WHAT HAPPENS NEXT?
                                 </h2>
 
@@ -89,9 +84,9 @@ const RegistrationConfirmation = () => {
                                         </div>
                                     </div>
 
-                                    
 
-                                    
+
+
 
                                     <div className="flex gap-4">
                                         <div className="w-8 h-8 bg-[#911b1e]/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
@@ -116,10 +111,10 @@ const RegistrationConfirmation = () => {
                                 transition={{ delay: 0.6 }}
                                 className="bg-[#911b1e]/5 rounded-2xl p-6 mb-8"
                             >
-                                <h3 className={`text-[#911b1e] text-xl mb-4 ${brunoAce.className}`}>
+                                <h3 className="text-[#911b1e] text-xl mb-4 font-agrandir">
                                     CAMP DETAILS REMINDER
                                 </h3>
-                                
+
                                 <div className="grid md:grid-cols-2 gap-4 text-left">
                                     <div className="flex items-center gap-3">
                                         <Calendar className="w-5 h-5 text-[#911b1e]" />
@@ -139,7 +134,7 @@ const RegistrationConfirmation = () => {
                                             LKJ Tennis Club
                                         </span>
                                     </div>
-                                   
+
                                 </div>
                             </motion.div>
 
@@ -150,15 +145,15 @@ const RegistrationConfirmation = () => {
                                 transition={{ delay: 0.7 }}
                                 className="bg-white/50 rounded-2xl p-6 mb-8"
                             >
-                                <h3 className={`text-[#911b1e] text-xl mb-4 ${brunoAce.className}`}>
+                                <h3 className="text-[#911b1e] text-xl mb-4 font-agrandir">
                                     QUESTIONS? CONTACT US
                                 </h3>
-                                
+
                                 <div className="flex flex-col md:flex-row justify-center gap-6">
                                     <div className="flex items-center gap-3">
                                         <Phone className="w-5 h-5 text-[#911b1e]" />
                                         <span className={`text-[#911b1e]/80 ${raleway.className}`}>
-                                        +234 8065 638 497
+                                            +234 8065 638 497
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-3">
@@ -185,7 +180,7 @@ const RegistrationConfirmation = () => {
                                 >
                                     Return to Home
                                 </Link>
-                                
+
                                 <Link
                                     href="/events"
                                     className={`px-8 py-3 border-2 border-[#911b1e] text-[#911b1e] rounded-lg 

@@ -23,7 +23,7 @@ const SummerCampRegistration = () => {
                         className="object-cover filter brightness-[0.7] contrast-[1.1]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
-                    
+
                     <div className="relative container mx-auto px-4 md:px-6 py-20">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -38,16 +38,16 @@ const SummerCampRegistration = () => {
                             >
                                 🎾 Summer 2025
                             </motion.span>
-                            
-                            <h1 className="text-[#fcf7dc] text-4xl md:text-6xl mb-6 font-bruno">
+
+                            <h1 className="text-[#fcf7dc] text-4xl md:text-6xl mb-6 font-agrandir">
                                 ALIMOSHO SUMMER TENNIS CLINIC & TOURNAMENT
                             </h1>
-                            
+
                             <p className="text-[#fcf7dc]/90 text-lg mb-8 max-w-2xl mx-auto font-raleway">
-                                Join our comprehensive 2-week summer program featuring tennis clinic, tournament, 
+                                Join our comprehensive 2-week summer program featuring tennis clinic, tournament,
                                 plus self-defense, basketball, and badminton activities for ages 4-17.
                             </p>
-                            
+
                             <div className="flex flex-wrap justify-center gap-6 text-[#fcf7dc]/80">
                                 <div className="flex items-center gap-2">
                                     <Calendar className="w-5 h-5" />
@@ -70,7 +70,7 @@ const SummerCampRegistration = () => {
                     </div>
                 </section>
 
-               
+
 
                 {/* Registration Form Section */}
                 <section className="py-16 bg-white/30">
@@ -81,11 +81,11 @@ const SummerCampRegistration = () => {
                             viewport={{ once: true }}
                             className="text-center mb-12"
                         >
-                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-4 font-bruno">
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-4 font-agrandir">
                                 REGISTER YOUR CHILD TODAY
                             </h2>
                             <p className="text-[#911b1e]/70 text-lg max-w-2xl mx-auto font-raleway">
-                                Secure your child's spot in our exciting summer tennis camp. 
+                                Secure your child's spot in our exciting summer tennis camp.
                                 Limited spaces available - register now!
                             </p>
                         </motion.div>
@@ -105,10 +105,10 @@ const SummerCampRegistration = () => {
                             viewport={{ once: true }}
                             className="max-w-2xl mx-auto text-center"
                         >
-                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-8 font-bruno">
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-8 font-agrandir">
                                 PROGRAM DETAILS & CONTACT
                             </h2>
-                            
+
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-[#911b1e]/10">
                                 <div className="text-center mb-6">
                                     <div className="text-2xl text-[#911b1e] mb-2 font-raleway">
@@ -118,7 +118,7 @@ const SummerCampRegistration = () => {
                                         Daily sessions at 9AM for ages 4-17 years
                                     </p>
                                 </div>
-                                
+
                                 <div className="space-y-3 text-left mb-6">
                                     <div className="flex items-center gap-3">
                                         <Star className="w-5 h-5 text-[#911b1e]" />
@@ -152,10 +152,10 @@ const SummerCampRegistration = () => {
                                     </h3>
                                     <div className="space-y-2">
                                         <a href="tel:+2348065638497" className="block text-[#911b1e] hover:text-[#911b1e]/80 transition-colors font-raleway">
-                                             +234 8065 638 497
+                                            +234 8065 638 497
                                         </a>
                                         <a href="tel:+2348027766996" className="block text-[#911b1e] hover:text-[#911b1e]/80 transition-colors font-raleway">
-                                             +234 8027 766996
+                                            +234 8027 766996
                                         </a>
                                     </div>
                                 </div>

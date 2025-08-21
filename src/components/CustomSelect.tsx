@@ -13,6 +13,7 @@ const raleway = Raleway({
 interface Option {
     value: string;
     label: string;
+    disabled?: boolean;
 }
 
 interface CustomSelectProps {
@@ -23,9 +24,10 @@ interface CustomSelectProps {
     name: string;
     required?: boolean;
     error?: boolean;
+    disabled?: boolean;
 }
 
-const CustomSelect = ({ options, value, onChange, placeholder, name, required, error }: CustomSelectProps) => {
+const CustomSelect = ({ options, value, onChange, placeholder, name, required, error, disabled }: CustomSelectProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
@@ -45,12 +47,13 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, required, e
     return (
         <div ref={selectRef} className="relative">
             <motion.div
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setIsOpen(!isOpen)}
+                whileTap={disabled ? {} : { scale: 0.98 }}
+                onClick={() => !disabled && setIsOpen(!isOpen)}
                 className={`w-full px-4 py-3 border ${error ? 'border-red-500' : 'border-[#911b1e]/20'} rounded-lg 
-                          focus:border-[#911b1e] transition-colors cursor-pointer
+                          focus:border-[#911b1e] transition-colors
                           bg-white/50 backdrop-blur-sm hover:bg-white/70
-                          flex items-center justify-between ${raleway.className}`}
+                          flex items-center justify-between ${raleway.className}
+                          ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
             >
                 <span className={selectedOption ? 'text-[#911b1e]' : 'text-[#911b1e]/50'}>
                     {selectedOption ? selectedOption.label : placeholder}
@@ -80,11 +83,15 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, required, e
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.05 }}
                                 onClick={() => {
-                                    onChange(option.value);
-                                    setIsOpen(false);
+                                    if (!option.disabled) {
+                                        onChange(option.value);
+                                        setIsOpen(false);
+                                    }
                                 }}
-                                className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between
-                                          hover:bg-[#911b1e]/10 ${value === option.value ? 'bg-[#911b1e]/5' : ''}
+                                className={`px-4 py-3 transition-colors flex items-center justify-between
+                                          ${option.disabled
+                                        ? 'cursor-not-allowed opacity-50'
+                                        : `cursor-pointer hover:bg-[#911b1e]/10 ${value === option.value ? 'bg-[#911b1e]/5' : ''}`}
                                           ${raleway.className}`}
                             >
                                 <span className={`${value === option.value ? 'text-[#911b1e] font-medium' : 'text-[#911b1e]/80'}`}>

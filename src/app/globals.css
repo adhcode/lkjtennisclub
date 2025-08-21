@@ -6,6 +6,8 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --font-agrandir: 'Agrandir', sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
 }
 
 body {
@@ -37,6 +39,20 @@ html {
 /* Custom utilities */
 .font-light {
   font-weight: 300;
+}
+
+.font-agrandir {
+  font-family: 'Agrandir', sans-serif !important;
+}
+
+.font-agrandir-bold {
+  font-family: 'Agrandir', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.font-agrandir-heavy {
+  font-family: 'Agrandir', sans-serif !important;
+  font-weight: 900 !important;
 }
 
 /* Add these custom utilities after your existing styles */

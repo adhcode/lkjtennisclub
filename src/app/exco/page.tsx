@@ -1,19 +1,14 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const excoMembers = [
@@ -170,7 +165,7 @@ const ExcoPage = () => {
                             className="max-w-3xl mx-auto"
                         >
                             <h1 className={`text-[#911b1e] text-3xl sm:text-4xl md:text-6xl mb-4 md:mb-6 
-                                          tracking-wider ${brunoAce.className}`}>
+                                          tracking-wider ${raleway.className}`}>
                                 EXECUTIVE COMMITTEE
                             </h1>
                             <div className="flex items-center justify-center space-x-4 mb-4 md:mb-6">
@@ -284,7 +279,7 @@ const TeamMemberCard = ({
                             {member.nickname}
                         </span>
                     )}
-                    <h3 className={`text-white text-lg sm:text-xl leading-tight mb-1 ${brunoAce.className}`}>
+                    <h3 className={`text-white text-lg sm:text-xl leading-tight mb-1 ${raleway.className}`}>
                         {member.name}
                     </h3>
                     <p className={`text-white/80 text-xs sm:text-sm mb-4 ${raleway.className}`}>

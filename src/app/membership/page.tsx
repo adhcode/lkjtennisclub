@@ -1,21 +1,10 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Heart, Users, Calendar, UserCheck, MapPin, Phone, Mail } from 'lucide-react';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
-const raleway = Raleway({
-    subsets: ['latin'],
-    weight: ['300', '400', '500'],
-});
 
 const clubValues = [
     {
@@ -112,7 +101,7 @@ const MembershipPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}
-                                className={`text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider ${brunoAce.className}`}
+                                className="text-[#fcf7dc] text-4xl md:text-6xl mb-6 tracking-wider font-agrandir"
                             >
                                 MEMBERSHIP AT LKJ
                             </motion.h1>
@@ -121,7 +110,7 @@ const MembershipPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className={`text-[#fcf7dc]/90 text-xl mb-8 italic ${raleway.className}`}
+                                className="text-[#fcf7dc]/90 text-xl mb-8 italic font-raleway"
                             >
                                 Where Good People Gather
                             </motion.p>
@@ -130,7 +119,7 @@ const MembershipPage = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className={`text-[#fcf7dc]/80 text-lg max-w-3xl mx-auto leading-relaxed ${raleway.className}`}
+                                className="text-[#fcf7dc]/80 text-lg max-w-3xl mx-auto leading-relaxed font-raleway"
                             >
                                 There's a certain rhythm to life at LKJ. The sound of the ball, the pause between sets,
                                 the quiet nods of recognition. It's not just about tennis — it's about the people you meet along the way.
@@ -148,10 +137,10 @@ const MembershipPage = () => {
                             viewport={{ once: true }}
                             className="text-center mb-16"
                         >
-                            <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider ${brunoAce.className}`}>
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider font-agrandir">
                                 WHAT WE BELIEVE
                             </h2>
-                            <p className={`text-[#911b1e]/70 text-lg max-w-3xl mx-auto leading-relaxed ${raleway.className}`}>
+                            <p className="text-[#911b1e]/70 text-lg max-w-3xl mx-auto leading-relaxed font-raleway">
                                 LKJ Tennis Club was built on something deeper than sport. It was built on the idea that community
                                 is earned through presence, that excellence takes time, and that the best kind of competition
                                 is the one that brings people closer.
@@ -181,10 +170,10 @@ const MembershipPage = () => {
                                                 <value.icon className="w-6 h-6 text-[#911b1e]" />
                                             </motion.div>
                                             <div>
-                                                <h3 className={`text-[#911b1e] text-xl mb-3 ${brunoAce.className}`}>
+                                                <h3 className="text-[#911b1e] text-xl mb-3 font-agrandir">
                                                     {value.title}
                                                 </h3>
-                                                <p className={`text-[#911b1e]/70 leading-relaxed ${raleway.className}`}>
+                                                <p className="text-[#911b1e]/70 leading-relaxed font-raleway">
                                                     {value.description}
                                                 </p>
                                             </div>
@@ -205,10 +194,10 @@ const MembershipPage = () => {
                             viewport={{ once: true }}
                             className="text-center mb-16"
                         >
-                            <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider ${brunoAce.className}`}>
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider font-agrandir">
                                 THE JOURNEY TO MEMBERSHIP
                             </h2>
-                            <p className={`text-[#911b1e]/70 text-lg max-w-2xl mx-auto leading-relaxed ${raleway.className}`}>
+                            <p className="text-[#911b1e]/70 text-lg max-w-2xl mx-auto leading-relaxed font-raleway">
                                 Joining LKJ is a personal step. There's no rush, no pressure — only an open door
                                 and a warm welcome to those who align with the spirit we hold dear.
                             </p>
@@ -226,13 +215,15 @@ const MembershipPage = () => {
                                 >
                                     <div className="w-12 h-12 bg-[#911b1e] text-[#fcf7dc] rounded-full flex items-center justify-center 
                                                   flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                        <span className={`text-lg font-medium ${raleway.className}`}>{step.step}</span>
+                                        <span className="text-lg font-medium font-raleway">
+                                            {step.step}
+                                        </span>
                                     </div>
                                     <div className="pt-2">
-                                        <h3 className={`text-[#911b1e] text-xl mb-2 ${brunoAce.className}`}>
+                                        <h3 className="text-[#911b1e] text-xl mb-2 font-agrandir">
                                             {step.title}
                                         </h3>
-                                        <p className={`text-[#911b1e]/70 leading-relaxed ${raleway.className}`}>
+                                        <p className="text-[#911b1e]/70 leading-relaxed font-raleway">
                                             {step.description}
                                         </p>
                                     </div>
@@ -253,11 +244,11 @@ const MembershipPage = () => {
                         >
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 
                                           border border-[#911b1e]/10 shadow-lg">
-                                <h2 className={`text-[#911b1e] text-2xl md:text-3xl mb-6 ${brunoAce.className}`}>
+                                <h2 className="text-[#911b1e] text-2xl md:text-3xl mb-6 font-agrandir">
                                     READY TO BEGIN YOUR JOURNEY?
                                 </h2>
 
-                                <p className={`text-[#911b1e]/80 text-lg mb-8 leading-relaxed ${raleway.className}`}>
+                                <p className="text-[#911b1e]/80 text-lg mb-8 leading-relaxed font-raleway">
                                     We invite you to visit us, experience our community firsthand, and see if LKJ feels like home to you.
                                     Every great membership story begins with a simple conversation.
                                 </p>
@@ -266,10 +257,10 @@ const MembershipPage = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className={`inline-flex items-center gap-2 bg-[#911b1e] text-[#fcf7dc] 
+                                        className="inline-flex items-center gap-2 bg-[#911b1e] text-[#fcf7dc] 
                                                   px-8 py-4 rounded-lg font-medium text-base
                                                   hover:bg-[#911b1e]/90 transition-all duration-300 
-                                                  shadow-lg hover:shadow-xl ${raleway.className}`}
+                                                  shadow-lg hover:shadow-xl font-raleway"
                                     >
                                         Schedule a Visit
                                         <Heart className="w-4 h-4" />
@@ -278,9 +269,9 @@ const MembershipPage = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className={`inline-flex items-center gap-2 bg-transparent border-2 border-[#911b1e] 
+                                        className="inline-flex items-center gap-2 bg-transparent border-2 border-[#911b1e] 
                                                   text-[#911b1e] px-8 py-4 rounded-lg font-medium text-base
-                                                  hover:bg-[#911b1e] hover:text-[#fcf7dc] transition-all duration-300 ${raleway.className}`}
+                                                  hover:bg-[#911b1e] hover:text-[#fcf7dc] transition-all duration-300 font-raleway"
                                     >
                                         Call Us
                                         <Phone className="w-4 h-4" />
@@ -291,17 +282,17 @@ const MembershipPage = () => {
                                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-[#911b1e]/70">
                                     <div className="flex items-center gap-2">
                                         <MapPin className="w-4 h-4" />
-                                        <span className={`text-sm ${raleway.className}`}>LKJ Gardens, Igando</span>
+                                        <span className="text-sm font-raleway">LKJ Gardens, Igando</span>
                                     </div>
                                     <div className="hidden sm:block w-1 h-1 bg-[#911b1e]/40 rounded-full"></div>
                                     <div className="flex items-center gap-2">
                                         <Phone className="w-4 h-4" />
-                                        <span className={`text-sm ${raleway.className}`}>+234 806 123 0727</span>
+                                        <span className="text-sm font-raleway">+234 806 123 0727</span>
                                     </div>
                                     <div className="hidden sm:block w-1 h-1 bg-[#911b1e]/40 rounded-full"></div>
                                     <div className="flex items-center gap-2">
                                         <Mail className="w-4 h-4" />
-                                        <span className={`text-sm ${raleway.className}`}>hello@lkjtennisclub.com</span>
+                                        <span className="text-sm font-raleway">hello@lkjtennisclub.com</span>
                                     </div>
                                 </div>
                             </div>
@@ -318,7 +309,7 @@ const MembershipPage = () => {
                             viewport={{ once: true }}
                             className="text-center mb-16"
                         >
-                            <h2 className={`text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider ${brunoAce.className}`}>
+                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-6 tracking-wider font-agrandir">
                                 QUESTIONS & ANSWERS
                             </h2>
                         </motion.div>
@@ -334,10 +325,10 @@ const MembershipPage = () => {
                                     className="bg-white/50 backdrop-blur-sm rounded-xl p-6 border border-[#911b1e]/10 
                                              hover:bg-white/70 hover:border-[#911b1e]/20 transition-all duration-300"
                                 >
-                                    <h3 className={`text-[#911b1e] text-lg mb-3 ${brunoAce.className}`}>
+                                    <h3 className="text-[#911b1e] text-lg mb-3 font-agrandir">
                                         {faq.question}
                                     </h3>
-                                    <p className={`text-[#911b1e]/70 leading-relaxed ${raleway.className}`}>
+                                    <p className="text-[#911b1e]/70 leading-relaxed font-raleway">
                                         {faq.answer}
                                     </p>
                                 </motion.div>

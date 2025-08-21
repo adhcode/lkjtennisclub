@@ -44,7 +44,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
                     >
-                        <h1 className="font-bruno text-[#fcf7dc] text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 tracking-wider drop-shadow-sm">
+                        <h1 className="font-agrandir text-[#fcf7dc] text-3xl sm:text-5xl md:text-7xl mb-4 sm:mb-6 tracking-wider drop-shadow-sm">
                             LKJ TENNIS CLUB
                         </h1>
                     </motion.div>

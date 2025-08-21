@@ -1,18 +1,13 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
-import Image from 'next/image';
+import { Raleway } from 'next/font/google';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
+import Image from 'next/image';
 
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const AboutUs = () => {
@@ -42,7 +37,7 @@ const AboutUs = () => {
                                 transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className={`text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-medium ${brunoAce.className}`}>
+                                <h2 className="text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-medium font-agrandir">
                                     ABOUT US
                                 </h2>
                             </motion.div>
@@ -59,7 +54,7 @@ const AboutUs = () => {
                                     At LKJ Tennis Club, we believe tennis is more than a sport, it&apos;s a lifestyle. Founded with the vision of making the game accessible and enjoyable for everyone, our club brings together people of all skill levels to learn, grow, and compete.
                                 </motion.p>
 
-                               
+
                                 <motion.p
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +66,7 @@ const AboutUs = () => {
                                     we create the perfect environment for both competitive players and those who just want to enjoy the game.
                                 </motion.p>
 
-                                
+
                             </div>
                         </div>
 

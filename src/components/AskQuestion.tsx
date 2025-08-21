@@ -21,7 +21,7 @@ const AskQuestion = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="font-bruno text-[#911b1e] text-4xl md:text-5xl mb-4">
+                    <h2 className="font-agrandir text-[#911b1e] text-4xl md:text-5xl mb-4">
                         GOT A QUESTION?
                     </h2>
                     <p className="font-raleway text-[#911b1e]/70 text-lg">

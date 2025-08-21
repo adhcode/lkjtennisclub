@@ -1,18 +1,13 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
 
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const images = [
@@ -66,7 +61,7 @@ const Gallery = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className={`text-[#fcf7dc] text-3xl md:text-4xl mb-16 tracking-wider font-medium ${brunoAce.className}`}
+                    className="text-[#fcf7dc] text-3xl md:text-4xl mb-16 tracking-wider font-medium font-agrandir"
                 >
                     OUR GALLERY
                 </motion.h2>

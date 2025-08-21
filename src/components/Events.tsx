@@ -1,21 +1,25 @@
 'use client';
 
-import { Bruno_Ace_SC, Raleway } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const brunoAce = Bruno_Ace_SC({
-    weight: '400',
-    subsets: ['latin'],
-});
-
 const raleway = Raleway({
     subsets: ['latin'],
-    weight: ['400'],
+    weight: ['300', '400', '500', '600'],
 });
 
 const events = [
+    {
+        title: "DS Energy Tennis Tournament",
+        date: "September 6-20, 2025",
+        description: "Join us for the DS Energy Tennis Tournament! This exciting 3-weekend event kicks off September 6th with the grand finale on September 20th. Three categories available: Men (16 spots), Women (2 spots), and Kids (6 spots). Register early to secure your spot now!",
+        image: "/ds.png",
+        status: "upcoming",
+        link: "/events/ds-energy-tournament",
+        featured: true
+    },
     {
         title: "Alimosho Summer Tennis Clinic & Tournament",
         date: "August 4-23, 2025",
@@ -90,7 +94,7 @@ const Events = () => {
                     >
                         Club Events
                     </motion.span>
-                    <h2 className={`text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider ${brunoAce.className}`}>
+                    <h2 className="text-[#911b1e] text-2xl sm:text-3xl md:text-4xl tracking-wider font-agrandir">
                         UPCOMING & PAST EVENTS
                     </h2>
                 </motion.div>
@@ -122,7 +126,7 @@ const Events = () => {
                                                     rounded-full text-xs mb-3 ${raleway.className}`}>
                                         {event.title.includes("Prof. Tayo") ? "Club Pride" : "Featured Event"}
                                     </span>
-                                    <h3 className={`text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3 ${brunoAce.className}`}>
+                                    <h3 className="text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3 font-agrandir">
                                         {event.title}
                                     </h3>
                                     <p className={`text-[#fcf7dc]/80 text-sm sm:text-base mb-3 sm:mb-4 ${raleway.className}`}>
@@ -172,7 +176,7 @@ const Events = () => {
                                     />
                                 </div>
                                 <div className="p-4 sm:p-6">
-                                    <h3 className={`text-[#911b1e] text-lg sm:text-xl md:text-2xl mb-2 ${brunoAce.className}`}>
+                                    <h3 className="text-[#911b1e] text-lg sm:text-xl md:text-2xl mb-2 font-agrandir">
                                         {event.title}
                                     </h3>
                                     <p className={`text-[#911b1e]/70 text-xs sm:text-sm mb-2 ${raleway.className}`}>
