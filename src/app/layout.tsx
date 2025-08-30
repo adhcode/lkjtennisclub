@@ -32,7 +32,7 @@ const raleway = Raleway({
 
 export const metadata = {
   title: "LKJ Tennis Club",
-  description: "Welcome to LKJ Tennis Club - Your premier tennis destination",
+  description: "Tennis, community, and everything in between ",
 };
 
 export default function RootLayout({
