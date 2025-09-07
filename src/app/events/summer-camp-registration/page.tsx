@@ -4,12 +4,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Calendar, Clock, MapPin, Users, Star } from 'lucide-react';
-import RegistrationForm from '@/components/RegistrationForm';
+import { Calendar, MapPin, Users, Trophy, Heart, Instagram, Facebook, Twitter } from 'lucide-react';
 
-
-
-const SummerCampRegistration = () => {
+const SummerCampResults = () => {
     return (
         <>
             <Navbar />
@@ -18,7 +15,7 @@ const SummerCampRegistration = () => {
                 <section className="relative min-h-[60vh] flex items-center">
                     <Image
                         src="/summerprogram.jpg"
-                        alt="Alimosho Summer Tennis Program"
+                        alt="Alimosho Summer Tennis Program - Completed"
                         fill
                         className="object-cover filter brightness-[0.7] contrast-[1.1]"
                     />
@@ -34,18 +31,17 @@ const SummerCampRegistration = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.2 }}
-                                className="inline-block px-4 py-1 bg-[#fcf7dc] text-[#911b1e] rounded-full text-sm mb-6 font-raleway"
+                                className="inline-block px-4 py-1 bg-[#fcf7dc] text-[#911b1e] rounded-full text-sm mb-6 font-raleway font-medium"
                             >
-                                🎾 Summer 2025
+                                Program Completed Successfully
                             </motion.span>
 
                             <h1 className="text-[#fcf7dc] text-4xl md:text-6xl mb-6 font-agrandir">
                                 ALIMOSHO SUMMER TENNIS CLINIC & TOURNAMENT
                             </h1>
 
-                            <p className="text-[#fcf7dc]/90 text-lg mb-8 max-w-2xl mx-auto font-raleway">
-                                Join our comprehensive 2-week summer program featuring tennis clinic, tournament,
-                                plus self-defense, basketball, and badminton activities for ages 4-17.
+                            <p className="text-[#fcf7dc]/90 text-xl mb-8 max-w-2xl mx-auto font-raleway italic">
+                                A Celebration of Young Champions & Community Spirit
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-6 text-[#fcf7dc]/80">
@@ -54,12 +50,12 @@ const SummerCampRegistration = () => {
                                     <span className="font-raleway">August 4-23, 2025</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Clock className="w-5 h-5" />
-                                    <span className="font-raleway">9:00 AM Daily</span>
+                                    <Users className="w-5 h-5" />
+                                    <span className="font-raleway">50+ Participants</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Users className="w-5 h-5" />
-                                    <span className="font-raleway">Ages 4-17</span>
+                                    <Trophy className="w-5 h-5" />
+                                    <span className="font-raleway">Champions Crowned</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <MapPin className="w-5 h-5" />
@@ -71,94 +67,133 @@ const SummerCampRegistration = () => {
                 </section>
 
 
-
-                {/* Registration Form Section */}
-                <section className="py-16 bg-white/30">
+                {/* Program Success Section */}
+                <section className="py-20">
                     <div className="container mx-auto px-4 md:px-6">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-center mb-12"
+                            className="max-w-4xl mx-auto"
                         >
-                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-4 font-agrandir">
-                                REGISTER YOUR CHILD TODAY
-                            </h2>
-                            <p className="text-[#911b1e]/70 text-lg max-w-2xl mx-auto font-raleway">
-                                Secure your child's spot in our exciting summer tennis camp.
-                                Limited spaces available - register now!
-                            </p>
-                        </motion.div>
-
-                        <div className="max-w-4xl mx-auto">
-                            <RegistrationForm />
-                        </div>
-                    </div>
-                </section>
-
-                {/* Contact & Pricing Section */}
-                <section className="py-16">
-                    <div className="container mx-auto px-4 md:px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="max-w-2xl mx-auto text-center"
-                        >
-                            <h2 className="text-[#911b1e] text-3xl md:text-4xl mb-8 font-agrandir">
-                                PROGRAM DETAILS & CONTACT
-                            </h2>
-
-                            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-[#911b1e]/10">
-                                <div className="text-center mb-6">
-                                    <div className="text-2xl text-[#911b1e] mb-2 font-raleway">
-                                        2 WEEKS PROGRAM
-                                    </div>
-                                    <p className="text-[#911b1e]/70 font-raleway">
-                                        Daily sessions at 9AM for ages 4-17 years
+                            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 md:p-12 
+                                          border border-[#911b1e]/10 shadow-lg mb-12">
+                                <h2 className="text-[#911b1e] text-2xl md:text-3xl mb-6 font-agrandir text-center">
+                                    A SUMMER TO REMEMBER
+                                </h2>
+                                
+                                <div className="space-y-6 text-[#911b1e]/80 font-raleway leading-relaxed">
+                                    <p className="text-lg">
+                                        What an incredible journey it has been! Our Alimosho Summer Tennis Clinic & Tournament 
+                                        concluded with overwhelming success, bringing together over <strong>50 enthusiastic young athletes</strong> 
+                                         who showcased remarkable talent, determination, and sportsmanship throughout the program.
+                                    </p>
+                                    
+                                    <p>
+                                        For two transformative weeks, our court buzzed with energy as children aged 4-17 immersed 
+                                        themselves in comprehensive tennis training, self-defense sessions, basketball drills, and 
+                                        badminton activities. The daily 9 AM sessions became a beacon of joy and learning, fostering 
+                                        not just athletic skills but lifelong friendships and invaluable life lessons.
+                                    </p>
+                                    
+                                    <p>
+                                        The program culminated in an exhilarating tournament that celebrated the growth and achievements 
+                                        of every participant. 
                                     </p>
                                 </div>
+                            </div>
 
-                                <div className="space-y-3 text-left mb-6">
-                                    <div className="flex items-center gap-3">
-                                        <Star className="w-5 h-5 text-[#911b1e]" />
-                                        <span className="text-[#911b1e]/80 font-raleway">
-                                            Tennis clinic and tournament
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="w-5 h-5 text-[#911b1e]" />
-                                        <span className="text-[#911b1e]/80 font-raleway">
-                                            Self defense training (2 hrs for 3 days)
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="w-5 h-5 text-[#911b1e]" />
-                                        <span className="text-[#911b1e]/80 font-raleway">
-                                            Basketball and badminton activities
-                                        </span>
-                                    </div>
-                                    <div className="flex items-center gap-3">
-                                        <Star className="w-5 h-5 text-[#911b1e]" />
-                                        <span className="text-[#911b1e]/80 font-raleway">
-                                            Professional coaching and supervision
-                                        </span>
-                                    </div>
-                                </div>
+                            
 
-                                <div className="border-t border-[#911b1e]/10 pt-6">
-                                    <h3 className="text-[#911b1e] text-lg mb-4 font-raleway">
-                                        FOR MORE ENQUIRIES
-                                    </h3>
-                                    <div className="space-y-2">
-                                        <a href="tel:+2348065638497" className="block text-[#911b1e] hover:text-[#911b1e]/80 transition-colors font-raleway">
-                                            +234 8065 638 497
-                                        </a>
-                                        <a href="tel:+2348027766996" className="block text-[#911b1e] hover:text-[#911b1e]/80 transition-colors font-raleway">
-                                            +234 8027 766996
-                                        </a>
+                            {/* Community Impact */}
+                            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#911b1e]/10 mb-12">
+                                <h3 className="text-[#911b1e] text-2xl md:text-3xl mb-6 font-agrandir text-center">
+                                    BUILDING CHAMPIONS, NURTURING DREAMS
+                                </h3>
+                                
+                                <div className="space-y-6 text-[#911b1e]/80 font-raleway leading-relaxed">
+                                    <p>
+                                        At LKJ Tennis Club, we believe that every child carries within them the potential for greatness. 
+                                        This summer program was more than just tennis lessons, it was a community-driven initiative 
+                                        designed to inspire, educate, and empower the next generation of champions.
+                                    </p>
+                                    
+                                    <p>
+                                        Witnessing the transformation of these young athletes over two weeks has been nothing short of 
+                                        extraordinary. From tentative first swings to confident rallies, from shy introductions to 
+                                        lasting friendships, each child's journey has been a testament to the power of dedicated 
+                                        coaching, supportive community, and unwavering determination.
+                                    </p>
+                                    
+                                    <div className="bg-[#911b1e]/5 rounded-lg p-6 my-8">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <Heart className="w-6 h-6 text-[#911b1e]" />
+                                            <h4 className="text-[#911b1e] text-lg font-agrandir">Our Commitment</h4>
+                                        </div>
+                                        <p className="text-[#911b1e]/80">
+                                            We are deeply committed to continuing this legacy of excellence. Our mission extends beyond 
+                                            teaching tennis techniques, we are dedicated to breeding champions in character, resilience, 
+                                            and sportsmanship. Every program we organize is a step toward building a stronger, more 
+                                            vibrant tennis community that celebrates both individual achievement and collective growth.
+                                        </p>
                                     </div>
+                                    
+                                    <p>
+                                        As we look toward the future, we remain steadfast in our commitment to providing exceptional 
+                                        opportunities for young athletes. The success of this summer program reinforces our belief 
+                                        that with the right environment, guidance, and community support, every child can achieve 
+                                        remarkable things both on and off the court.
+                                    </p>
                                 </div>
+                            </div>
+
+                            {/* Social Media Section */}
+                            <div className="bg-gradient-to-r from-[#911b1e] to-[#911b1e]/90 rounded-2xl p-8 md:p-12 text-center">
+                                <h3 className="text-[#fcf7dc] text-2xl md:text-3xl mb-6 font-agrandir">
+                                    RELIVE THE MEMORIES
+                                </h3>
+                                
+                                <p className="text-[#fcf7dc]/90 text-lg mb-8 font-raleway leading-relaxed">
+                                    Don't miss the amazing photos, videos, and highlights from our summer program! 
+                                    Follow us on social media to see all the incredible moments, champion celebrations, 
+                                    and behind-the-scenes content from this unforgettable summer.
+                                </p>
+                                
+                                <div className="flex justify-center gap-6 mb-8">
+                                    <motion.a
+                                        href="#"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-12 h-12 bg-[#fcf7dc] rounded-full flex items-center justify-center
+                                                 hover:bg-[#fcf7dc]/90 transition-colors duration-300"
+                                    >
+                                        <Instagram className="w-6 h-6 text-[#911b1e]" />
+                                    </motion.a>
+                                    
+                                    <motion.a
+                                        href="#"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-12 h-12 bg-[#fcf7dc] rounded-full flex items-center justify-center
+                                                 hover:bg-[#fcf7dc]/90 transition-colors duration-300"
+                                    >
+                                        <Facebook className="w-6 h-6 text-[#911b1e]" />
+                                    </motion.a>
+                                    
+                                    <motion.a
+                                        href="#"
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="w-12 h-12 bg-[#fcf7dc] rounded-full flex items-center justify-center
+                                                 hover:bg-[#fcf7dc]/90 transition-colors duration-300"
+                                    >
+                                        <Twitter className="w-6 h-6 text-[#911b1e]" />
+                                    </motion.a>
+                                </div>
+                                
+                                <p className="text-[#fcf7dc]/80 text-sm font-raleway">
+                                    @LKJTennisClub • #AlimoshoSummerTennis • #LKJChampions
+                                </p>
                             </div>
                         </motion.div>
                     </div>
@@ -169,4 +204,4 @@ const SummerCampRegistration = () => {
     );
 };
 
-export default SummerCampRegistration;
+export default SummerCampResults;

@@ -254,28 +254,30 @@ const MembershipPage = () => {
                                 </p>
 
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                                    <motion.button
+                                    <motion.a
+                                        href="mailto:hello@lkjtennisclub.com?subject=Schedule a Visit - LKJ Tennis Club&body=Hello, I would like to schedule a visit to LKJ Tennis Club. Please let me know available times. Thank you!"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         className="inline-flex items-center gap-2 bg-[#911b1e] text-[#fcf7dc] 
                                                   px-8 py-4 rounded-lg font-medium text-base
                                                   hover:bg-[#911b1e]/90 transition-all duration-300 
-                                                  shadow-lg hover:shadow-xl font-raleway"
+                                                  shadow-lg hover:shadow-xl font-raleway cursor-pointer"
                                     >
                                         Schedule a Visit
                                         <Heart className="w-4 h-4" />
-                                    </motion.button>
+                                    </motion.a>
 
-                                    <motion.button
+                                    <motion.a
+                                        href="tel:+2348061230727"
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         className="inline-flex items-center gap-2 bg-transparent border-2 border-[#911b1e] 
                                                   text-[#911b1e] px-8 py-4 rounded-lg font-medium text-base
-                                                  hover:bg-[#911b1e] hover:text-[#fcf7dc] transition-all duration-300 font-raleway"
+                                                  hover:bg-[#911b1e] hover:text-[#fcf7dc] transition-all duration-300 font-raleway cursor-pointer"
                                     >
                                         Call Us
                                         <Phone className="w-4 h-4" />
-                                    </motion.button>
+                                    </motion.a>
                                 </div>
 
                                 {/* Contact Information */}

@@ -18,7 +18,7 @@ const UpcomingEventBanner = () => {
                     <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
                         <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden flex-shrink-0">
                             <Image
-                                src="/ds.png"
+                                src="/dsenergy2.jpg"
                                 alt="DS Energy Tennis Tournament"
                                 fill
                                 className="object-cover"
@@ -32,9 +32,9 @@ const UpcomingEventBanner = () => {
                             <div className={`flex items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-[#911b1e]/70 ${raleway.className} flex-wrap`}>
                                 <span className="whitespace-nowrap">Sep 6-20, 2025</span>
                                 <span className="hidden sm:inline">•</span>
-                                <span className="whitespace-nowrap">3 Weekends</span>
+                                <span className="whitespace-nowrap">Ongoing</span>
                                 <span className="hidden sm:inline">•</span>
-
+                                <span className="whitespace-nowrap">3 Weekends</span>
                             </div>
                         </div>
                     </div>
@@ -47,8 +47,8 @@ const UpcomingEventBanner = () => {
                                   hover:bg-[#911b1e]/90 transition-all duration-300 
                                   hover:shadow-md flex-shrink-0 ${raleway.className}`}
                     >
-                        <span className="hidden sm:inline">Register Now</span>
-                        <span className="sm:hidden">Register</span>
+                        <span className="hidden sm:inline">View Tournament</span>
+                        <span className="sm:hidden">View</span>
                         <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>

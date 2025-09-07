@@ -16,29 +16,18 @@ const raleway = Raleway({
 const upcomingEvents = [
     {
         title: "DS Energy Tennis Tournament",
-        type: "Tournament",
+        type: "Tournament - Ongoing",
         date: "September 6-20, 2025",
         time: "Weekends Only",
         location: "LKJ Tennis Club",
-        description: "Join us for the prestigious DS Energy Tennis Tournament! This exciting 3-weekend event kicks off September 6th with the grand finale on September 20th. Three categories available: Men (16 spots), Women (2 spots), and Kids (6 spots). Limited registration - secure your spot now!",
+        description: "The prestigious DS Energy Tennis Tournament is currently underway! This exciting 3-weekend event features three categories: Men, Women, and Kids. Follow the action and cheer on our participants as they compete for the championship!",
         image: "/DSC_1852.jpg",
         registrationLink: "/events/ds-energy-tournament",
-        price: "Free Registration",
+        price: "Tournament in Progress",
         ageRange: "All Ages",
         spotlight: true,
-        sponsor: "DS Energy"
-    },
-    {
-        title: "Alimosho Summer Tennis Clinic & Tournament",
-        type: "Summer Program",
-        date: "August 4-23, 2025",
-        time: "9:00 AM Daily",
-        location: "LKJ Gardens Tennis Court, Igando",
-        description: "Join our comprehensive 2-week summer program featuring tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Professional coaching and exciting competitions await!",
-        image: "/summerprogram.jpg",
-        registrationLink: "/events/summer-camp-registration",
-        price: "Contact for pricing",
-        ageRange: "Ages 4-17"
+        sponsor: "DS Energy",
+        status: "ongoing"
     },
     {
         title: "LKJ Tennis Club vs OTA Tennis Club",
@@ -52,6 +41,16 @@ const upcomingEvents = [
 ];
 
 const pastEvents = [
+    {
+        title: "Alimosho Summer Tennis Clinic & Tournament",
+        date: "August 2025",
+        description: "Our comprehensive 2-week summer program concluded successfully! The program featured tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Thank you to all participants who made it a memorable experience.",
+        image: "/summerprogram.jpg",
+        highlight: "Successful completion with 50+ young participants",
+        gallery: [
+            "/summerprogram.jpg"
+        ]
+    },
     {
         title: "Celebrating Prof. Tayo Ajayi's 109th Inaugural Lecture",
         date: "July 2025",
@@ -240,7 +239,7 @@ const EventsPage = () => {
                                                               hover:bg-[#911b1e]/90 transition-colors duration-300
                                                               w-fit ${raleway.className}`}
                                                 >
-                                                    Register Now
+                                                    {event.status === "ongoing" ? "View Tournament" : "Register Now"}
                                                     <ArrowRight className="w-4 h-4" />
                                                 </motion.a>
                                             )}

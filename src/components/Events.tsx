@@ -14,18 +14,18 @@ const events = [
     {
         title: "DS Energy Tennis Tournament",
         date: "September 6-20, 2025",
-        description: "Join us for the DS Energy Tennis Tournament! This exciting 3-weekend event kicks off September 6th with the grand finale on September 20th. Three categories available: Men (16 spots), Women (2 spots), and Kids (6 spots). Register early to secure your spot now!",
-        image: "/ds.png",
-        status: "upcoming",
+        description: "The DS Energy Tennis Tournament is currently underway! This exciting 3-weekend event features three categories: Men, Women, and Kids. Follow the action and cheer on our participants as they compete for the championship!",
+        image: "/dsenergy2.jpg",
+        status: "ongoing",
         link: "/events/ds-energy-tournament",
         featured: true
     },
     {
         title: "Alimosho Summer Tennis Clinic & Tournament",
         date: "August 4-23, 2025",
-        description: "Join our comprehensive 2-week summer program featuring tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Daily sessions at 9AM for ages 4-17 years.",
+        description: "Our comprehensive 2-week summer program has concluded successfully! The program featured tennis clinic, tournament, plus self-defense, basketball, and badminton activities. Thank you to all participants who made it a memorable experience.",
         image: "/summerprogram.jpg",
-        status: "upcoming",
+        status: "completed",
         link: "/events/summer-camp-registration",
         featured: true
     },
@@ -101,7 +101,7 @@ const Events = () => {
 
                 <div className="relative max-w-6xl mx-auto">
                     {/* Featured Events */}
-                    {events.filter(event => event.status === 'upcoming' && event.featured).map((event, index) => (
+                    {events.filter(event => event.featured).map((event, index) => (
                         <motion.div
                             key={event.title}
                             initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,9 @@ const Events = () => {
                                 <div className="p-4 sm:p-6 md:p-8">
                                     <span className={`inline-block px-3 py-1 bg-[#fcf7dc] text-[#911b1e] 
                                                     rounded-full text-xs mb-3 ${raleway.className}`}>
-                                        {event.title.includes("Prof. Tayo") ? "Club Pride" : "Featured Event"}
+                                        {event.title.includes("Prof. Tayo") ? "Club Pride" : 
+                                         event.status === "ongoing" ? "Tournament Ongoing" :
+                                         event.status === "completed" ? "Event Completed" : "Featured Event"}
                                     </span>
                                     <h3 className="text-[#fcf7dc] text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3 font-agrandir">
                                         {event.title}
@@ -142,7 +144,9 @@ const Events = () => {
                                                       text-sm sm:text-base transition-all duration-300 
                                                       hover:bg-[#fcf7dc]/90 ${raleway.className}`}
                                         >
-                                            {event.title.includes("Prof. Tayo") ? "View Details" : "Register Now"}
+                                            {event.title.includes("Prof. Tayo") ? "View Details" : 
+                                             event.status === "ongoing" ? "View Tournament" :
+                                             event.status === "completed" ? "View Results" : "Register Now"}
                                         </Link>
                                     ) : (
                                         <button className={`bg-[#fcf7dc] text-[#911b1e] px-4 sm:px-6 py-2 sm:py-3 
@@ -158,7 +162,7 @@ const Events = () => {
 
                     {/* Other Events Grid */}
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                        {events.filter(event => event.status === 'past' || (event.status === 'upcoming' && !event.featured)).map((event, index) => (
+                        {events.filter(event => !event.featured).map((event, index) => (
                             <motion.div
                                 key={event.title}
                                 initial={{ opacity: 0, y: 20 }}
