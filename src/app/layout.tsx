@@ -1,5 +1,6 @@
 import { Inter, Raleway } from "next/font/google";
 import localFont from 'next/font/local';
+import Providers from '@/components/Providers';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -43,7 +44,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${agrandir.variable} ${raleway.variable}`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

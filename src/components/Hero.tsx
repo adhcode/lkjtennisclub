@@ -84,13 +84,13 @@ const HeroSection = () => {
                         </Link>
 
                         <Link
-                            href="/membership"
+                            href="/shop"
                             className="group relative overflow-hidden"
                         >
                             <div className="relative z-10 bg-[#911b1e] px-8 py-4 text-[#fcf7dc]
                                         font-raleway text-sm md:text-base transition-all duration-300"
                             >
-                                Join Us
+                                Shop Now
                             </div>
                             <motion.div
                                 initial={{ x: "100%" }}

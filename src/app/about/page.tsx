@@ -35,6 +35,81 @@ const facilities = [
     }
 ];
 
+const excoMembers = [
+    {
+        name: "Rafiu Olusegun",
+        position: "President",
+        image: "/exco/president.jpg",
+        nickname: "Peruzzi"
+    },
+    {
+        name: "Dr. Rukayat Ajibola-bakare",
+        position: "Vice President",
+        image: "/exco/vice-president.jpg",
+    },
+    {
+        name: "Olorode Dhikrullah Adekunle",
+        position: "Secretary",
+        image: "/exco/secretary.jpg",
+        nickname: "ADH"
+    },
+    {
+        name: "Adegoke Karima",
+        position: "Assistant Secretary",
+        image: "",
+    },
+    {
+        name: "Adeyemi Shakiru",
+        position: "Treasurer",
+        image: "/exco/treasurer.jpg",
+        nickname: "Big Shark"
+    },
+    {
+        name: "Erhimedafe Romanus",
+        position: "Welfare Officer",
+        image: "/exco/welfare.jpg",
+        nickname: "Daddy K"
+    },
+    {
+        name: "Mrs Oyebolanle Akintola",
+        position: "Assistant Welfare Officer",
+        image: "/exco/asst-welfare.jpg",
+    },
+    {
+        name: "Olatunji Olajuwon",
+        position: "Provost",
+        image: "/exco/provost.jpg",
+        nickname: "Yolo"
+    },
+    {
+        name: "Lawal Musa",
+        position: "PRO",
+        image: "/exco/pro.jpg",
+        nickname: "Harbidex"
+    },
+    {
+        name: "Oyawoye Oluwatobi",
+        position: "Media",
+        image: "/exco/media.jpg",
+    },
+    {
+        name: "Sam Omonile",
+        position: "S Officio",
+        image: "",
+    },
+    {
+        name: "Mrs Winnifred",
+        position: "Patron",
+        image: "",
+    },
+    {
+        name: "Patrick Oche",
+        position: "Head Coach",
+        image: "",
+        nickname: "Coachee"
+    }
+];
+
 const AboutPage = () => {
     return (
         <>
@@ -169,6 +244,65 @@ const AboutPage = () => {
                                             ))}
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            {/* Executive Committee Section */}
+                            <div className="space-y-8 pt-12">
+                                <div className="text-center space-y-4">
+                                    <h3 className={`text-[#911b1e] text-2xl md:text-3xl tracking-wider ${brunoAce.className}`}>
+                                        Our Executive Committee
+                                    </h3>
+                                    <p className={`text-[#911b1e]/70 text-lg max-w-2xl mx-auto ${raleway.className}`}>
+                                        Meet the dedicated team steering our club towards excellence
+                                    </p>
+                                </div>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
+                                    {excoMembers.map((member, index) => (
+                                        <motion.div
+                                            key={member.name}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.05 }}
+                                            className="group relative h-[280px] overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all"
+                                        >
+                                            {/* Image or Placeholder */}
+                                            <div className="relative h-full bg-[#911b1e]/5">
+                                                {member.image ? (
+                                                    <Image
+                                                        src={member.image}
+                                                        alt={member.name}
+                                                        fill
+                                                        className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                                                    />
+                                                ) : (
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <div className="w-24 h-24 rounded-full bg-[#911b1e]/10 flex items-center justify-center">
+                                                            <div className="w-16 h-16 rounded-full bg-[#911b1e]/20" />
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+                                                          flex flex-col justify-end p-5">
+                                                {member.nickname && (
+                                                    <span className="inline-block w-fit bg-white/10 backdrop-blur-sm text-white/90 
+                                                                   text-xs px-3 py-1 rounded-full mb-2 border border-white/10">
+                                                        {member.nickname}
+                                                    </span>
+                                                )}
+                                                <h4 className={`text-white text-lg font-medium mb-1 ${raleway.className}`}>
+                                                    {member.name}
+                                                </h4>
+                                                <p className={`text-white/80 text-sm ${raleway.className}`}>
+                                                    {member.position}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    ))}
                                 </div>
                             </div>
                         </motion.div>

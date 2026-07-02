@@ -4,6 +4,7 @@ import UpcomingEventBanner from '@/components/UpcomingEventBanner';
 import AboutUs from '@/components/AboutUs';
 import Gallery from '@/components/Gallery';
 import Events from '@/components/Events';
+import ShopPreview from '@/components/ShopPreview';
 import JoinUs from '@/components/JoinUs';
 import Blog from '@/components/Blog';
 import Footer from '@/components/Footer';
@@ -18,7 +19,7 @@ export default function Home() {
       <AboutUs />
       <Gallery />
       <Events />
-      <JoinUs />
+      
       <Blog />
       <AskQuestion />
       <Footer />

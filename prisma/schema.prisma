@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Registration {
@@ -59,16 +60,16 @@ model Member {
   gender          String?
   
   // Membership Information
-  membershipId    String   @unique // This will be encoded in QR code
-  membershipType  String   @default("regular") // regular, premium, student, family
-  membershipStatus String  @default("active") // active, inactive, suspended
+  membershipId    String   @unique
+  membershipType  String   @default("regular")
+  membershipStatus String  @default("active")
   joinDate        DateTime @default(now())
   expiryDate      DateTime?
   joinedYear      Int?
   
   // Tennis Information
-  skillLevel      String?  // beginner, intermediate, advanced, professional
-  playingHand     String?  // right, left, both
+  skillLevel      String?
+  playingHand     String?
   
   // Contact Information
   address         String?
@@ -80,9 +81,84 @@ model Member {
   profileImage    String?
   
   // QR Code
-  qrCodeUrl       String?  // URL to generated QR code image
+  qrCodeUrl       String?
+  
+  // Auth relation
+  userId          String?  @unique
+  user            User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   @@map("members")
+}
+
+// NextAuth.js Models
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          String    @default("member")
+  
+  // Contact Information
+  phone         String?
+  
+  // Shipping Address
+  address       String?
+  city          String?
+  state         String?
+  postalCode    String?
+  country       String?   @default("Nigeria")
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  accounts      Account[]
+  sessions      Session[]
+  member        Member?
+  orders        Order[]
+  
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  
+  @@unique([identifier, token])
+  @@map("verification_tokens")
 }
 
 model TournamentRegistration {
@@ -115,4 +191,206 @@ model TournamentRegistration {
   paymentStatus     String   @default("pending") // pending, paid, refunded
   
   @@map("tournament_registrations")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  icon        String?  // Icon name or emoji
+  order       Int      @default(0) // For sorting
+  active      Boolean  @default(true)
+  
+  products    Product[]
+  
+  @@map("categories")
+}
+
+model Brand {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  logo        String?  // Logo URL
+  website     String?
+  active      Boolean  @default(true)
+  
+  products    Product[]
+  
+  @@map("brands")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  name        String
+  slug        String   @unique
+  description String
+  price       Float
+  
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  
+  brandId     String?
+  brand       Brand?    @relation(fields: [brandId], references: [id])
+  
+  images      String[] // Array of image URLs
+  stock       Int      @default(0)
+  featured    Boolean  @default(false)
+  sizes       String[] // For apparel/shoes
+  colors      String[] // Available colors
+  
+  status      String   @default("active") // active, inactive, out_of_stock
+  
+  orderItems  OrderItem[]
+  
+  @@map("products")
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // User relation (optional - for registered users)
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id])
+  
+  // Customer Information
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  
+  // Shipping Information
+  shippingAddress String
+  shippingCity    String
+  shippingState   String
+  
+  // Order Details
+  orderNumber     String   @unique
+  subtotal        Float
+  tax             Float    @default(0)
+  shipping        Float    @default(0)
+  total           Float
+  
+  // Status
+  status          String   @default("pending") // pending, processing, shipped, delivered, cancelled
+  paymentStatus   String   @default("pending") // pending, paid, failed, refunded
+  paymentMethod   String?  // card, transfer, cash
+  paymentReference String? // Paystack payment reference
+  
+  // Notes
+  notes           String?
+  
+  orderItems      OrderItem[]
+  
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  
+  quantity   Int
+  price      Float    // Price at time of purchase
+  size       String?
+  color      String?
+  
+  @@map("order_items")
+}
+
+model ProductRequest {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  productName     String
+  description     String?
+  customerName    String
+  customerEmail   String
+  customerPhone   String?
+  
+  status          String   @default("pending") // pending, approved, rejected
+  
+  @@map("product_requests")
+}
+
+model Event {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  title           String
+  slug            String   @unique
+  description     String?
+  content         String?  // Rich text content for event details
+  
+  // Event details
+  startDate       DateTime
+  endDate         DateTime?
+  location        String?
+  price           Float?   // 0 for free events
+  maxParticipants Int?
+  
+  // Images
+  featuredImage   String?
+  images          String[] // Array of image URLs
+  
+  // Status
+  status          String   @default("draft") // draft, published, cancelled
+  featured        Boolean  @default(false)
+  showInHeroBanner Boolean @default(false) // Show in homepage hero banner
+  
+  // Registration
+  requiresRegistration Boolean @default(false)
+  registrationDeadline DateTime?
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  // Relations
+  registrations   EventRegistration[]
+  
+  @@map("events")
+}
+
+model EventRegistration {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Event relation
+  eventId         String
+  event           Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  
+  // Participant details
+  name            String
+  email           String
+  phone           String?
+  
+  // Registration details
+  status          String   @default("confirmed") // confirmed, cancelled, waitlist
+  paymentStatus   String   @default("pending") // pending, paid, refunded
+  paymentReference String?
+  
+  // Additional data
+  notes           String?
+  
+  @@map("event_registrations")
 }
