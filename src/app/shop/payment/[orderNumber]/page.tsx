@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -31,11 +31,7 @@ export default function PaymentPage() {
   const [processing, setProcessing] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string>('');
 
-  useEffect(() => {
-    fetchOrder();
-  }, [orderNumber]);
-
-  const fetchOrder = async () => {
+  const fetchOrder = useCallback(async () => {
     try {
       const response = await fetch(`/api/orders?orderNumber=${orderNumber}`);
       if (response.ok) {
@@ -55,7 +51,11 @@ export default function PaymentPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [orderNumber, router]);
+
+  useEffect(() => {
+    fetchOrder();
+  }, [fetchOrder]);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-NG', {

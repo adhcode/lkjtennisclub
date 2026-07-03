@@ -17,20 +17,10 @@ const raleway = Raleway({
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [cartCount, setCartCount] = useState(0);
     const { data: session, status } = useSession();
     const isPending = status === 'loading';
-
-    // Handle navbar background on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     // Update cart count
     useEffect(() => {

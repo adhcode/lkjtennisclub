@@ -61,15 +61,6 @@ const Events = () => {
         });
     };
 
-    const formatPrice = (price?: number) => {
-        if (!price || price === 0) return 'Free';
-        return new Intl.NumberFormat('en-NG', {
-            style: 'currency',
-            currency: 'NGN',
-            minimumFractionDigits: 0,
-        }).format(price);
-    };
-
     const getEventStatus = (event: Event) => {
         const now = new Date();
         const startDate = new Date(event.startDate);
@@ -78,13 +69,6 @@ const Events = () => {
         if (now < startDate) return 'upcoming';
         if (now > endDate) return 'past';
         return 'ongoing';
-    };
-
-    const getStatusLabel = (event: Event) => {
-        const status = getEventStatus(event);
-        if (status === 'ongoing') return 'Event Ongoing';
-        if (status === 'past') return 'Event Completed';
-        return 'Featured Event';
     };
 
     if (loading) {

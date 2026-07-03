@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Raleway } from 'next/font/google';
-import { getCart, clearCart, type Cart } from '@/lib/cart';
+import { clearCart } from '@/lib/cart';
 import { CreditCard, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { PaystackButton } from 'react-paystack';
@@ -17,7 +16,6 @@ const raleway = Raleway({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
 export default function PaymentPage() {
   const router = useRouter();
-  const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
   const [loading, setLoading] = useState(false);
   const [selectedMethod, setSelectedMethod] = useState<string>('');
   const [checkoutData, setCheckoutData] = useState<any>(null);
@@ -32,7 +30,6 @@ export default function PaymentPage() {
     
     const data = JSON.parse(stored);
     setCheckoutData(data);
-    setCart({ items: data.items, total: data.subtotal });
   }, [router]);
 
   const formatPrice = (price: number) => {
@@ -58,33 +55,6 @@ export default function PaymentPage() {
   }
 
   const total = checkoutData.total;
-
-  const createOrder = async (paymentMethod: string, paymentRef?: string) => {
-    try {
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...checkoutData,
-          paymentMethod: 'paystack',
-          paymentReference: paymentRef,
-          paymentStatus: paymentRef ? 'paid' : 'pending',
-        }),
-      });
-
-      if (response.ok) {
-        const order = await response.json();
-        clearCart();
-        sessionStorage.removeItem('checkoutData');
-        router.push(`/shop/order-confirmation/${order.orderNumber}`);
-      } else {
-        alert('Failed to create order. Please try again.');
-      }
-    } catch (error) {
-      console.error('Order failed:', error);
-      alert('Failed to place order. Please try again.');
-    }
-  };
 
   const handlePaystackSuccess = async (reference: { reference: string }) => {
     setLoading(true);
