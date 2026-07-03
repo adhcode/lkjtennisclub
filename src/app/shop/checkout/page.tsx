@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 import { Raleway } from 'next/font/google';
-import { getCart, clearCart, type Cart } from '@/lib/cart';
+import { getCart, type Cart } from '@/lib/cart';
 import Image from 'next/image';
 import Link from 'next/link';
 import { UserPlus, Zap } from 'lucide-react';
@@ -18,7 +18,6 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
-  const [loading, setLoading] = useState(false);
   const [useSavedAddress, setUseSavedAddress] = useState(true);
   const [formData, setFormData] = useState({
     customerName: '',
@@ -330,7 +329,7 @@ export default function CheckoutPage() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  disabled={loading || !isFormValid()}
+                  disabled={!isFormValid()}
                   className={`w-full bg-[#911b1e] text-[#fcf7dc] py-4 hover:bg-[#911b1e]/90 
                     transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${raleway.className} font-medium`}
                 >

@@ -61,16 +61,6 @@ const Events = () => {
         });
     };
 
-    const getEventStatus = (event: Event) => {
-        const now = new Date();
-        const startDate = new Date(event.startDate);
-        const endDate = event.endDate ? new Date(event.endDate) : startDate;
-
-        if (now < startDate) return 'upcoming';
-        if (now > endDate) return 'past';
-        return 'ongoing';
-    };
-
     if (loading) {
         return (
             <section className="relative py-16 sm:py-20 md:py-24 bg-[#fcf7dc] overflow-hidden">

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { ShoppingCart, Heart, Minus, Plus } from 'lucide-react';
 import { Raleway } from 'next/font/google';
 import { addToCart } from '@/lib/cart';
+import { isInWishlist, toggleWishlist } from '@/lib/wishlist';
 
 const raleway = Raleway({ subsets: ['latin'], weight: ['300', '400', '500', '600'] });
 
@@ -28,7 +29,6 @@ interface Product {
 
 export default function ProductDetailPage() {
   const params = useParams();
-  const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
@@ -38,19 +38,7 @@ export default function ProductDetailPage() {
   const [addedToCart, setAddedToCart] = useState(false);
   const [liked, setLiked] = useState(false);
 
-  useEffect(() => {
-    fetchProduct();
-  }, [params.slug]);
-
-  // Check if product is in wishlist
-  useEffect(() => {
-    if (product) {
-      const { isInWishlist } = require('@/lib/wishlist');
-      setLiked(isInWishlist(product.id));
-    }
-  }, [product]);
-
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     try {
       const response = await fetch('/api/products');
       if (response.ok) {
@@ -68,7 +56,18 @@ export default function ProductDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [params.slug]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [fetchProduct]);
+
+  // Check if product is in wishlist
+  useEffect(() => {
+    if (product) {
+      setLiked(isInWishlist(product.id));
+    }
+  }, [product]);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-NG', {
@@ -98,7 +97,6 @@ export default function ProductDetailPage() {
   const handleToggleWishlist = () => {
     if (!product) return;
     
-    const { toggleWishlist } = require('@/lib/wishlist');
     const isNowLiked = toggleWishlist({
       productId: product.id,
       name: product.name,
