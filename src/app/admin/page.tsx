@@ -44,7 +44,7 @@ export default function AdminDashboard() {
         totalMembers: members.length || 0,
         totalOrders: orders.length || 0,
         totalProducts: products.length || 0,
-        pendingOrders: orders.filter((o: any) => o.status === 'pending').length || 0,
+        pendingOrders: orders.filter((o: { status: string }) => o.status === 'pending').length || 0,
       });
     } catch (error) {
       console.error('Failed to fetch stats:', error);

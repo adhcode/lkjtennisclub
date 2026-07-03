@@ -86,7 +86,7 @@ export default function PaymentPage() {
     }
   };
 
-  const handlePaystackSuccess = async (reference: any) => {
+  const handlePaystackSuccess = async (reference: { reference: string }) => {
     setLoading(true);
     try {
       const verification = await verifyPayment(reference.reference);

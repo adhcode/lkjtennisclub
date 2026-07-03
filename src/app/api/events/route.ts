@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured');
     const heroBanner = searchParams.get('heroBanner');
     
-    const where: any = {};
+    const where: Record<string, string | boolean> = {};
     
     if (status !== 'all') {
       where.status = status;
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
 
-    if (!session || (session.user as any).role !== 'admin') {
+    if (!session || (session.user as { role?: string }).role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

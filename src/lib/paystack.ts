@@ -1,11 +1,20 @@
 // Paystack utilities
+export interface PaystackReference {
+  reference: string;
+  trans: string;
+  status: string;
+  message: string;
+  transaction: string;
+  trxref: string;
+}
+
 export interface PaystackConfig {
   publicKey: string;
   email: string;
   amount: number; // in kobo (multiply by 100)
   reference: string;
-  metadata?: Record<string, any>;
-  onSuccess?: (reference: any) => void;
+  metadata?: Record<string, string | number | boolean>;
+  onSuccess?: (reference: PaystackReference) => void;
   onClose?: () => void;
 }
 
@@ -15,7 +24,18 @@ export const generatePaymentReference = (): string => {
   return `LKJ-${timestamp}-${random}`;
 };
 
-export const verifyPayment = async (reference: string): Promise<any> => {
+export interface PaystackVerifyResponse {
+  status: boolean;
+  message: string;
+  data: {
+    reference: string;
+    amount: number;
+    status: string;
+    [key: string]: unknown;
+  };
+}
+
+export const verifyPayment = async (reference: string): Promise<PaystackVerifyResponse> => {
   try {
     const response = await fetch(`/api/paystack/verify?reference=${reference}`);
     if (!response.ok) {

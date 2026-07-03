@@ -118,9 +118,9 @@ export async function POST(request: NextRequest) {
                 status: 'pending',
                 paymentStatus: paymentReference ? 'paid' : 'pending',
                 // Link to user if authenticated
-                ...(session?.user && { userId: (session.user as any).id }),
+                ...(session?.user && { userId: (session.user as { id: string }).id }),
                 orderItems: {
-                    create: items.map((item: any) => ({
+                    create: items.map((item: { productId: string; quantity: number; price: number; size?: string; color?: string }) => ({
                         productId: item.productId,
                         quantity: item.quantity,
                         price: item.price,

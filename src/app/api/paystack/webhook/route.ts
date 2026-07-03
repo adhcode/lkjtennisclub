@@ -60,7 +60,16 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleSuccessfulCharge(data: any) {
+interface ChargeData {
+  reference: string;
+  amount: number;
+  customer: {
+    email: string;
+  };
+  [key: string]: unknown;
+}
+
+async function handleSuccessfulCharge(data: ChargeData) {
   try {
     const reference = data.reference;
     const amount = data.amount / 100; // Convert from kobo to naira
@@ -93,7 +102,7 @@ async function handleSuccessfulCharge(data: any) {
   }
 }
 
-async function handleFailedCharge(data: any) {
+async function handleFailedCharge(data: ChargeData) {
   try {
     const reference = data.reference;
     

@@ -9,7 +9,7 @@ export async function PATCH(
     const body = await request.json();
     const { status, paymentStatus, paymentMethod, paymentReference } = body;
 
-    const updateData: any = {};
+    const updateData: Partial<{ status: string; paymentStatus: string; paymentMethod: string; paymentReference: string }> = {};
     if (status) updateData.status = status;
     if (paymentStatus) updateData.paymentStatus = paymentStatus;
     if (paymentMethod) updateData.paymentMethod = paymentMethod;
